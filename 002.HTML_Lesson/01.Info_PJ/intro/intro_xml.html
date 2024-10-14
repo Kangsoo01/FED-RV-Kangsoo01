@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!-- html5문서 선언문 -->
+<html>
+  <!-- 최상위 요소인 html로 모두 감싸준다 -->
+  <!-- 하위요소는 머리(head), 몸(body)로 구성 -->
+  <head>
+    <!-- 머리부분 필수태그 
+         meta태그 속성중 문자처리셋을 uft-8로 지정 -->
+    <meta charset="uft-8" />
+    <!-- 모바일을 중심으로 하는 요즘 필수
+          meta태그는 viewpoint다
+          모바일 화면해상도가 아닌 실제 화면 픽셀로 변환해주는 태그 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- title 요소: 브라우져 탭에 제목 출력 -->
+    <title>프론트엔드 개발자 과정</title>
+    <!-- 추가로 head태그에 CSS나 JS 등 연결 -->
+  <!-- 스타일 인라인 넣기 -->
+    <style>
+    /*
+    선택자{
+    속성:값;
+    }
+    */
+    html{
+      scroll-behavior: smooth;
+    }
+    /* 위치이동시 부드러운 스크롤적용 */
+    </style>
+  </head>
+  <body>
+    <!-- Heading 요소: h1 ~ h6
+    제목에 해당하는 내용을 담는 태그
+    h1태그는 특히 사이트의 로고 등을 간판격에
+    해당하는 컨텐츠를 담는다
+    한 페이지에 하나의 h1만 쓰는 것이 구조화의 일반적인 사용방법
+    -->
+    <h1>[ 프로젝트기반 프론트엔드 과정 2024 - 기본전달사항 ]</h1>
+    탐쌤이멜: tombap@naver.com<br>
+    <a href="#you">강의유튜브</a>
+    <h2>1. 교재:</h2>
+    NCS 4권
+    <h2>2. 평가:</h2>
+    3회차의 프로젝트 산출물
+    <h2>3. 공식교과서:</h2>
+    <!-- 
+    [html 요소중 가장중요한 a]
+    a 요소는 웹페이지 이동을 시킨다
+    a는 anchor(닻)이라는 뜻인데,웹서핑을 항해로 비유하며
+    어떤페이지에 도달하여 정박하는 것을 상징하여 a태그명이 되었다
+    (필수속성) 
+    href(Hyper Text Reference)
+    이동할 페이지 주소인 하이퍼 택스트 참조라는 이름
+    이 값으로 웹 주소를 입력하면 페이지가 이동되고,
+    만약 "#아이디명"으로 작성하면 같은 페이지의 특정 아이디를
+    사용한 요소로 이동한다
+    기본적으로 깉은 페이지에서 페이지 이동이 되지만
+    다음 속성으로 변경하면 새창에서 열 수 있다
+    target="blank"
+    -->
+    w3c 스쿨 <br />
+    <pre></pre>
+    <a href="https://www.w3schools.com/" target="_blank"
+      >https://www.w3schools.com/</a
+    >
+    <h2>4. 소스 빌드용 폴더 생성하기!</h2>
+    <pre></pre>
+    <!-- 태그에 아이디는 유일한 이름이다 -->
+    <h2 id="you">5. 강의 동영상 백업</h2>
+    유튜브: 탐쌤코딩 프론트엔드 2024 <br />
+    <pre></pre>
+    <!-- 인라인 요소에서 줄 바꿈시에 홀로태그인 br을 사용
+     brdms break라는 단어약어를 뜻한다(줄을 깬다는 뜻) -->
+    <a
+      href="https://www.youtube.com/channel/UC54MBwmFWTQoxPeICl7wy2A"
+      target="_blank"
+      >https://www.youtube.com/channel/UC54MBwmFWTQoxPeICl7wy2A</a
+    >
+    <h2>6. 소스 깃허브 :</h2>
+    탐쌤코딩 프론트엔드 2024 <br />
+    <pre></pre>
+    <a href="_blank">https://github.com/tombap8/FED-RV-TOM-2024</a>
+    <h2>7. 사이트 벤치마킹 포털</h2>
+    <h3>(1) 디비컷</h3>
+    <a href="_blank">https://www.dbcut.com/bbs/index.php</a>
+    <h3>(2) 굿디자인웹</h3>
+    <a href="_blank">https://www.gdweb.co.kr/main/</a>
+    <h3>(3) 어워즈</h3>
+    <a href="_blank">https://www.awwwards.com/</a>
+    <h2>8. 필수 회원가입</h2>
+    <h3>(1) 닷홈:</h3>
+    회원가입 후 무료호스팅하기! <br />
+    <pre></pre>
+    <a href="_blank">https://www.dothome.co.kr/</a>
+    <h3>(2)깃허브:</h3>
+    회원가입 후 레파지토리 만들기! <br />
+    <pre></pre>
+    <a href="_blank">https://github.com/</a>
+    <h3>(3) 피그마:</h3>
+    회원가입하기
+    <h2>9. 포트폴리오 - 개인포폴 주제선정 후 분기별 제출 및 발표 예시</h2>
+    <a href="_blank">https://tombap8.github.io/KNG-FED211/index.html</a>
+    <h2>10. UI/UX 참고자료</h2>
+    <h3>(1) UX 개념의 예 :</h3>
+    <h4>피아노건반 계단</h4> - The Fun Theory 동영상 시리즈 1번<br />
+    <pre></pre>
+    <a href="_blank">https://youtu.be/SByymar3bds </a> <br />
+    <pre></pre>
+    <h3>(2) 인터페이스 개념 - 나건교수 동영상<br /></h3>
+    <pre></pre>
+    <a href="_blank">https://youtu.be/EKFM5yeXdck </a> <br />
+    <pre></pre>
+    -> 소통이 이루지는 장소에서 사용되는 수단과 방법을 인터페이스라고함!
+    <pre></pre>
+  </body>
+</html>

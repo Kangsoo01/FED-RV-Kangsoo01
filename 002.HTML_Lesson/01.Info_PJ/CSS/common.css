@@ -1,0 +1,147 @@
+@charset "utf-8";
+/* Info PJ 공통 CSS - Common.css */
+
+/* CSS 인터널 코딩 구역 */
+/* 웹폰트 import */
+@import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Orbit&display=swap");
+/* 
+        선택자{
+          속성:값;
+        }
+
+        -> 선택자는 기본적으로 
+        요소명/아이디명/클래스명으로 나눈다
+      */
+/* header 요소명 */
+
+/* 1.상단영역 */
+#top-area {
+  /* 아이디명 */
+  text-align: center;
+  /* 배경색: bgc */
+  background-color: #fefae0;
+  /* 상단영역 중앙정렬 */
+}
+/* 전체 타이틀
+      CSS에서 띄어쓰기는 하위요소를 선택한다 */
+#top-area h1 {
+  font-family: "Do Hyeon", sans-serif;
+  /* 글자 크기 = fz */
+  font-size: 40px;
+  /* 글자색 = c */
+  color: #03aa4e;
+  /* 글자 그림자 = ts */
+  text-shadow: 0px 4px 3px #0000003b;
+}
+
+/* 메뉴 a요소 
+      기본 셋팅된 글자색, 밑줄 변경*/
+.menu a {
+  /* 글자체 */
+  font-family: Orbit;
+  /* 글자색 */
+  color: darkcyan;
+  /* 글자 밑줄 없애기 = tdn */
+  text-decoration: none;
+  /* 글자 크기 */
+  font-size: 20px;
+  /* 글자 두껍게 */
+  font-weight: bold;
+}
+
+/* 첫번째 a메뉴를 빼고 두번째로부터
+      끝까지 양쪽 마진을 적용하기
+      주의) 인라인 요소는 위아래 마진이 적용이 안된다 */
+.menu span + a {
+  /* 앞에 span 형제요소가 있는 a만 선택
+        +는 형제선택자 */
+  margin: 4px;
+}
+
+/* a요소에 마우스 오버시 */
+.menu span + a:hover {
+  /* 글자색 */
+  color: burlywood;
+  /* 글자 윗줄 = tdo */
+  text-decoration: overline;
+  /* 글자테코 스타일 = tdst */
+  text-decoration-style: solid;
+}
+
+/* 2.메인영역 */
+#main-area {
+  /* 위, 아래, 마진 */
+  margin: 15px auto;
+  /* margin-top: 15px;
+        margin-bottom: 15px; */
+
+  /* 
+        마진(margin), 패딩(peddinng) 규칙
+        - 마진은 바깥여백, 패딩은 안쪽 여백
+        margin: 값; - 4방향 모두
+        margin: 값; 값; - 위아래, 양쪽
+        margin: 값; 값; 값; - 위, 양쪽, 아래
+        margin: 값; 값; 값; 값; - 위, 오른, 아래, 왼
+        ((방향별 속성 있음))
+        margin-top 값;
+        margin-right 값;
+        margin-bottom 값;
+        margin-left 값;
+
+        ((크기를 가지는 블록박스 중앙정렬))
+        margin: 0 auto;
+        -> 박스의 마진을 위아래0
+          양쪽 마진은 auto 즉, 자동으로 
+          같은 크기배분 
+          ->마.영.오
+        */
+}
+/* 3.하단영역 */
+#info-area {
+  /* 배경색 bgc */
+  background-color: #fefae0;
+}
+
+/* 최상위박스 공동 */
+/*클래스명 */
+.part {
+  /* 가로크기를 지정하려면 화면이
+        박스보다 작아질 경우 가로스크롤이 생긴다 */
+  /* width: 1280px; */
+
+  /* 최대가로크기 설정 = maw
+        ->최대크기보단 화면이 작아지면
+        자동으로 전환하여 화면크기에 적응한다. */
+  max-width: 1280px;
+
+  /* 마영오로 박스 중앙정렬 */
+  margin: 0 auto;
+
+  /* 보더: 경계선 
+        border: 두깨 종류 색상
+        종류(soild: 선형, dashed: 데쉬선, dotted: 점선)
+        */
+  border: 5px double #03c75a;
+  /* 둥근 모서리 */
+  border-radius: 20px;
+  /* 패딩: 안쪽여백 */
+  padding: 15px;
+}
+
+/* 주소셋팅 */
+address {
+  /* 기본 이텔릭체 해제하기 = fsn */
+  font-style: normal;
+  /* 글자 중앙정렬 = tac */
+  text-align: center;
+  /* 글자체 */
+  font-family: Noto Sans Korean;
+  /* 글자색 */
+  color: #5b6944;
+  /* 글자 크기 */
+  font-size: 18px;
+  /* 줄 간격 */
+  line-height: 30px;
+  /* 글자 두깨 */
+  font-weight: bold;
+}

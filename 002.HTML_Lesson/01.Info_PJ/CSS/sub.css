@@ -1,24 +1,135 @@
 @charset "utf-8";
 
+/* 
+[ 선택자의 종류 ]
+
+1) 타입선택자: 요소명 
+예) h1{}, span{}
+
+2) 자손선택자: 띄어쓰기 
+예) h1 a{}, div span{}
+
+3) 아이디선택자: # 
+예) #my{}, #we{}
+
+4) 클래스선택자: . 
+예) .home{}, .kite{}
+
+5) 직계자식선택자: > 
+예) #my > div
+
+6) 그룹선택자: , 
+예) html, body, h1{}
+
+7) 종속선택자: 태그명+아이디/클래스선택자 
+예) h1#logo{}, main.cont{}
+
+8) 속성선택자: []
+예) [target=_blank], a[href="index.html"]
+
+9) 형제선택자: + 
+    예) li+li , tr+tr 앞에 다른형제가 있는 요소를 선택함
+
+10) 다중형제선택자: ~
+    예) li:nth-child(4)~li -> 4번째 li이후 모든 형제선택
+ */
+
 /* 서브페이지 공동 CSS - sub.css */
 
 /* 2-1. 서브타이틀 */
-.sub-title{
-    /* 글자 크기 font-size (fz) */
-    font-size: 38px;
-    /* 글자 두깨: font-weight (fw)
+.sub-title {
+  /* 폰트 디자인 */
+  font-family: Do Hyeon;
+  /* 글자 크기 font-size (fz) */
+  font-size: 38px;
+  /* 글자 두깨: font-weight (fw)
     두껍게 bold(fwb) / 보통 normal(fwa)
     */
-    font-weight: normal;
-    /* 텍스트 중앙정렬: tac */
-    text-align: center;
-    /* 배경색: bgc */
-    background-color: pink;
+  font-weight: normal;
+  /* 텍스트 색깔 */
+  color: #ffa24b;
+  /* 텍스트 중앙정렬: tac */
+  text-align: center;
+  /* 배경색: bgc */
+  background-color: pink;
+  /* 텍스트 그림자 */
+  text-shadow: 0px 4px 3px #000000a1;
+
+  /* 이미지 박스 디자인 */
+  /* 패딩 */
+  padding: 20px;
+  /* 둥근모서리 */
+  border-radius: 20px;
+  /* CSS이미지는 상대경로로 CSS파일위치로부터
+    찾아서 넣는다! ../는 폴더하나위로 올라감 */
+  /* 배경 한번에 넣기 : 색이반고윙/크 */
+  background: url(https://yozm.wishket.com/media/news/1231/image017.png)
+    no-repeat center/cover;
+  /* 박스 그림자 
+    box-shadow: (내부 그림자 inset) x축 y축 불러 (확장)색
+
+    ->블러 뒤에 확장옵션에 px값을 주면 그림자가 더 커진다
+    박스그림자에만 이 옵션이 있다
+
+    콤마로 연결하면 글자그림자든 박스그림자든 모두 다중 그림자
+    적용이 가능하다
+    */
+  box-shadow: inset 0 0 10px #00000071,
+    0 0 20px 5px #ffbb62;
+}
+
+/* 
+    [ CSS 적용우선순위 ]
+     0. 속성값 안에 !inportant 
+*/
+
+/* 페이지별 타이틀 박스 디자인 변경 */
+/* 정치뉴스 */
+h2.politics {
+  background-image: url(https://www.logoyogo.com/web/wp-content/uploads/edd/2021/03/logoyogo-1-293.jpg);
+}
+
+/* 경제 뉴스 */
+h2.economics {
+    background-image: url(https://www.urbanbrush.net/web/wp-content/uploads/edd/2019/04/urbanbrush-20190423071752459851.png);
+}
+
+/* 사회 뉴스 */
+h2.economics {
+    background-image: url(https://cdn.vectorstock.com/i/1000v/96/15/minimalist-background-seamless-pattern-with-simple-vector-22739615.jpg);
+}
+
+/* IT/과학 뉴스 */
+
+/* TV/연예 뉴스 */
+h2.economics {
+    background-image: url(https://img.freepik.com/vector-gratis/fondo-moderno-formas-geometricas-abstractas_23-2148879763.jpg);
 }
 /* 2-2.언론사로고 */
+    
+    /* 이미지 높이값 고정 (가로크기는 자동) */
+    
+
 /* 2-3. 기사제목 */
+.article-title{
+    /* 글자 크기 */
+    font-size: 30px;
+    /* 글자 크기 */
+    color: #1e1e23;
+}
 /* 2-4. 기사사진 */
+.article-picture{
+    /* figure 요소의 마진 없애는 것 */
+    margin: 100px;
+}
+.article-picture img{
+    width: 100%;
+}
 /* 2-5. 기사내용 */
+.content p{
+    font-size: 20px;
+    line-height: 2.1;
+}
 /* 2-5.5. 인용블록영역 */
 /* 2-6. 기자정보 */
 /* 2-7. 기사원문 */

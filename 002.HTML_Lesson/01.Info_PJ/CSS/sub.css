@@ -91,47 +91,185 @@ h2.politics {
 
 /* 경제 뉴스 */
 h2.economics {
-    background-image: url(https://www.urbanbrush.net/web/wp-content/uploads/edd/2019/04/urbanbrush-20190423071752459851.png);
+  background-image: url(https://www.urbanbrush.net/web/wp-content/uploads/edd/2019/04/urbanbrush-20190423071752459851.png);
 }
 
 /* 사회 뉴스 */
 h2.economics {
-    background-image: url(https://cdn.vectorstock.com/i/1000v/96/15/minimalist-background-seamless-pattern-with-simple-vector-22739615.jpg);
+  background-image: url(https://cdn.vectorstock.com/i/1000v/96/15/minimalist-background-seamless-pattern-with-simple-vector-22739615.jpg);
 }
 
 /* IT/과학 뉴스 */
 
 /* TV/연예 뉴스 */
 h2.economics {
-    background-image: url(https://img.freepik.com/vector-gratis/fondo-moderno-formas-geometricas-abstractas_23-2148879763.jpg);
+  background-image: url(https://img.freepik.com/vector-gratis/fondo-moderno-formas-geometricas-abstractas_23-2148879763.jpg);
 }
 /* 2-2.언론사로고 */
-    
-    /* 이미지 높이값 고정 (가로크기는 자동) */
-    
+
+/* 이미지 높이값 고정 (가로크기는 자동) */
 
 /* 2-3. 기사제목 */
-.article-title{
-    /* 글자 크기 */
-    font-size: 30px;
-    /* 글자 크기 */
-    color: #1e1e23;
+.article-title {
+  /* 글자 크기 */
+  font-size: 30px;
+  /* 글자 크기 */
+  color: #1e1e23;
 }
 /* 2-4. 기사사진 */
-.article-picture{
-    /* figure 요소의 마진 없애는 것 */
-    margin: 100px;
+.article-picture {
+  /* figure 요소의 마진 없애는 것 */
+  margin-left: 50px;
+  margin-right: 50px;
 }
-.article-picture img{
-    width: 100%;
+/* 기사 이미지 */
+.article-picture img {
+  width: 100%;
 }
+/* 이미지 설명
+figcaption은 블록요소다 */
+/*  */
+.article-picture figcaption {
+  /* 가운데 정렬 tac */
+  text-align: center;
+  /* 글자 크기 15px */
+  font-size: 12px;
+  margin-bottom: 40px;
+}
+/* 하위 요소에 지정된 속성은 그 요소에서 
+재정의 해야 적용된다. 예컨데 글자크기가 이미 
+small 태그에 적용되어 있어서 여기에 재정의해야한다
+*/
+.article-picture figcaption small {
+  /* 글자크기 15px: fz15 */
+  font-size: 12px;
+}
+
 /* 2-5. 기사내용 */
-.content p{
-    font-size: 20px;
-    line-height: 2.1;
+.content p {
+  margin: 0;
+  margin-bottom: 25px;
+  font-size: 15px;
+  line-height: 1.5;
+
+  /* 
+    [ 줄간격: line-height ]
+     - 박스요소에 글자의 간격 높이를 지정하는 속성
+     - 글자는 높이 값의 세로 정중앙에 위치한다
+     - 단위를 사용하면 특정 크기로 지정된다
+     - 단위 없는 숫자로 표현하면 글자크기의 배수로
+     상대적 크기가 적용된다
+     - 젠코딩시 숫자만 쓰면 배수로 표현되므로
+     주의가 필요하다. 
+     예) 1h20 -> line-height: 20;
+    */
+  color: #303038;
 }
+
+/* 중요 글자 strong */
+.content p strong {
+  color: darkblue;
+}
+/* 강조 글자 em */
+.content p em {
+  /* 글자색: c */
+  color: deepskyblue;
+  /* 글자 그림자: ts */
+  text-shadow: 2px 2px 2px #0000003b;
+  /* 글자 윗줄 overline: tdo */
+  /* 글자 밑줄 underline: tdu */
+  text-decoration: underline wavy;
+  /* text-decoration: 유형 (스타일) */
+  /* 스타일이 있을 경우 뒤에 띄어쓰기로 쓸 수 있다 */
+}
+
+/* 공통 보더박스 디자인: .bd-box */
+.bd-box {
+  /* 윗쪽 보더 주기: bdt */
+  border-top: 1px dashed grey;
+  /* 윗쪽 마진: mt */
+  margin-top: 20px;
+}
+
 /* 2-5.5. 인용블록영역 */
+.bd-box {
+  /* 윗쪽 보더 주기: bdt */
+  border-top: 1px dashed grey;
+  /* 윗쪽 마진: mt */
+  margin-top: 20px;
+}
+/* 타이틀 */
+.bd-box h4 {
+  /* 가로크기 내용만큼 설정위해 display 변경
+  -> inline (패딩 디자인이 실제 공간을 차지하지 않는것)
+  -> inline-block (블록 처럼 디자인이 적용되는 인라인 요소)
+  */
+  display: inline-block;
+  /* 배경색: bg */
+  background-color: #ccc;
+  /* 패딩: p */
+  padding: 12px;
+  /* 둥근 모서리: brad */
+  border-radius: 15px;
+  /* 박스 그림자: bxsh */
+  box-shadow: inset 0 0 10px #7b7b7b;
+}
+/* 인용구 박스: blockbd */
+.bd-box blockbd {
+  /* 기본마진 없애기: m */
+  margin: 0;
+  /* 글자 크기: fz */
+  font-size: 12px;
+  /* 줄간격: lh1.8 */
+  line-height: 1.8;
+  padding-bottom: 20px;
+  /* 양쪽 정렬 */
+  text-align: justify;
+  /* 첫줄 들여쓰기 */
+}
+
+/* 이미지 오른쪽으로 보내고 옆에 글자 흘러가기 */
+.bd-box blockbd img {
+  /* 나는 오른쪽에 있고  */
+  /* float: right (flr) */
+  float: right;
+}
+
 /* 2-6. 기자정보 */
 /* 2-7. 기사원문 */
+.article-link {
+  /* 오른쪽 정열 */
+  text-align: right;
+}
+/* 자식요소 a는 인라인이므로 크기 적용이 안된다
+따라서 디자인 적용되는 인라인 요소인 inline-block를 사용한다
+*/
+.article-link a {
+  /* inline-block: dib */
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  /* 중앙 가로정렬 */
+  text-align: center;
+  /* 세로 중앙정렬 */
+  line-height: 100px;
+  /* vertical-align: middle;
+  -> 인라인 요소간 세로 정렬
+  -> 세로 중앙 정렬은 table-cell 디스플레이에서만 적용된다
+  여기서는 line-height를 높이값과 같이준다 */
+  border: 2px solid LightSkyBlue;
+  color: LightSkyBlue;
+
+  /* a 요소 기본 디자인 변경 */
+  /* 밑줄없앰: tdn */
+  text-decoration: none;
+
+  border-radius: 50%;
+  background-color: #4169e12c;
+  color: darkcyan;
+  font-size: 20px;
+  font-weight: bold;
+
+}
 /* 주해영역 */
 /* 오늘의 작품 & 느낌 */

@@ -32,19 +32,19 @@
 
 10) 다중형제선택자: ~
     예) li:nth-child(4)~li -> 4번째 li이후 모든 형제선택
- */
+      
+***********************************************/
 
 /* 서브페이지 공동 CSS - sub.css */
 
 /* 2-1. 서브타이틀 */
-.sub-title {
+h2.sub-title {
   /* 폰트 디자인 */
   font-family: Do Hyeon;
   /* 글자 크기 font-size (fz) */
   font-size: 38px;
   /* 글자 두깨: font-weight (fw)
-    두껍게 bold(fwb) / 보통 normal(fwa)
-    */
+    두껍게 bold(fwb) / 보통 normal(fwa)*/
   font-weight: normal;
   /* 텍스트 색깔 */
   color: #ffa24b;
@@ -63,8 +63,6 @@
   /* CSS이미지는 상대경로로 CSS파일위치로부터
     찾아서 넣는다! ../는 폴더하나위로 올라감 */
   /* 배경 한번에 넣기 : 색이반고윙/크 */
-  background: url(https://yozm.wishket.com/media/news/1231/image017.png)
-    no-repeat center/cover;
   /* 박스 그림자 
     box-shadow: (내부 그림자 inset) x축 y축 불러 (확장)색
 
@@ -79,8 +77,16 @@
 }
 
 /* 
-    [ CSS 적용우선순위 ]
-     0. 속성값 안에 !inportant 
+    [ CSS 적용우선 순위 ]
+     0. 속성값안에 !important 라고 쓰면 가장 최우선적용!
+     1. 인라인 셋팅 :  태그안에 style속성셋팅
+     2. 종속선택 요소 : 태그명#아이디명 / 태그명.클래스명
+     3. 아이디 요소 : #이름
+     4. 클래스 요소 : .이름
+     5. 요소명 : 태그명
+     
+     -> 레벨이 같은 경우엔 나중에 쓴것이 덮어써진다!
+
 */
 
 /* 페이지별 타이틀 박스 디자인 변경 */
@@ -95,20 +101,25 @@ h2.economics {
 }
 
 /* 사회 뉴스 */
-h2.economics {
+h2.social {
   background-image: url(https://cdn.vectorstock.com/i/1000v/96/15/minimalist-background-seamless-pattern-with-simple-vector-22739615.jpg);
 }
 
 /* IT/과학 뉴스 */
+h2.science{
+  background-image: url(https://yozm.wishket.com/media/news/1231/image017.png);
+}
 
 /* TV/연예 뉴스 */
-h2.economics {
+h2.entertainment {
   background-image: url(https://img.freepik.com/vector-gratis/fondo-moderno-formas-geometricas-abstractas_23-2148879763.jpg);
 }
 /* 2-2.언론사로고 */
-
-/* 이미지 높이값 고정 (가로크기는 자동) */
-
+.press-logo img {
+  /* 이미지 높이값 고정 (가로크기는 자동) */
+  height: 32px;
+}
+  
 /* 2-3. 기사제목 */
 .article-title {
   /* 글자 크기 */
@@ -128,7 +139,6 @@ h2.economics {
 }
 /* 이미지 설명
 figcaption은 블록요소다 */
-/*  */
 .article-picture figcaption {
   /* 가운데 정렬 tac */
   text-align: center;
@@ -136,6 +146,7 @@ figcaption은 블록요소다 */
   font-size: 12px;
   margin-bottom: 40px;
 }
+
 /* 하위 요소에 지정된 속성은 그 요소에서 
 재정의 해야 적용된다. 예컨데 글자크기가 이미 
 small 태그에 적용되어 있어서 여기에 재정의해야한다
@@ -147,6 +158,7 @@ small 태그에 적용되어 있어서 여기에 재정의해야한다
 
 /* 2-5. 기사내용 */
 .content p {
+  /* 기본마진을 없애고 아래쪽 마진만 주는것 */
   margin: 0;
   margin-bottom: 25px;
   font-size: 15px;
@@ -197,13 +209,6 @@ small 태그에 적용되어 있어서 여기에 재정의해야한다
   line-height: 2;
 }
 
-/* 2-5.5. 인용블록영역 */
-.bd-box {
-  /* 윗쪽 보더 주기: bdt */
-  border-top: 1px dashed grey;
-  /* 윗쪽 마진: mt */
-  margin-top: 20px;
-}
 /* 타이틀 */
 .bd-box h4 {
   /* 가로크기 내용만큼 설정위해 display 변경
@@ -220,23 +225,27 @@ small 태그에 적용되어 있어서 여기에 재정의해야한다
   /* 박스 그림자: bxsh */
   box-shadow: inset 0 0 10px #7b7b7b;
 }
+
+/* 2-5.5. 인용블록영역 */
 /* 인용구 박스: blockbd */
-.bd-box blockbd {
+.bd-box blockquote {
   /* 기본마진 없애기: m */
   margin: 0;
   /* 글자 크기: fz */
   font-size: 12px;
   /* 줄간격: lh1.8 */
   line-height: 1.8;
-  padding-bottom: 20px;
-  /* 양쪽 정렬 */
+  /* 양쪽 정렬 justify: taj */
   text-align: justify;
-  /* 첫줄 들여쓰기 */
+  /* 양쪽 정렬시 영어단어 깨서 중앙 공백 없애기: wbb */
+  word-break: break-all;
+  /* 첫줄 들여쓰기: ti */
+  text-indent: 15px;
 }
 
 /* 이미지 오른쪽으로 보내고 옆에 글자 흘러가기 */
 .quote-box blockquote img {
-  /* 나는 오른쪽에 있고  */
+  /* 나는 오른쪽에 있고(글자는 왼쪽에 흘러간다)  */
   /* float: right (flr) */
   float: right;
   /* 
@@ -247,6 +256,11 @@ small 태그에 적용되어 있어서 여기에 재정의해야한다
     float: left = 이미지 왼쪽 / 글자 오른쪽
     float: right = 이미지 오른쪽 / 글자 왼쪽
   */
+  /* 왼쪽마진: ml(이미지 왼쪽 글자에 간격을 준다 */
+  margin-left: 15px;
+  /* 마진탑으로 이미지 위치를 이동하는것: mt */
+  /* margin-top: 15px; - 아래쪽에 영향으로 주석 */
+  border-radius: 10px;
 }
 
 /* 2-6. 기자정보 */
@@ -256,6 +270,7 @@ small 태그에 적용되어 있어서 여기에 재정의해야한다
   /* 위아래 패딩 = p20 */
   padding: 15px 0;
 }
+
 /* 2-7. 기사원문 */
 .article-link {
   /* 오른쪽 정열 */
@@ -366,11 +381,13 @@ cite는 작품명요소(시멘틱 구조화다)
   font-style: normal;
 }
 
+/* 이미지 박스 */
 .work figure{
   margin: 0;
   padding: 15px 0;
 }
 
+/* 작품 이미지 */
 .work img{
   border: 12px ridge goldenrod;
 }

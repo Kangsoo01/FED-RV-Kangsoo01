@@ -1,0 +1,128 @@
+@charset "utf-8";
+/* 드라마 테이블 CSS - drama.css */
+
+/* 기본 초기화: 마진, 패딩 */
+html,body,h1,h2,ul.ol{
+    margin: 0;
+    padding: 0;
+    text-decoration-line: none;
+}
+
+/* 블릿 표시자 초기화: ul, ol */
+ul,ol{
+    /* 리스트 스타일 없애기: lin */
+    list-style: none;
+}
+
+/* 전체제목 */
+h1.title{
+/* 글자 중앙정렬: tac */
+    text-align: center;
+    /* 패딩 */
+    padding: 20px;
+}
+
+/* 드라마 제목 */
+h2.title{
+    /* 볼드 글자 해제 */
+    font-weight: normal;
+    /* 글자크기 */
+    font-size: 17px;
+    /* 하단 마진 */
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+/* ul의 li를 옆으로 흐르게하기 */
+/* 직계자식 li를 선택해야 ol>li 까지 선택되지 않는다 */
+.drama ul > li{
+    /* 블록플롯 샛팅 */
+    float: left;
+    /* 나는 왼쪽에, 너는 오른쪽으로 올라가서 흘러가도록 */
+}
+
+/* 자식은 블록플롯 때문에 부모가 망가지는걸 막아주는
+가상 요소 클리어 장치 */
+.drama ul::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/* 테이블 셋팅 */
+/* 클래스명 앞에 태크명을 같이 붙여서 사용하면
+"종속선택자"라고 한다. 해당 태그일 때만 그 클래스명이
+적용되도록 태그명에 종속되어 있다 */
+table.drama{
+    /* 최대가로크기: maw */
+    max-width: 670;
+    /* 마.영.우 박스 중앙정렬 */
+    margin: 0 auto;
+    /* 패딩 */
+    padding: 15px;
+}
+
+.drama ul{
+    margin-top: 10px;
+    padding: 10px;
+    /* 보더 */
+    border: 2px solid #DDD;
+    /* 둥근 모서리 */
+    border-radius: 15px;
+    /* 전체글자 */
+    font-size: 15px;
+}
+
+/* 드라마 이미지 */
+.drama img{
+    /* 가로크기: 높이값은 자동이다 */
+    width: 75px;
+}
+
+/* 추가정보 파트 */
+.info-txt{
+    color: #939396;
+}
+
+.num-txt{
+    color: red
+}
+
+/* 숫자 부분(데이터 DB에서 숫자 넣는 구분요소) */
+.num-txt em{
+    /* 기본 이탤릭 해제 */
+    font-style: normal;
+}
+
+/* 글자정보 링크 */
+.drama ol a{
+    /* a 요소 기본 셋팅 변경: 글자색, 밑줄 */
+    color: blue;
+    text-decoration: none;
+}
+.drama ol a{
+    /* 밑줄: tdu */
+    text-decoration: underline;
+}
+
+.drama .subscribe{
+    text-decoration-line: none;
+    font-size: normal;
+    color: #222;
+    display: inline-block;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #939396;
+    border-radius: 10px;
+}
+/* 하트 */
+.drama .like_button i{
+    font-style: normal;
+    color: red;
+    text-decoration-line: none;
+    text-decoration: none;
+}
+/* 플러스 기호 색 */
+.subscribe span{
+    color: green;
+}

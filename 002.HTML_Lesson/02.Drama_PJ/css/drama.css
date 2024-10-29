@@ -30,7 +30,6 @@ h2.title{
     font-size: 17px;
     /* 하단 마진 */
     margin-bottom: 10px;
-    margin-top: 10px;
 }
 
 /* ul의 li를 옆으로 흐르게하기 */
@@ -39,6 +38,8 @@ h2.title{
     /* 블록플롯 샛팅 */
     float: left;
     /* 나는 왼쪽에, 너는 오른쪽으로 올라가서 흘러가도록 */
+    float: left;
+    padding: 10px;
 }
 
 /* 자식은 블록플롯 때문에 부모가 망가지는걸 막아주는
@@ -63,7 +64,6 @@ table.drama{
 }
 
 .drama ul{
-    margin-top: 10px;
     padding: 10px;
     /* 보더 */
     border: 2px solid #DDD;
@@ -105,24 +105,59 @@ table.drama{
     text-decoration: underline;
 }
 
+.drama ol a:hover{
+    text-decoration: underline;
+}
+
+/* 구독 버튼 */
+/* 기존 a요소 적용 우선순위를 올리기 위해
+.drama 조상 요소를 사용 */
 .drama .subscribe{
     text-decoration-line: none;
-    font-size: normal;
+    font-size: 15px;
     color: #222;
     display: inline-block;
-    padding: 10px;
+    /* padding: 10px; */
     margin-top: 5px;
     border: 1px solid #939396;
     border-radius: 10px;
 }
-/* 하트 */
-.drama .like_button i{
-    font-style: normal;
-    color: red;
-    text-decoration-line: none;
+
+/* 마우스 오버 */
+.drama .subscribe:hover{
     text-decoration: none;
 }
+
 /* 플러스 기호 색 */
 .subscribe span{
     color: green;
+}
+
+/* 구독자 수 */
+.subscribe b{
+    font-weight: normal;
+    font-size: 15px;
+    color: #555;
+}
+
+.subscribe_txt{
+    padding: 10px;
+    display: inline-block;
+}
+
+/* 하트버튼 */
+.like_button{
+    display: inline-block;
+    height: 100%;
+    font-style: normal;
+    color: red;
+    /* border: #555; */
+    /* float: right; */
+    /* border: 1px solid #939396; */
+    /* border-radius: 10px; */
+    /* padding: 10px;
+    margin-left: -5px;
+    margin: 5px; */
+    border-left: 1px solid #000;
+
 }

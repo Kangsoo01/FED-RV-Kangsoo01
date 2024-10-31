@@ -1,0 +1,15 @@
+@charset "uft-8";
+/* 로봇 PJ CSS - robot.css */
+
+/* 웹사이트 초기화 */
+html, body{
+    margin: 0;
+    padding: 0;
+    /* 보이는 화면 만큼 높이 값 셋팅 */
+    height: 100%;
+}
+
+body{
+    background: url(../images/bg.jpg) no-repeat top/cover;
+
+}

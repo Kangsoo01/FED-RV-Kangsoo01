@@ -131,9 +131,7 @@ section.drama {
     border-radius: 15px;
     /* 전체글자 */
     font-size: 15px;
-
-    
-    height: 160px;
+    /* 드라마2에 사진 위치 조정 */
     width: 330px;
 }
 

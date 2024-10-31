@@ -66,6 +66,14 @@
                 3) z-index 속성으로 숫자가 크면 위!
                 (주의: 숫자비교는 같은 레벨에서 함!)
 
+                9. 부모자격
+                -> 자식요소가 앱솔루트일때 부모자격으로 relative를
+                주는 경우가 많다. 이유는 기본 디자인이 유지되기 때문이다.
+                static한 특징이 있는 relative를 부모자격으로 설정하는 경우가
+                많다고 한다.
+                실제로 부모자격은 static이 아닌 포지션 즉, relative, absolute,
+                fixed, sticky다. 
+
                 ___________________________________
 
                 [ z-index 란? ]
@@ -112,9 +120,35 @@
             background-color: lightblue;
         }
 
+        h1.title {
+          /* 포지션 */
+          position: relative;
+          /* 부모는 보이는 화면이 기준 */
+
+          /* 박스모델 */
+          margin: 0;
+          top: 50px;
+          left: 30%;
+          /* 다른 오브젝트와 겹칠 때 위로 보내기 */
+          z-index: 999;
+          padding: 20px;
+          border: 2px solid silver;
+          border-radius: 20px;
+          background-color: azure;
+          font-size: 40px;
+          text-align: center;
+          width: 40%;
+
+          box-shadow: 5px 5px 5px #555;
+
+        }
+
+
     </style>
 </head>
 <body>
+
+    <h1 class="title">Relative 포지션</h1>
 
     <div class="bx" id="r1">r1</div>
     <div class="bx" id="s1">s1</div>

@@ -1,0 +1,146 @@
+@charset "utf-8";
+
+/* CGV PJ 메인페이지 CSS - main.css */
+
+/* 외부 CSS 불러오기 */
+/* 리셋 CSS */
+@import url(./reset.css);
+/* 공통 CSS */
+@import url(./core.css);
+
+/* 전체 디자인 */
+body{
+    background-color: black;
+}
+
+/* 공사중 표시 : 구현시 박스표시 */
+/* *별표시는 모든요소를 선택함 */
+body * {
+    /* 아웃라인은 아무런 영향이 없음 */
+    outline: 2px dashed #ccc;
+  }
+  
+  /* 레이아웃 공통 클래스 */
+  .part {
+    /* 가로크기 공통 */
+    width: 1200px;
+    /* 마.영.오 - 블록박스 중앙정렬 */
+    margin: 0 auto;
+  }
+  
+  /*************** 1. 상단영역 ***************/
+  .top-area {
+    height: 80px;
+    /* 배경 이미지 */
+    background: url(../images/curtain.jpg) repeat-x;
+  }
+
+  /*************** 2. 메인영역 ***************/
+  .main-area {
+    position: relative;
+    height: 788px;
+    /* 배경 이미지 */
+    background: url(../images/bg.jpg) no-repeat center/cover;
+  }
+
+  /* 2-1. 스크린 */
+  .screen{
+    position: absolute;
+    /* 부모: .main-area */
+    top: 212px;
+    left: 858px;
+    width: 700px;
+    height: 400px;
+    background-color: black;
+  }
+
+  /* 유튜브 아이프레임 */
+  .screen iframe#iframe{
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* 2-2. 포스터 메뉴 */
+  .poster-menu{
+    position: absolute;
+    bottom: 350px;
+    left: 825px;
+    /* 부모: .main-area */
+  }
+
+ /* 메뉴 리스트 ul>li 상위 li만 선택 */
+.poster-menu ul > li {
+    /* 렐러티브 포지션 : 부모자격 (.mv-info) */
+    position: relative;
+    /* 부모자격에서 넘치는 자식요소 숨기기설정!
+    oh */
+    overflow: hidden;
+    /* 블록 옆으로 흐르게 : float */
+    float: left;
+  }
+
+/* ul>li 사이간격 
+li+li 앞에 li가 있는 li선택
+즉, 첫번째 li빼고 다 선택 */
+.poster-menu ul>li+li{
+    /* 왼쪽마진 : ml */
+    margin-left: 10px;
+}
+
+/* 포스터 이미지 */
+.poster-menu img{
+    height: 170px;
+}
+
+/* 영화정보박스 */
+.mv-info {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    /* 나의 부모는? .poster-menu ul>li */
+    width: 100%;
+    height: 100%;
+    /* 배경색 반투명 */
+    background-color: rgb(0 0 0 / 76%);
+    /* 글자중앙 : tac */
+    text-align: center;
+    /* 줄간격 : lh */
+    line-height: 2;
+    /* 패딩탑 : pt35 */
+    padding-top: 35px;
+    /* 패딩,보더 크기포함박스 : bxb */
+    box-sizing: border-box;
+    /* 글자크기 */
+    font-size: 14px;
+
+    /* 글자체 */
+    font-family: "Noto Sans KR", cursive;
+    /* 글자크기 */
+    font-size: 16px;
+
+    /* 트랜지션 : trs 속시이지 */
+    transition: .3s ease-out;
+
+  }
+
+  /* 상위 ul>li 오버시 영화정보 보이기 */
+.poster-menu ul>li:hover .mv-info{
+    top: 0;
+    /* 값이 100% -> 0으로 변경됨! */
+}
+
+ /* 첫번째 제목만 큰글자 만들기 */
+ .mv-info ol li:first-child {
+   /* 글자크기 : fz */
+   font-size: 20px;
+   /* 글자 두껍게 : fwb */
+   font-weight: bold;
+   /* 글자색 : c */
+   color: rgb(255, 187, 0);
+ }
+
+  /*************** 3. 하단영역 ***************/
+  .footer-area {
+    height: 100px;
+  }

@@ -1,0 +1,19 @@
+@charset "utf-8";
+
+/* CGV PJ : 공통클래스/웹폰트 CSS - core.css */
+
+/*********** 1. 웹폰트 : CDN ***********/
+/* Cute Font, Jua, Audiowide 체 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+/* 
+    font-family: 'Audiowide', cursive;
+    font-family: 'Cute Font', cursive;
+    font-family: 'Jua', sans-serif;
+*/
+
+/*********** 1. 웹폰트 : CDN ***********/
+/* 레이아웃 공통 클레스 */
+.part{
+    /*  */
+    width: 1200px;
+}

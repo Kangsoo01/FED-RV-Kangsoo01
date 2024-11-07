@@ -6,9 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>
-      JS1. 자바스크립트 기본 + DOM선택법
-    </title>
+    <title>JS1. 자바스크립트 기본 + DOM선택법</title>
     <!-- 자바스크립트 코딩구역(인터널방식) -->
     <script>
       // 한줄주석
@@ -358,21 +356,20 @@
       /* 원모양 개별셋팅 */
       .원이야:nth-child(1) {
         right: 400px;
-        background-image: url(./images/01.png);
+        background-image: url(./images/apt1.jpg);
       }
       .원이야:nth-child(2) {
         right: 200px;
-        background-image: url(./images/02.png);
+        background-image: url(./images/apt2.jpg);
       }
       .원이야:nth-child(3) {
-        background-image: url(./images/03.png);
+        background-image: url(./images/apt3.jpg);
       }
 
       /* .원이야.on 일 경우 애니적용하기! */
       .원이야.on {
         /* 애니메이션 키프레임 호출은 animation속성으로! */
-        animation: rotate-ani 5s linear
-          infinite;
+        animation: rotate-ani 5s linear infinite;
         /* animation: 키프레임이름 시간 가속도 반복횟수; */
       }
       /* .원이야 회전 키프레임
@@ -395,22 +392,22 @@
         line-height: 200px;
         white-space: nowrap;
         border-radius: 50%;
-        background: #bbd3b3
-          url(./images/prog.jpg)
-          no-repeat center/auto 100%;
+        background: #bbd3b3 url(./images/prog.jpg) no-repeat
+          center/auto 100%;
       }
     </style>
   </head>
   <body>
     <!-- 드라마 소개박스 -->
-     <!-- 현재 DOM구조 : html>body>p.pbox>span#name -->
-      <!-- 이벤트속성 : on이벤트명="값"
+    <!-- 현재 DOM구조 : html>body>p.pbox>span#name -->
+    <!-- 이벤트속성 : on이벤트명="값"
        이벤트속성값 영역은 보통 문자열이 아니고
        JS코딩구역이다! -->
-       
-     <p class="pbox"
-     title="클릭하시면 김비서가 나옵니다~!"
-     onclick="
+
+    <p
+      class="pbox"
+      title="클릭하시면 김비서가 나옵니다~!"
+      onclick="
     //  alert('👩‍🦰ㅋㅋ');
     // 백틱(`)으로 감싸서 출력할 수 있다!
     // 이퀄(=)은 오른쪽 값을 왼쪽에 할당!
@@ -423,12 +420,30 @@
     김비서나와라();
      
      "
-     >
-      나는 요즘 매일 생각한다! <br>
+    >
+      나는 요즘 매일 생각한다! <br />
       도대체 <span id="name"></span>
-     </p>
-     <!-- <div class="pbox"></div>
-     <div class="pbox"></div>
-     <div class="pbox"></div> -->
+    </p>
+
+    <!-- 원모양 박스 -->
+    <div class="박스야">
+      <div
+        class="원이야 on"
+        onclick="맘대로해라(0,'로제')"
+      ></div>
+      <div
+        class="원이야 on"
+        onclick="맘대로해라(1,'브루노 마스')"
+      ></div>
+      <div
+        class="원이야 on"
+        onclick="맘대로해라(2,'아파트 밴드')"
+      ></div>
+
+      <!-- 사각형으로 변할 전체 마무리 원박스 -->
+       <div class="넌뭐냐" title="더블클릭" ondblclick="사각사각()">
+       </div>
+
+    </div>
   </body>
 </html>

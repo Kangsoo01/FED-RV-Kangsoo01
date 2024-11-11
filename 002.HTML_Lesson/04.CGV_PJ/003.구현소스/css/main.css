@@ -30,9 +30,45 @@ body * {
   
   /*************** 1. 상단영역 ***************/
   .top-area {
+    /* 부모 자격 렐러티브 */
+    position: relative;
     height: 80px;
     /* 배경 이미지 */
     background: url(../images/curtain.jpg) repeat-x;
+  }
+
+  /* 1-1. 타이틀 */
+  .title{
+    font-family: 'Jua', sans-serif;
+    font-size: 40px;
+    color: aquamarine;
+    text-align: center;
+    line-height: 80px;
+    /* 글자 글로우 효과 */
+    text-shadow: 0 0 4px aquamarine;
+  }
+
+  /* 1-2. GNB 메뉴 */
+  .gnb{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    /* 부모: .top-area */
+  }
+
+  .gnb ul{
+    font-family: 'Jua', sans-serif;
+    font-size: 15px;
+  }
+
+  .gnb ul>li{
+    float: left;
+  }
+
+  /* 리스트 사이 간격
+  li+li 두번쨰 li부터 선택 */
+  .gnb ul>li+li{
+    margin-left: 10px;
   }
 
   /*************** 2. 메인영역 ***************/
@@ -47,8 +83,8 @@ body * {
   .screen{
     position: absolute;
     /* 부모: .main-area */
-    top: 212px;
-    left: 858px;
+    top: 17%;
+    left: 21.5%;
     width: 700px;
     height: 400px;
     background-color: black;
@@ -64,8 +100,8 @@ body * {
   /* 2-2. 포스터 메뉴 */
   .poster-menu{
     position: absolute;
-    bottom: 350px;
-    left: 825px;
+    bottom: 2%;
+    left: 19%;
     /* 부모: .main-area */
   }
 
@@ -133,7 +169,7 @@ li+li 앞에 li가 있는 li선택
  /* 첫번째 제목만 큰글자 만들기 */
  .mv-info ol li:first-child {
    /* 글자크기 : fz */
-   font-size: 20px;
+   font-size: 16px;
    /* 글자 두껍게 : fwb */
    font-weight: bold;
    /* 글자색 : c */

@@ -1,99 +1,116 @@
-// JS3-1. 제어문 JS code //
+// JS3-1.제어문 JS /////////
 
-// 본 파일 로딩 확인
-console.log("제어문 테스트");
+// 본 파일 로딩확인
+console.log("나, 제어문 테스트!");
 
-// 1. if문 처리를 위한 함수 만들기
-/***************************************
-함수명: showScore
-기능: 점수에 따른 평가를 출력
-1. 점수에 따른 평가 메세지 출력
-2. 점수에 따른 메세지 글자색 변경
-3. 점수에 따른 칭찬 스티커 보이기
+// 1. if문 처리를 위한 함수 만들기 //////
+/************************************** 
+    함수명 : showJumsu
+    기능 : 점수에 따른 평가를 출력함
+        1. 점수에 따른 메시지 출력
+        2. 점수에 따른 메시지 글자색변경
+        3. 점수에 따른 칭찬스티커 보이기
+**************************************/
+// 이름있는 함수를 선언적 함수라고함!
+function showJumsu() {
+  // 1. 함수호출확인!
+  // console.log("내 평가를 알려줘!");
 
-***************************************/
+  // 2. 대상선정 ////////
+  // 2-1. 점수입력요소 : input#jumsu
+  var jumsu = document.querySelector("#jumsu");
 
-// 이름있는 함수를 선언적 함수라고 한다
-function showScore() {
-  // 1. 함수 호출 확인
-  //   console.log("평가 확인");
-
-  // 2. 대상선정 //
-  // 2-1. 점수 입력 요소: input#Score
-  var score = document.querySelector("#score");
-
-  //2-2. 출력요소: #score
+  // 2-2. 출력요소 : .jexp
   var jexp = document.querySelector(".jexp");
 
-  //칭찬스티커 요소: .jshow
+  // 2-3. 칭찬스티커요소 : .jshow
   var jshow = document.querySelector(".jshow");
 
-  //   console.log("선택요소: ", score, jexp, jshow);
+  // console.log("선택요소:",jumsu, jexp, jshow);
 
-  // 3. 점수 입력값 읽어오기
-  var score = score.value;
-  // value 속성 = 입력된 input 값을 읽어오는 속성
+  // 3. 점수입력값 읽어오기 : jumsu변수의 input요소값
+  var score = jumsu.value;
+  // value속성 - 입력된 input값을 읽어오는 속성
+  // console.log("입력된값:",score);
 
-  /* 
-if 문을 이용하여 테이터 필터링하기
-(1) 문자이면 돌려보내기
-(2) 숫자 범위가 아니면 돌려보내기
-- 공통: 메세지 찍기 + 초기화
-*/
-
-  // 3.5-1. 문자이면 돌려보내기
-  // 숫자가 아니다? is not a Number?
+  /**************************************** 
+        [ if문을 이용하여 데이터 필터링하기!]
+        (1) 문자이면 돌려보내기
+        (2) 숫자범위가 아니면 돌려보내기
+        (3) 빈값이면 돌려보내기
+        -> 공통 : 메시지 찍기 + 초기화
+    ****************************************/
+  // 3.5-1. 문자이면 돌려보내기 ////////
+  // 숫자가 아니니? is Not a Number?
   // JS 내장함수 isNaN(보낼값) -> 결과는?
   // 숫자가 아니면 true, 숫자이면 false
   if (isNaN(score)) {
     console.log("숫자가 아닙니다");
 
-    // 초기화하기
+    // 초기화하기 ////////////
     // (1) 텍스트 변경하기
-    jexp.innerText = "숫자만 입력하세요";
+    jexp.innerText = "숫자만 입력해주세요";
     // (2) 글자색 변경하기
     jexp.style.color = "black";
     // (3) 칭찬스티커 변경하기
     jshow.style.backgroundPosition = "-50% 0%";
     // (4) 입력값 지우고 포커스 보내기
-    score.value = "";
-    score.focus();
-    
+    jumsu.value = "";
+    jumsu.focus();
+
     // 함수를 나가는 키워드는? return
     return;
-} // if end
+  } /// if ///
+  // 3.5-2. 숫자범위가 아니면 돌려보내기 /////
+  // 조건범위 : 0보다 작거나 100보다 크면 true
+  else if (score < 0 || score > 100) {
+    console.log("점수범위가 아닙니다");
 
-// 3.5-2. 숫자범위가 아니면 돌려보내기
-// 조건범위: 0보다 작거나 100보다 크면 true
-else if (score < 0 || score > 100) {
-    console.log("점수 범위가 아닙니다");
-    
-    // 초기화하기
+    // 초기화하기 ////////////
     // (1) 텍스트 변경하기
-    jexp.innerText = "0 - 100 사이 숫자만 입력해주세요";
+    jexp.innerText = "0~100 사이숫자만 입력해주세요";
     // (2) 글자색 변경하기
     jexp.style.color = "black";
     // (3) 칭찬스티커 변경하기
     jshow.style.backgroundPosition = "-50% 0%";
     // (4) 입력값 지우고 포커스 보내기
-    showScore.value = "";
-    showScore.focus();
+    jumsu.value = "";
+    jumsu.focus();
 
-    
     // 함수를 나가는 키워드는? return
     return;
-  } // else if end
+  } /// else if ///
+  // 3.5-3. 빈값이면 돌려보내기 /////
+  // 공백문자열 제거 내장함수는? trim()
+  // -> 문자열 앞뒤공백제거 기능
+  // -> 공백만 쓰면 공백자체가 제거된다!
+  else if (score.trim() == "") {
+    console.log("비어있습니다. 입력해주세요.");
 
-  // console.log("입력된 값: ", score);
+    // 초기화하기 ////////////
+    // (1) 텍스트 변경하기
+    jexp.innerText = "값을 꼭 입력해주세요";
+    // (2) 글자색 변경하기
+    jexp.style.color = "black";
+    // (3) 칭찬스티커 변경하기
+    jshow.style.backgroundPosition = "-50% 0%";
+    // (4) 입력값 지우고 포커스 보내기
+    jumsu.value = "";
+    jumsu.focus();
+
+    // 함수를 나가는 키워드는? return
+    return;
+  } /// else if ///
 
   // 4. 점수에 따른 분기하여 결과 출력 //////
-  // if/else if를 사용하면 구간 설정 불필요
+  // if/else if를 사용하면 구간설정 불필요!
 
-  // 평가 텍스트 변수 셋팅
+  // ### 결과담는 변수 셋팅 ### //
+  // (1) 평가텍스트 변수
   var expText = "";
-  // 평가결과 글자색 변수
+  // (2) 평가결과 글자색 변수
   var expColor = "";
-  // 칭찬스티커 위치값 변수
+  // (3) 칭찬스티커 위치값 변수
   var jshowPos = "";
 
   // 4-1. 90점 이상 : 매우잘함
@@ -127,14 +144,14 @@ else if (score < 0 || score > 100) {
     jshowPos = "100% 0%";
   }
 
-  // 5. 화면출력 변경하기
+  // 5. 화면출력 변경하기 //////
   // 5-1. 텍스트 변경하기
   jexp.innerText = "평가결과는 " + expText;
   // 5-2. 글자색 변경하기
   jexp.style.color = expColor;
   // 5-3. 칭찬스티커 변경하기
   jshow.style.backgroundPosition = jshowPos;
-} // showScore() end
+} /////////// showJumsu함수 /////////////
 
 /*************************************** 
      [ if문 ]
@@ -186,63 +203,209 @@ else if (score < 0 || score > 100) {
 
 // if문 튜닝~~~
 if (true) {
-  console.log("조건통과1");
+  console.log("조건통과1!!!");
 }
 
 if (false) {
-  console.log("조건통과2");
+  console.log("조건통과2!!!");
 } else {
-  console.log("불통과");
+  console.log("불통과!!!");
 }
 
 // 변수를 사용한 불린값 체크
 var condition;
 
-console.log("할당 안된 변수값", condition);
+console.log("할당안된변수값:", condition);
 
+// if문 처리결과 찍기 함수 //////////
 var showResult = function (txt) {
-  // txt = 전달변수
-  // 호출 확인 + 검사 종류 타이틀 찍기
+  // txt - 전달변수
+  // 호출확인 + 검사종류 타이틀 찍기
   console.log("♥" + txt + "♥");
-
-  // if문 테스트
+  // if문 테스트하기!
   if (condition) {
-    console.log(condition, "if문 통과");
+    console.log(condition, "if문 통과!");
   } else {
-    console.log(condition, ": false 처리");
+    console.log(condition, ": false처리!");
   }
-}; // showResult() end
+}; //////////// showResult함수 /////////////
 
-// 테스트 1: undefined
-// 선언 후 할당되지 않은 변수 값은 undefined이다
-showResult("테스트 1: undefined");
+// 테스트 1 : undefined
+// 선언후 할당되지 않은 변수값은 undefined임!
+showResult("테스트 1 : undefined");
 
-// 테스트 2: 숫자
+// 테스트 2 : 숫자
 // -> 0 은 false, 이외의 숫자는 true
-// true는 1, false는 0과 1:1 매칭된다
+// true는 1, false는 0과 1:1매칭됨!
 condition = 1;
-showResult("테스트 2: 숫자");
+showResult("테스트 2 : 숫자");
 condition = 0;
-showResult("테스트 2: 숫자");
-condition = 1568456116;
-showResult("테스트 2: 숫자");
+showResult("테스트 2 : 숫자");
+condition = -545665156456415;
+showResult("테스트 2 : 숫자");
 
-// 테스트 3: null
-// null: '빈값'을 의미하는 테이터이다
+// 테스트 3 : null
+// -> null은 '빈값'을 의미하는 데이터
 condition = null;
-showResult("테스트 3: null");
+showResult("테스트 3 : null");
 
-// 테스트 4: 비교연산자
-// 비교연산자: 결과로 true / false를 반환
+// 테스트 4 : 비교연산자
+// -> 비교연산자는 결과로 true/false를 리턴함
 condition = 34 < 1;
-showResult("테스트 4: 비교연산자 (34 < 1)");
+showResult("테스트 4 : 비교연산자 (34 < 1)");
 condition = 34 > 1;
-showResult("테스트 4: 비교연산자 (34 > 1)");
+showResult("테스트 4 : 비교연산자 (34 > 1)");
 
-// 테스트 5: 선언된 적이 없는 변수
-// -> 아예 에러가 발생한다
+// 테스트 5 : 선언된적이 없는 변수
+// -> 아예 에러가 발생함!
 // condition = mymymy;
-// showResult("테스트 5: 선언된 적이 없는 변수");
+// showResult("테스트 5 : 선언된적이 없는 변수");
 
 // 상단 콘솔출력 지우기
 console.clear();
+
+////////////////
+//switch문 연습
+// 여기서 직접 요소에 이벤트를 설정해보자
+// 함수 바깥영역은 바로 실행되므로 이 파일을 불러오는
+// 설정에서 속성으로 defer를 써서 코딩해야한다
+
+// 1. 대상 선정
+// 1-1. 이벤트 대상: button.btn-local
+// 1-1. 이벤트 대상 : button.btn-local
+var btnLocal = document.querySelector(".btn-local");
+// 1-2. 국번출력 : #info
+var infoLocal = document.querySelector("#info");
+// 1-3. 입력창 : input#local
+var inputLocal = document.querySelector("#local");
+
+console.log("대상찍어:", btnLocal, infoLocal, inputLocal);
+
+// 2. 이벤트 설정하기
+btnLocal.onclick = showLocal;
+// 주의해야 할 점은 선언된 함수를 할당할 때,
+// 뒤에 소괄호를 하지 말아야한다. 이유는 바로 실행되기 때문이다
+
+inputLocal
+
+/*********************** 
+
+함수명: showLocal
+기능: 지역명을 입력하면 지역국번을 안내한다
+
+***********************/
+
+function showLocal() {
+  // 1. 함수 호출 확인
+  console.log("국번을 알려주세요");
+
+  // 2. 입력값 읽어오기
+  var inputText = inputLocal.value;
+  console.log("입력값:", inputText);
+
+  // 3. switch문으로 분기하여 메세지 만들기
+  var msg = "";
+  switch (inputText) {
+    case "서울":
+      msg = "02";
+      break;
+    case "경기":
+      msg = "031";
+      break;
+    case "부산":
+      msg = "051";
+      break;
+    case "제주":
+      msg = "064";
+      break;
+    case "인천":
+      msg = "032";
+      break;
+    case "대구":
+      msg = "053";
+      break;
+    case "광주":
+      msg = "062";
+      break;
+    case "전북":
+      msg = "063";
+      break;
+    case "전남":
+      msg = "061";
+      break;
+    case "경북":
+      msg = "054";
+      break;
+    case "경남":
+      msg = "055";
+      break;
+    case "세종":
+      msg = "044";
+      break;
+    case "울산":
+      msg = "052";
+      break;
+    case "대전":
+      msg = "042";
+      break;
+    case "충북":
+      msg = "043";
+      break;
+    case "충남":
+      msg = "041";
+      break;
+    case "나성":
+      msg = "나성에 가면 편지를 전해줘요~!";
+      break;
+    default:
+      msg = "etc";
+  }
+
+  // 4. 메시지 만들기
+  if (msg == "etc") {
+    msg = "입력하신 지역은 등록되어 있지 않습니다.";
+  }
+  // 등록된 지역일 경우
+  else {
+    msg = `${inputText}의 지역번호는 
+    <span style="
+    font-size:40px;
+    color:hotpink"
+    >${msg}</span>입니다`;
+  }
+
+  // 5. #info에 출력
+  infoLocal.innerHTML = msg;
+} // showLocal() end
+
+/********************************************** 
+
+      [ switch case문 ]
+      - 단일조건을 분류하여 실행문을 만들어 줄때 사용하는 제어문
+
+      ((구문구조))
+      ________________________________________
+
+      switch(변수){
+          case 경우1: 실행코드; break;
+          case 경우2: 실행코드; break;
+          case 경우3: 실행코드; break;
+          ...
+          default: 실행문;
+      }
+      ________________________________________
+
+      ((구문해석))
+
+      1. 변수값에 해당하는 경우 그 값에 해당하는
+      case에 들어가서 실행코드를 실행함
+
+      2. 각 case 끝에 break 예약어를 반드시 써야함!
+      -> 안쓰면 다른 case에 또 들어가는 경우가 생김!
+      -> 일반적으로 break 키워드는 제어문을 빠져나갈때 씀!
+
+      3. default 는 if문의 else문과 비슷하여 해당 케이스가 
+      없으면 이 부분이 실행됨(단, 필요시 사용)
+      -> default문에는 break를 쓰지 않는다!
+
+  **********************************************/

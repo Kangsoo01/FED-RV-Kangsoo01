@@ -5,6 +5,12 @@
 @import url(./core.css);
 @import url(./reset.css);
 
+/* 스크롤 이동 애니설정 */
+html{
+  /* 루트인 html에 부드러운 스크롤 설정하기 */
+  scroll-behavior: smooth;
+}
+
 /* 초기화 */
 html,
 body {
@@ -13,11 +19,11 @@ body {
 }
 
 /* 공사중 표시 */
-body *,
+/* body *,
 *::before,
 *::after {
-  outline: 2px dashed #fff;
-}
+  outline: 2px dashed yellow;
+} */
 
 body {
   /* 배경이미지(고정fixed) */
@@ -31,10 +37,8 @@ body {
 /* 1-1.로고 */
 h1.logo{
   position: fixed;
-  top: 0;
-  left: 0;
-  /* top: calc(50% - 10vw);
-  left: calc(50% - 10vw); */
+  top: calc(50% - 10vw);
+  left: calc(50% - 10vw);
   width: 20vw;
   height: 20vw;
   border-radius: 50%;
@@ -91,11 +95,9 @@ h1.logo{
 }
 
 /************* 2. 메인영역 *************/
-
 /* 메인영역 속박스 */
 .main-area{
   padding-top: 100vh;
-
 }
 
 /* 2-1. 로봇박스 */
@@ -107,10 +109,10 @@ h1.logo{
   left: 84%;
   /* 중앙이동 */
   translate: -50%;
-  /* ((애니)) 축소 : 0.4 -> 0.8 확대애니 */
+  /* ((애니)) 축소 : 0.4 -> 0.65 확대애니 */
   scale: 0.4;
   /* 트랜스폼 기준변경: center center -> center 20% */
-  transform-origin: center 40%;
+  transform-origin: center 20%;
 
   /* display: none; */
   /* 위,아래 패딩으로 공간확보 */
@@ -245,14 +247,14 @@ h1.logo{
   border-radius: 50%;
 }
 /* 왼눈 */
-.eye-left {
+.eye1 {
   /* 개별위치값 */
   left: 16%;
   /* 이미지만 변경 */
   background-image: url(../images/e1.jpg);
 }
 /* 오른눈 */
-.eye-right {
+.eye2 {
   /* 개별위치값 */
   right: 16%;
   /* 이미지만 변경 */
@@ -292,14 +294,14 @@ h1.logo{
   height: 80px;
 }
 /* 왼귀 */
-.ear-left {
+.ear1 {
   /* 왼쪽바깥위치 */
   left: -50px;
   /* 왼위,아래만 둥근모서리 */
   border-radius: 20px 0 0 20px;
 }
 /* 오른귀 */
-.ear-right {
+.ear2 {
   /*치오른쪽바깥위치 */
   right: -50px;
   /* 오른위,아래만 둥근모서리 */
@@ -400,11 +402,11 @@ h1.logo{
   box-sizing: border-box;
 }
 /* 왼팔 */
-.arm-left {
+.arm1 {
   left: -65px;
 }
 /* 오른팔 */
-.arm-right {
+.arm2 {
   right: -65px;
 }
 /* 팔하단 공통 */
@@ -432,12 +434,12 @@ h1.logo{
   background-size: 100% 100%;
 }
 /* 왼손 */
-.arm-left span::after {
+.arm1 span::after {
   background-image: url(../images/hand_left.png);
   left: -12px;
 }
 /* 오른손 */
-.arm-right span::after {
+.arm2 span::after {
   background-image: url(../images/hand_right.png);
   right: -12px;
 }
@@ -465,11 +467,11 @@ h1.logo{
   box-sizing: border-box;
 }
 /* 왼다리 */
-.leg-left {
+.leg1 {
   left: 0;
 }
 /* 오른다리 */
-.leg-right {
+.leg2 {
   right: 0;
 }
 /* 다리하단 공통 */
@@ -525,12 +527,12 @@ h1.logo{
   height: 70px;
 }
 /* 왼어깨 */
-.shdr-left {
+.shdr1 {
   left: -77px;
   border-radius: 50% 0 0 50%;
 }
 /* 오른어깨 */
-.shdr-right {
+.shdr2 {
   right: -77px;
   border-radius: 0 50% 50% 0;
 }
@@ -577,14 +579,14 @@ h1.logo{
 }
 
 /* 버튼박스 */
-.tvbutton{
+.btns{
   position: absolute;
   bottom: 16px;
   right: 6px;
   /*부모는? .tv */
 }
 /* 버튼요소 */
-.tvbutton button{
+.btns button{
   display: block;
   /* 원래는 inline-block
   한줄에 하나씩만 오도록 블록화! */
@@ -707,3 +709,28 @@ h1.logo{
 
 
 /************* 3. 하단영역 *************/
+/* 3-1. 회사정보 */
+#bottom-area{
+  position: relative;
+  /* z-index적용위해 포지션줌! */
+  z-index: 5;
+
+  margin-top: 100px;
+
+  color: #fff;
+  /* 글자크기 : 30px, 글자체 'Black Ops One' */
+  font: 3rem 'Black Ops One';
+  /* 글자그림자 */
+  text-shadow: 2px 2px 2px #000;
+  /* 글자중앙 */
+  text-align: center;
+  /* 패딩 : 가로/세로중 작은 화면기준 7%
+  -> vmin(작은쪽기준) , vmax(큰쪽기준) */
+  padding: 7vmin;
+  /* 반투명 배경넣기 : 검은색 반투명(0.5) 
+    rgb(0 0 0 / 0.5) -> 요즘 더 많이사용함
+    rgba(0,0,0,0.5)
+  */
+  background-color: rgb(0 0 0 / 0.5);
+
+}

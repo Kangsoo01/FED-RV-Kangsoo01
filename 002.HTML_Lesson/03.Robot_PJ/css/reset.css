@@ -1,60 +1,716 @@
 @charset "utf-8";
+/* 로봇 PJ CSS - robot.css */
 
-/* CGV PJ : 리셋 CSS - reset.css */
-/* 기본 초기화 셋팅 */
+/* 외부 CSS합치기 */
+@import url(./core.css);
+@import url(./reset.css);
 
+/* 스크롤 이동 애니설정 */
+html {
+  /* 루트인 html에 부드러운 스크롤 설정하기 */
+  scroll-behavior: smooth;
+}
 
-/* 기본 초기화 */
+/* 초기화 */
 html,
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-ul,
-ol,
-dl,
-dt,
-dd,
-p,
-figure,
-figcaption {
-    margin: 0;
-    padding: 0;
+body {
+  /* 보이는 화면만큼 높이값 셋팅 */
+  height: 100%;
 }
 
-/* ul,ol 순번,블릿없앰 */
-ul,ol{
-    list-style: none;
+/* 공사중 표시 */
+/* body *,
+*::before,
+*::after {
+  outline: 2px dashed yellow;
+} */
+
+body {
+  /* 배경이미지(고정fixed) */
+  background: url(../images/bg.jpg) no-repeat fixed
+    top/cover;
+  /* 커서 이미지로 변경하기 */
+  cursor: url(../images/favicon.png), auto;
 }
-/* float해제 셋팅 */
-ul::after, ol::after{
-    content: '';
-    display: block;
-    clear: both;
+/************* 1. 상단영역 *************/
+/* 1-1.로고 */
+h1.logo {
+  position: fixed;
+  top: calc(50% - 10vw);
+  left: calc(50% - 10vw);
+  width: max(20vw, 100px);
+  height: max(20vw, 100px);
+  border-radius: 50%;
+  z-index: 999;
+  background: pink url(../images/robot_03.png) no-repeat
+    center/auto 100%;
+  box-shadow: inset 0 0 20px 5px #000, 0 0 20px 5px aqua;
+
+  /* 글자설정 */
+  text-align: center;
+  line-height: 20vw;
+  font-family: "Orbitron";
+  font-size: 4.5vw;
+  color: lightgreen;
+  text-shadow: 0 0 10px #000;
 }
 
-/* a요소 리셋 */
-a{
-    color: #fff;
-    text-decoration: none;
+/* 1-2.탑이동버튼 */
+.btn-top {
+  position: fixed;
+  bottom: 3vw;
+  right: 3vw;
+  width: max(5vw, 50px);
+  height: max(5vw, 50px);
+  border-radius: 50%;
+  border: 5px outset #fff;
+  background-color: #ccc;
+  z-index: 10;
+  box-sizing: content-box;
 }
 
-/* heading 요소 글자크기 */
-h1,h2,h3,h4,h5,h6{
-    font-size: 100%;
-    /* 박스 디자인시 글자크기로 인한
-    영향을 없애기 위한 초기화! */
+/* a요소 확장 */
+.btn-top a {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  /* 글자셋팅 */
+  color: blue;
+  text-decoration: none;
+  font: max(1.4vw, 15px) / max(5vw, 50px) "Black Ops One";
+  /* font: 스두크/줄체; */
+}
+/* 오버시 설정 */
+.btn-top:hover {
+  background-color: #ff0;
+  /* outset 나온버튼, inset 들어간 버튼 */
+  border-style: inset;
+}
+.btn-top:hover a {
+  color: #f00;
 }
 
-/* 이미지 초기화 */
-img {
-    /* 이미지 링크시 서버에서 볼때
-    파란 테두리 없앰 */
-    border: none;
-    /* 박스에 이미지만 넣을때
-    엔터간극 4px 하단공백 없애기  */
-    vertical-align: middle;
+/************* 2. 메인영역 *************/
+/* 메인영역 속박스 */
+.main-area {
+  padding-top: 100vh;
+}
+
+/* 2-1. 로봇박스 */
+.robot-box {
+  /* 로봇 fixed변경! */
+  position: fixed;
+  top: 0;
+  /* ((애니)) left값변경애니 84% -> 50%(중앙) */
+  left: 84%;
+  /* 중앙이동 */
+  translate: -50%;
+  /* ((애니)) 축소 : 0.4 -> 0.65 확대애니 */
+  scale: 0.4;
+  /* 트랜스폼 기준변경: center center -> center 20% */
+  transform-origin: center 20%;
+
+  /* display: none; */
+  /* 위,아래 패딩으로 공간확보 */
+  padding-top: 100px;
+  padding-bottom: 700px;
+}
+
+/* 2-1-0. 로봇 말풍선 */
+.link-title {
+  position: absolute;
+  top: -7vw;
+  left: 50%;
+  /* 로봇머리로 부터 위치 일정하게 */
+  transform: translateX(200px) scale(0);
+  /* 로봇쪽에서 커지게 하기위해
+  트랜스폼 기준 변경(왼쪽아래) */
+  transform-origin: left bottom;
+  width: max(40vw, 300px);
+  height: max(20vw, 150px);
+  border-radius: 50%;
+  background-color: #fff;
+  text-align: center;
+  line-height: max(20vw, 150px);
+  text-decoration: none;
+  color: orangered;
+  font-size: max(5vw, 40px);
+  border: 10px dashed orangered;
+  box-sizing: border-box;
+}
+
+/* 가상요소로 삼각형 만들기 */
+.link-title::after {
+  content: "";
+  position: absolute;
+  top: 62.7%;
+  left: -9%;
+  /* 왜%인가? 유동적인 부모를 기준한 위치값이다! */
+  transform: rotate(43deg);
+  /* 가로,세로 크기 0 */
+  width: 0;
+  height: 0;
+  /* 보더탑 크기+색 설정 */
+  border-top: 11vw solid orangered;
+  /* 양쪽보더 크기+투명색 설정 */
+  border-left: 1.5vw solid transparent;
+  border-right: 1.5vw solid transparent;
+}
+/* 로봇 말풍선 오버시 */
+.link-title:hover {
+  color: #fff;
+  background-image: radial-gradient(
+    circle,
+    red 10%,
+    blue 30%,
+    yellow
+  );
+}
+
+/* 
+    [ 원형 그라데이션 ]
+
+    - 기본형, 영역지정형은 박스모양을 따라감!
+
+    1) 기본형: 중앙중심, 모양은 박스크기에 맞춤
+    background-image: 
+        radial-gradient(색1,색2,색3,...);
+    - 시작색으로부터 중앙에서 시작됨
+
+    2) 영역 지정형:
+    background-image: 
+        radial-gradient(색1 몇%,색2 몇%,색3 몇%,...);
+    - 색 뒤에 한칸 띄고 %수치로 영역지정함
+
+    3) 그라데이션 모양을 원형으로 사용할 경우:
+    background-image: 
+        radial-gradient(circle,색1,색2,색3,...);
+    - circle 키워드를 첫번째에 사용함
+
+    4) 영역옵션 지정형: 중심점 변경
+    background-image: 
+        radial-gradient(옵션 at 가로위치 세로위치,색1,색2,색3,...);
+    - 옵션4가지 : closest-side / farthest-side
+                closest-corner / farthest-corner
+                ___________________________________
+                - closest는 중심점으로 좀더 모아진것
+                - farthest는 중심점에서 멀리 퍼진것
+                - side와 corner는 경계선과 끝부분옵션임
+    - 가로위치, 세로위치 (중심점) - 단위는 px / %
+*/
+
+/* 2-1-1. 로봇머리 */
+.head {
+  /* 부모자격 relative : 자식요소 앱솔루트 */
+  position: relative;
+  /* 몸통보다위 */
+  z-index: 1;
+  /* 중앙정렬박스 : 마.영.오! */
+  margin: 0 auto;
+  /* margin-top: 250px; */
+  width: 200px;
+  height: 250px;
+  /* 얼굴모양 만들기 */
+  border-radius: 80px 80px 150px 150px;
+}
+/* 머리카락넣기 가상요소 */
+.head::after {
+  content: "";
+  position: absolute;
+  top: -43%;
+  left: -44%;
+  width: 186%;
+  height: 179%;
+  background: url(../images/hair2.png) no-repeat 0 / 100%
+    100%;
+}
+
+/* 로봇머리 하위 공통 앱솔루트 */
+.head > div {
+  position: absolute;
+}
+
+/* 눈공통 */
+.eye {
+  /* position: absolute; */
+  top: 50px;
+  /* 나의 부모는? .head */
+  width: 50px;
+  height: 50px;
+  /* 배경공통 */
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  /* 원형셋팅 */
+  border-radius: 50%;
+}
+/* 왼눈 */
+.eye1 {
+  /* 개별위치값 */
+  left: 16%;
+  /* 이미지만 변경 */
+  background-image: url(../images/e1.jpg);
+}
+/* 오른눈 */
+.eye2 {
+  /* 개별위치값 */
+  right: 16%;
+  /* 이미지만 변경 */
+  background-image: url(../images/e2.jpg);
+}
+/* 코 */
+.nose {
+  top: 100px;
+  /* 가로방향 중앙이동설정
+  -> left 절반밀고 자신크기절반 반대로이동 */
+  left: 50%;
+  translate: -50%;
+
+  width: 50px;
+  height: 70px;
+  background: url(../images/nose.jpg) no-repeat 0/110% 100%;
+  border-radius: 20px;
+}
+/* 입 */
+.mouth {
+  bottom: 10%;
+  /* 가로방향 중앙이동설정
+  -> left 절반밀고 자신크기절반 반대로이동 */
+  left: 50%;
+  translate: -50%;
+
+  width: 90px;
+  height: 40px;
+  background: url(../images/mouth.png) no-repeat 0/100% 100%;
+}
+/* 귀공통 */
+.ear {
+  top: 80px;
+  width: 50px;
+  height: 80px;
+}
+/* 왼귀 */
+.ear1 {
+  /* 왼쪽바깥위치 */
+  left: -50px;
+  /* 왼위,아래만 둥근모서리 */
+  border-radius: 20px 0 0 20px;
+}
+/* 오른귀 */
+.ear2 {
+  /*치오른쪽바깥위치 */
+  right: -50px;
+  /* 오른위,아래만 둥근모서리 */
+  border-radius: 0 20px 20px 0;
+}
+/* 2-1-2. 로봇몸통 */
+.body {
+  /* 부모자격 렐러티브 */
+  position: relative;
+  width: 180px;
+  height: 320px;
+  /* 마영오! 가로중앙 */
+  margin: 0 auto;
+  margin-top: 50px;
+}
+/* .body가상요소로 상체만들기 */
+.body::before {
+  content: "";
+  display: block;
+  /* 블록으로 변경해야 div같이 사용가능 */
+  position: absolute;
+  top: 0;
+  left: -10%;
+  /* 부모는? .body */
+  z-index: 1;
+  width: 120%;
+  height: 50%;
+  border-radius: 15px;
+  background-image: linear-gradient(
+    to bottom,
+    #e1e1e1,
+    #b6b6b6,
+    #4e4e4e
+  );
+  background-color: #fff;
+}
+/* .body가상요소로 숏바지만들기 */
+.body::after {
+  content: "";
+  display: block;
+  /* 블록으로 변경해야 div같이 사용가능 */
+  position: absolute;
+  bottom: -10%;
+  left: -10%;
+  /* 부모는? .body */
+  z-index: 1;
+  width: 120%;
+  height: 35%;
+  border-radius: 15px 15px 50% 50%;
+  background-image: linear-gradient(
+    to bottom,
+    #e1e1e1,
+    #b6b6b6,
+    #4e4e4e
+  );
+  background-color: #fff;
+}
+/* 바디 하위요소 앱솔루트 */
+.body > div {
+  position: absolute;
+}
+/* 로봇목 */
+.neck {
+  top: -70px;
+  left: 50%;
+  translate: -50%;
+  width: 50px;
+  height: 80px;
+  border-radius: 20px;
+}
+/* 팔공통 */
+.arm {
+  top: 30px;
+  width: 50px;
+  height: 180px;
+}
+/* 팔관절 가상요소로 만들기 */
+.arm::after {
+  content: "";
+  position: absolute;
+  top: 90%;
+  left: -10%;
+  width: 120%;
+  /* 패딩top을 %로하면 박스 가로크기를 
+  기준하여 생성된다! 100% 정사각형
+  단, height값을 주지말것! */
+  padding-top: 100%;
+  /* 원형 그라데이션주기
+  radial-gradient(색1,색2,색3) */
+  background-image: radial-gradient(
+    #ccc 40%,
+    #ccc 60%,
+    #222
+  );
+  border: 3px solid #ccc;
+  /* 원만들기 */
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+/* 왼팔 */
+.arm1 {
+  left: -65px;
+}
+/* 오른팔 */
+.arm2 {
+  right: -65px;
+}
+/* 팔하단 공통 */
+.arm span {
+  position: absolute;
+  /* 부모는? .arm */
+  top: 100%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+}
+/* 손공통 : span의 가상요소로 만들기 */
+.arm span::after {
+  content: "";
+  position: absolute;
+  /* 앱솔루트 자동블록 */
+  top: 100%;
+  /* 손박스 위로배치 */
+  z-index: 1;
+  /* 손이미지 배경사이즈만큼 */
+  width: 80px;
+  height: 110px;
+  /* 배경공통 */
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+/* 왼손 */
+.arm1 span::after {
+  background-image: url(../images/hand_left.png);
+  left: -12px;
+}
+/* 오른손 */
+.arm2 span::after {
+  background-image: url(../images/hand_right.png);
+  right: -12px;
+}
+/* 다리공통 */
+.leg {
+  top: 100%;
+  width: 70px;
+  height: 260px;
+}
+/* 다리관절 가상요소로 만들기 */
+.leg::after {
+  content: "";
+  position: absolute;
+  top: 90%;
+  left: -10%;
+  width: 120%;
+  height: 20%;
+  background-image: linear-gradient(45deg, #ccc, #222);
+  border: 3px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+/* 왼다리 */
+.leg1 {
+  left: 0;
+}
+/* 오른다리 */
+.leg2 {
+  right: 0;
+}
+/* 다리하단 공통 */
+.leg span {
+  position: absolute;
+  /* 부모는? .leg */
+  top: 100%;
+  left: 10%;
+  width: 80%;
+  height: 100%;
+}
+/* 부츠상단 가상요소 */
+.leg span::before {
+  content: "";
+  position: absolute;
+  top: 20%;
+  left: -10%;
+  width: 120%;
+  height: 100%;
+  background-image: linear-gradient(to right, #ccc, #222);
+  border: 2px solid #222;
+  border-top-width: 15px;
+  /* 패딩,보더 포함박스 : bxb */
+  box-sizing: border-box;
+}
+/* 부츠하단 가상요소 */
+.leg span::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: -30%;
+  width: 160%;
+  height: 20%;
+  background-image: linear-gradient(to right, #ccc, #222);
+  border: 2px solid #222;
+  border-bottom-width: 10px;
+  /* 패딩,보더 포함박스 : bxb */
+  box-sizing: border-box;
+  /* 상단 보더 둥글게 */
+  border-radius: 50% 50% 0 0;
+}
+/* 어깨공통 */
+.shdr {
+  width: 70px;
+  height: 70px;
+}
+/* 왼어깨 */
+.shdr1 {
+  left: -77px;
+  border-radius: 50% 0 0 50%;
+}
+/* 오른어깨 */
+.shdr2 {
+  right: -77px;
+  border-radius: 0 50% 50% 0;
+}
+/* TV 박스 */
+.tv {
+  top: 10%;
+  /* 앱솔루트 가로중앙 셋팅 */
+  left: 50%;
+  translate: -50%;
+  /* 트랜스폼의 트랜스레이트는
+  현재위치에서의 위치이동이며
+  %단위는 자신의 크기를 기준함
+  translate: 가로 세로 */
+
+  width: 140px;
+  height: 100px;
+  /* 가슴부분 가상요소보다 위 */
+  z-index: 2;
+  /* 배경이미지 */
+  background: url(../images/tv.jpg) no-repeat 0/100% 100%;
+  /* 로봇전체가 축소되어 TV조금 확대 */
+  scale: 1.4;
+  border-radius: 10px;
+}
+
+/* 스크린 */
+.screen {
+  position: absolute;
+  top: 10px;
+  left: 7px;
+  /* 부모는? .tv */
+  width: 100px;
+  height: 72px;
+  background-color: #000;
+  border-radius: 10px;
+  /* 넘치는 자식요소 숨기기 */
+  overflow: hidden;
+}
+/* 유튭동영상 아이프레임 */
+.screen iframe {
+  position: absolute;
+  top: -6%;
+  left: -41%;
+  /* 부모는? .screen */
+  width: 181%;
+  height: 113%;
+}
+
+/* 버튼박스 */
+.btns {
+  position: absolute;
+  bottom: 16px;
+  right: 6px;
+  /*부모는? .tv */
+}
+/* 버튼요소 */
+.btns button {
+  display: block;
+  /* 원래는 inline-block
+  한줄에 하나씩만 오도록 블록화! */
+  font-size: 9px;
+  padding: 0;
+  width: 20px;
+  height: 12px;
+  line-height: 12px;
+}
+
+/* 2-2. 설명박스 */
+.text-box {
+  max-width: 800px;
+  margin: 0 auto;
+  color: #fff;
+  background-color: #00000067;
+  border-radius: 20px;
+  padding: 15px 30px;
+  /* 박스 2중 글로우효과(그림자로줌) */
+  box-shadow: inset 0 0 20px blue, inset 0 0 50px 10px cyan;
+
+  /* 백드롭 블러효과주기 */
+  backdrop-filter: blur(6px);
+  /* 
+  [백드롭 필터효과] 
+  - filter속성과 동일한 셋팅을 가지며
+  적용대상이 겹쳐지는 하단의 그래픽을 변경한다!
+
+  backdrop-filter: blur(2px); -> 흐림
+  backdrop-filter: brightness(60%); -> 밝기
+  backdrop-filter: contrast(40%); -> 대비
+  backdrop-filter: drop-shadow(4px 4px 10px blue);->그림자
+  backdrop-filter: grayscale(30%);-> 흑백
+  backdrop-filter: hue-rotate(120deg); -> 색상변경
+  backdrop-filter: invert(70%); -> 반전색
+  backdrop-filter: opacity(20%); -> 투명도
+  backdrop-filter: sepia(90%); -> 세피아효과
+  backdrop-filter: saturate(80%); -> 채도
+
+  -> 복합적용 가능!
+  backdrop-filter: blur(4px) saturate(150%);
+  */
+}
+
+/* 2-2-1. 제목 */
+.text-box h2 {
+  /* 스티키 포지션 */
+  position: sticky;
+  top: 10px;
+  /* top값이 고정위치값임! */
+
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 35px;
+  text-align: center;
+  background-color: #ffffff8d;
+  color: lime;
+  text-shadow: 2px 2px 2px #0000007b;
+  border-radius: 20px;
+  /* 기존 두꺼운체 해제 : fwn */
+  font-weight: normal;
+}
+/* 2-2-2. 출처 */
+.text-box small {
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 12px;
+  text-shadow: 1px 1px 1px #00000077;
+  color: #ff0;
+
+  /* 블록으로 변경해야 tac먹힘! */
+  display: block;
+  text-align: center;
+  padding: 10px;
+}
+
+/* 2-2-3.내용단락 */
+.text-box p {
+  font-family: "Barlow", sans-serif;
+  font-size: 17px;
+  /* 줄간격 */
+  line-height: 1.7;
+  /* 자간 */
+  letter-spacing: 1px;
+  /* 단어간격 */
+  word-spacing: 2px;
+
+  /* 다단설정하기
+    -> 다중열속성
+    column-count : 다중열개수
+    column-rule : 다중열구분선
+    column-gap : 다중열사이간격
+  */
+  column-count: 3;
+  column-rule: 5px dotted lightgreen;
+  /* 다중열 구분선 값은 보더와 같음
+  -> 두종색! -> 두께 종류 색상 */
+  column-gap: 55px;
+
+  /* 양쪽정렬 : justify */
+  text-align: justify;
+  /* 영문에서 양쪽 정렬일 경우
+  단어단위로 줄바꿈이 되므로 중간에
+  구멍이 생김. 따라서 단어깨기설정필요! */
+  /* 단어깨기 : 모두깨기(break-all) */
+  word-break: break-all;
+
+  /* 첫줄 들여쓰기 : text-indent (ti) */
+  text-indent: 40px;
+}
+/* 가상요소 첫글자 적용하기 */
+.text-box p::first-letter {
+  font-size: 30px;
+  font-weight: bold;
+  color: hotpink;
+}
+
+/************* 3. 하단영역 *************/
+/* 3-1. 회사정보 */
+#bottom-area {
+  position: relative;
+  /* z-index적용위해 포지션줌! */
+  z-index: 5;
+
+  margin-top: 100px;
+
+  color: #fff;
+  /* 글자크기 : 30px, 글자체 'Black Ops One' */
+  font: 3rem "Black Ops One";
+  /* 글자그림자 */
+  text-shadow: 2px 2px 2px #000;
+  /* 글자중앙 */
+  text-align: center;
+  /* 패딩 : 가로/세로중 작은 화면기준 7%
+  -> vmin(작은쪽기준) , vmax(큰쪽기준) */
+  padding: 7vmin;
+  /* 반투명 배경넣기 : 검은색 반투명(0.5) 
+    rgb(0 0 0 / 0.5) -> 요즘 더 많이사용함
+    rgba(0,0,0,0.5)
+  */
+  background-color: rgb(0 0 0 / 0.5);
 }

@@ -6,7 +6,7 @@
 @import url(./reset.css);
 
 /* 스크롤 이동 애니설정 */
-html{
+html {
   /* 루트인 html에 부드러운 스크롤 설정하기 */
   scroll-behavior: smooth;
 }
@@ -27,15 +27,14 @@ body {
 
 body {
   /* 배경이미지(고정fixed) */
-  background: url(../images/bg.jpg)
-    no-repeat fixed top/cover;
+  background: url(../images/bg.jpg) no-repeat fixed
+    top/cover;
   /* 커서 이미지로 변경하기 */
-  cursor: url(../images/favicon.png),
-    auto;
+  cursor: url(../images/favicon.png), auto;
 }
 /************* 1. 상단영역 *************/
 /* 1-1.로고 */
-h1.logo{
+h1.logo {
   position: fixed;
   top: calc(50% - 10vw);
   left: calc(50% - 10vw);
@@ -43,22 +42,21 @@ h1.logo{
   height: 20vw;
   border-radius: 50%;
   z-index: 999;
-  background: pink url(../images/robot_03.png) no-repeat center/auto 100%;
-  box-shadow: 
-  inset 0 0 20px 5px #000,
-  0 0 20px 5px aqua;
+  background: pink url(../images/robot_03.png) no-repeat
+    center/auto 100%;
+  box-shadow: inset 0 0 20px 5px #000, 0 0 20px 5px aqua;
 
   /* 글자설정 */
   text-align: center;
   line-height: 20vw;
-  font-family: 'Orbitron';
+  font-family: "Orbitron";
   font-size: 4.5vw;
   color: lightgreen;
   text-shadow: 0 0 10px #000;
 }
 
 /* 1-2.탑이동버튼 */
-.btn-top{
+.btn-top {
   position: fixed;
   bottom: 3vw;
   right: 3vw;
@@ -73,35 +71,35 @@ h1.logo{
 }
 
 /* a요소 확장 */
-.btn-top a{
+.btn-top a {
   display: block;
   width: 100%;
   height: 100%;
-  
+
   /* 글자셋팅 */
   color: blue;
   text-decoration: none;
-  font: 1.4vw/5vw 'Black Ops One';
+  font: 1.4vw/5vw "Black Ops One";
   /* font: 스두크/줄체; */
 }
 /* 오버시 설정 */
-.btn-top:hover{
+.btn-top:hover {
   background-color: #ff0;
   /* outset 나온버튼, inset 들어간 버튼 */
   border-style: inset;
 }
-.btn-top:hover a{
+.btn-top:hover a {
   color: #f00;
 }
 
 /************* 2. 메인영역 *************/
 /* 메인영역 속박스 */
-.main-area{
+.main-area {
   padding-top: 100vh;
 }
 
 /* 2-1. 로봇박스 */
-.robot-box {  
+.robot-box {
   /* 로봇 fixed변경! */
   position: fixed;
   top: 0;
@@ -121,7 +119,7 @@ h1.logo{
 }
 
 /* 2-1-0. 로봇 말풍선 */
-.link-title{
+.link-title {
   position: absolute;
   top: -7vw;
   left: 50%;
@@ -144,11 +142,10 @@ h1.logo{
 
   border: 10px dashed orangered;
   box-sizing: border-box;
-
 }
 /* 가상요소로 삼각형 만들기 */
-.link-title::after{
-  content: '';
+.link-title::after {
+  content: "";
   position: absolute;
   top: 62.7%;
   left: -9%;
@@ -164,10 +161,14 @@ h1.logo{
   border-right: 1.5vw solid transparent;
 }
 /* 로봇 말풍선 오버시 */
-.link-title:hover{
+.link-title:hover {
   color: #fff;
-  background-image: 
-  radial-gradient(circle,red 10%,blue 30%,yellow);
+  background-image: radial-gradient(
+    circle,
+    red 10%,
+    blue 30%,
+    yellow
+  );
 }
 
 /* 
@@ -224,8 +225,8 @@ h1.logo{
   left: -44%;
   width: 186%;
   height: 179%;
-  background: url(../images/hair2.png)
-    no-repeat 0 / 100% 100%;
+  background: url(../images/hair2.png) no-repeat 0 / 100%
+    100%;
 }
 
 /* 로봇머리 하위 공통 앱솔루트 */
@@ -270,8 +271,7 @@ h1.logo{
 
   width: 50px;
   height: 70px;
-  background: url(../images/nose.jpg)
-    no-repeat 0/110% 100%;
+  background: url(../images/nose.jpg) no-repeat 0/110% 100%;
   border-radius: 20px;
 }
 /* 입 */
@@ -284,8 +284,7 @@ h1.logo{
 
   width: 90px;
   height: 40px;
-  background: url(../images/mouth.png)
-    no-repeat 0/100% 100%;
+  background: url(../images/mouth.png) no-repeat 0/100% 100%;
 }
 /* 귀공통 */
 .ear {
@@ -457,11 +456,7 @@ h1.logo{
   left: -10%;
   width: 120%;
   height: 20%;
-  background-image: linear-gradient(
-    45deg,
-    #ccc,
-    #222
-  );
+  background-image: linear-gradient(45deg, #ccc, #222);
   border: 3px solid #ccc;
   border-radius: 10px;
   box-sizing: border-box;
@@ -491,11 +486,7 @@ h1.logo{
   left: -10%;
   width: 120%;
   height: 100%;
-  background-image: linear-gradient(
-    to right,
-    #ccc,
-    #222
-  );
+  background-image: linear-gradient(to right, #ccc, #222);
   border: 2px solid #222;
   border-top-width: 15px;
   /* 패딩,보더 포함박스 : bxb */
@@ -509,11 +500,7 @@ h1.logo{
   left: -30%;
   width: 160%;
   height: 20%;
-  background-image: linear-gradient(
-    to right,
-    #ccc,
-    #222
-  );
+  background-image: linear-gradient(to right, #ccc, #222);
   border: 2px solid #222;
   border-bottom-width: 10px;
   /* 패딩,보더 포함박스 : bxb */
@@ -537,7 +524,7 @@ h1.logo{
   border-radius: 0 50% 50% 0;
 }
 /* TV 박스 */
-.tv{
+.tv {
   top: 10%;
   /* 앱솔루트 가로중앙 셋팅 */
   left: 50%;
@@ -553,10 +540,13 @@ h1.logo{
   z-index: 2;
   /* 배경이미지 */
   background: url(../images/tv.jpg) no-repeat 0/100% 100%;
+  /* 로봇전체가 축소되어 TV조금 확대 */
+  scale: 1.4;
+  border-radius: 10px;
 }
 
 /* 스크린 */
-.screen{
+.screen {
   position: absolute;
   top: 10px;
   left: 7px;
@@ -569,7 +559,7 @@ h1.logo{
   overflow: hidden;
 }
 /* 유튭동영상 아이프레임 */
-.screen iframe{
+.screen iframe {
   position: absolute;
   top: -6%;
   left: -41%;
@@ -579,14 +569,14 @@ h1.logo{
 }
 
 /* 버튼박스 */
-.btns{
+.btns {
   position: absolute;
   bottom: 16px;
   right: 6px;
   /*부모는? .tv */
 }
 /* 버튼요소 */
-.btns button{
+.btns button {
   display: block;
   /* 원래는 inline-block
   한줄에 하나씩만 오도록 블록화! */
@@ -597,10 +587,8 @@ h1.logo{
   line-height: 12px;
 }
 
-
-
 /* 2-2. 설명박스 */
-.text-box{
+.text-box {
   max-width: 800px;
   margin: 0 auto;
   color: #fff;
@@ -608,9 +596,7 @@ h1.logo{
   border-radius: 20px;
   padding: 15px 30px;
   /* 박스 2중 글로우효과(그림자로줌) */
-  box-shadow: 
-  inset 0 0 20px blue,
-  inset 0 0 50px 10px cyan;
+  box-shadow: inset 0 0 20px blue, inset 0 0 50px 10px cyan;
 
   /* 백드롭 블러효과주기 */
   backdrop-filter: blur(6px);
@@ -636,13 +622,13 @@ h1.logo{
 }
 
 /* 2-2-1. 제목 */
-.text-box h2{
+.text-box h2 {
   /* 스티키 포지션 */
   position: sticky;
   top: 10px;
   /* top값이 고정위치값임! */
 
-  font-family: 'Chakra Petch', sans-serif;
+  font-family: "Chakra Petch", sans-serif;
   font-size: 35px;
   text-align: center;
   background-color: #ffffff8d;
@@ -653,8 +639,8 @@ h1.logo{
   font-weight: normal;
 }
 /* 2-2-2. 출처 */
-.text-box small{
-  font-family: 'Chakra Petch', sans-serif;
+.text-box small {
+  font-family: "Chakra Petch", sans-serif;
   font-size: 12px;
   text-shadow: 1px 1px 1px #00000077;
   color: #ff0;
@@ -666,8 +652,8 @@ h1.logo{
 }
 
 /* 2-2-3.내용단락 */
-.text-box p{
-  font-family: 'Barlow', sans-serif;
+.text-box p {
+  font-family: "Barlow", sans-serif;
   font-size: 17px;
   /* 줄간격 */
   line-height: 1.7;
@@ -698,19 +684,17 @@ h1.logo{
 
   /* 첫줄 들여쓰기 : text-indent (ti) */
   text-indent: 40px;
-
 }
 /* 가상요소 첫글자 적용하기 */
-.text-box p::first-letter{
+.text-box p::first-letter {
   font-size: 30px;
   font-weight: bold;
   color: hotpink;
 }
 
-
 /************* 3. 하단영역 *************/
 /* 3-1. 회사정보 */
-#bottom-area{
+#bottom-area {
   position: relative;
   /* z-index적용위해 포지션줌! */
   z-index: 5;
@@ -719,7 +703,7 @@ h1.logo{
 
   color: #fff;
   /* 글자크기 : 30px, 글자체 'Black Ops One' */
-  font: 3rem 'Black Ops One';
+  font: 3rem "Black Ops One";
   /* 글자그림자 */
   text-shadow: 2px 2px 2px #000;
   /* 글자중앙 */
@@ -732,5 +716,4 @@ h1.logo{
     rgba(0,0,0,0.5)
   */
   background-color: rgb(0 0 0 / 0.5);
-
 }

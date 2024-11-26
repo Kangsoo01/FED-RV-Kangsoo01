@@ -4,18 +4,20 @@
 
 /*********** 1. 웹폰트 : CDN ***********/
 /* Cute Font, Jua, Audiowide 체 */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
 /* 
     font-family: 'Audiowide', cursive;
     font-family: 'Cute Font', cursive;
     font-family: 'Jua', sans-serif;
 */
 
-/*********** 1. 웹폰트 : CDN ***********/
-/* 레이아웃 공통 클레스 */
-.part{
-    /*  */
-    width: 1200px;
+/********** 2. 공통 클래스 **********/
+/* 레이아웃 공통 클래스 */
+.part {
+  /* 최대가로크기 공통 */
+  max-width: 1200px;
+  /* 마.영.오 - 블록박스 중앙정렬 */
+  margin: 0 auto;
 }

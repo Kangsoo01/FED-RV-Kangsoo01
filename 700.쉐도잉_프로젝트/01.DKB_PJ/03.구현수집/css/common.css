@@ -2,10 +2,29 @@
 
 /* 도깨비 PJ : 공통 모듈 CSS - common.css */
 /* 공유기능 요소 셋팅 */
+ 
 
 /**************** 1. 상단영역 ****************/
 .top-area {
   height: 120px;
+}
+
+/* 1-2. 탑 메뉴 */
+.top-menu{
+  font-size: 1.3rem;
+}
+
+.top-menu ul{
+  justify-content: flex-end;
+}
+
+/* 1-3. GNB 메뉴 */
+.gnb{
+  font-size: 1.6rem;
+}
+
+.gnb ul{
+  justify-content: flex-end;
 }
 
 /**************** 2. 하단영역 ****************/

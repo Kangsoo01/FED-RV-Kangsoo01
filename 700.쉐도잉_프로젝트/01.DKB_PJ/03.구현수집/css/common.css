@@ -2,61 +2,53 @@
 
 /* 도깨비 PJ : 공통 모듈 CSS - common.css */
 /* 공유기능 요소 셋팅 */
- 
 
 /**************** 1. 상단영역 ****************/
 .top-area {
-  /* 최소높이설정: 최소 높이보다 컨텐츠가 많아지면 높이 값이
-  auto로 전환되어 늘어난다 */
+  /* 최소높이설정 : 최소높이보다 컨텐츠가
+  많아지면 높이값이 auto로 전환되어 늘어남! */
   min-height: 120px;
 }
-
-/* 1-1. 로고 영역 */
-.logo{
+/* 1-1.로고영역 - 로고 */
+.logo {
   padding: 18px 10px;
 }
-
 /* 1-2. 메뉴영역/메뉴박스 */
-.menu-box{
+.menu-box {
   display: flex;
-  /* row 사이 간격 */
-  gap: 40px;
-  /* 진행방향 정렬 */
-  justify-content: flex-end;
+  /* row사이간격 */
+  gap: 42px;
   /* 세로진행방향 */
   flex-direction: column;
+  /* 진행방향 정렬 */
+  justify-content: flex-end;
   /* 진행방향수직 정렬 */
   align-items: flex-end;
 
-  /* 높이값 부모박스 만큼 */
+  /* 높이값 부모박스만큼 */
   height: 100%;
 }
-
-/* 1-2. 메뉴영역/메뉴박스/탑 메뉴 */
-.top-menu{
+/* 1-2. 메뉴영역/메뉴박스/탑메뉴 */
+.top-menu {
   font-size: 1.3rem;
 }
-
-.top-menu ul{
+.top-menu ul {
   gap: 1.6rem;
 }
 
-/* 1-2. 메뉴영역/메뉴박스/GNB 메뉴 */
-.gnb{
+/*  1-2. 메뉴영역/메뉴박스/GNB메뉴 */
+.gnb {
   font-size: 1.6rem;
 }
-
-.gnb ul{
+.gnb ul {
   gap: 3.2rem;
 }
-
 /* gnb a요소 오버시 */
-.gnd a:hover{
+.gnb a:hover{
   color: red;
 }
-
-/* 메뉴 카테로리 화살표 */
-.gnd i{
+/* 아래화살표 아이콘 */
+.gnb i {
   font-size: 1rem;
   vertical-align: 0.3rem;
 }

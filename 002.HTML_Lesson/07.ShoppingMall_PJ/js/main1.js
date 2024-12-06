@@ -10,21 +10,21 @@ import myFn from "./my_function.js";
     3. 변경 대상: 슬라이드 박스(.slide)
     4. 기능 설계:
 
-        (1) 오른쪽 버튼 클릭시 다음 슬라이드가
-            나타나도록 슬라이드 박스의 translate값을
-            -100% 단위로 값을 증가하여 변경시킨다.
+      (1) 오른쪽 버튼 클릭시 다음 슬라이드가
+          나타나도록 슬라이드 박스의 translate값을
+          -100% 단위로 값을 증가하여 변경시킨다.
 
-        (2) 왼쪽 버튼 클릭시 이전 슬라이드가
-            나타나도록 슬라이드 박스의 translate값을
-            -100% 단위로 값을 감소하여 변경시킨다.
+      (2) 왼쪽 버튼 클릭시 이전 슬라이드가
+          나타나도록 슬라이드 박스의 translate값을
+          -100% 단위로 값을 감소하여 변경시킨다.
 
-        (3) 이동 중 첫번째 슬라이드는 왼쪽이동버튼 숨기기
-            마지막 슬라이드는 오른쪽이동버튼 숨기기함!
+      (3) 이동 중 첫번째 슬라이드는 왼쪽이동버튼 숨기기
+          마지막 슬라이드는 오른쪽이동버튼 숨기기함!
 
-        (4) 공통기능: 슬라이드 위치표시 블릿
-            - 블릿 대상: .indic li
-            - 변경 내용: 슬라이드 순번과 같은 순번의
-            li에 클래스 "on"주기(나머진 빼기->초기화!)
+      (4) 공통기능: 슬라이드 위치표시 블릿
+          - 블릿 대상: .indic li
+          - 변경 내용: 슬라이드 순번과 같은 순번의
+          li에 클래스 "on"주기(나머진 빼기->초기화!)
 
 *****************************************************/
 
@@ -53,7 +53,10 @@ const slide = myFn.qsEl(slideBox, ".slide");
 const SLIDE_CNT = myFn.qsaEl(slide, "li").length;
 console.log("슬라이드개수:", SLIDE_CNT);
 
-// console.log("대상:",slideBox,abtn,slide);
+// (4) 인디케이터 블릿대상
+const indic = myFn.qsaEl(slideBox, ".indic li");
+
+// console.log("대상:",slideBox,abtn,slide,indic);
 
 // 2. 이벤트 설정하기 ////////////////////
 abtn.forEach((el) => {
@@ -110,4 +113,22 @@ function goSlide() {
     abtn[0].style.display = "block";
     abtn[1].style.display = "block";
   } /// else ///
+
+  // 6. 인디케이터 변경하기 : 대상 .indic li
+  indic.forEach((el, idx) => {
+    // console.log(el,idx);
+    // (1) 페이지번호와 일치하는 순번li에 클래스 "on"넣기
+    if (idx === seqNum) {
+      el.classList.add("on");
+    } /// if ///
+    // (2) 나머지 li는 "on" 제거하기
+    else {
+      el.classList.remove("on");
+    } /// else ///
+  }); /// forEach ////
+
+  // -> seqNum 값 즉, 슬라이드 순번과
+  // 인디케이터 li 순번이 같으므로
+  // 해당순번의 li에 클래스"on"을 넣고
+  // 나머지는 "on"을 제거한다!
 } ////////// goSlide함수 /////////////

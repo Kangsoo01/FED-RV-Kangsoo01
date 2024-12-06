@@ -10,7 +10,7 @@
 
 /* 공사중 표시 */
 body * {
-  outline: 2px dashed #a086ff41;
+  outline: 2px dashed #ccc;
 }
 
 /* 임시 높이 */
@@ -102,17 +102,17 @@ h2.temp {
   flex: 1;
 }
 /* 캐릭터 이미지박스 */
-.cat-box figure {  
+.cat-box figure {
   /* 트랜지션 */
-  transition: .4s ease-out;
+  transition: 0.4s ease-out;
 }
 /* 캐릭터 각 박스 오버시 캐릭터박스
 마진탑 올리기 */
-.cat-box>div:hover figure{
+.cat-box > div:hover figure {
   /* 브라우저 화면크기를 중앙속박스 크기로 맞추고
   최대크기 px,vw를 조정한다! 이때 마이너스니까
   min이 아니고 max로 조정함! */
-  margin-top: max(-200px,-15vw);
+  margin-top: max(-200px, -15vw);
 }
 /* 캐릭터 이미지만 선택 */
 .cat-box figure > img {
@@ -126,7 +126,7 @@ h2.temp {
   margin-top: -17%;
 }
 /* 이름이미지 공통 */
-.cat-box figcaption img{
+.cat-box figcaption img {
   width: 35%;
 }
 /* 첫번째 이름이미지 처음에 안보임 */
@@ -135,42 +135,42 @@ h2.temp {
 }
 /* 캐릭터 개별박스에 오버시 이름변경
 -> 첫번째 보이고 두번째 숨기기 */
-.cat-box>div:hover figcaption img:first-child{
+.cat-box > div:hover figcaption img:first-child {
   display: inline;
 }
-.cat-box>div:hover figcaption img:last-child{
+.cat-box > div:hover figcaption img:last-child {
   display: none;
 }
 
 /* 캐릭터 설명박스 */
-.cat-box aside{
+.cat-box aside {
   height: 0;
   overflow: auto;
   /* 트랜지션 */
-  transition: .4s ease-out;
+  transition: 0.4s ease-out;
   background-color: #ccc;
 }
 /* 각 캐릭터박스에 오버시 설명박스 보이기 */
-.cat-box>div:hover aside{
+.cat-box > div:hover aside {
   /* 중앙박스 최대크기에서 px과 vw크기를 맞추고
   최소크기 출력을 테스트하면 잘된다! */
-  height: min(200px,15vw);
+  height: min(200px, 15vw);
 }
 /* 캐릭터 타이틀 */
-.cat-box aside h3{
+.cat-box aside h3 {
   /* 글자 최대크기를 min으로 설정 */
-  font-family: 'Noto Sans KR';
-  font-size: min(2rem,1.5vw);
+  font-family: "Noto Sans KR";
+  font-size: min(2rem, 1.5vw);
   font-weight: bold;
-  padding: 1.5rem 1.5rem 1rem;
+  padding: 1.5rem 1.5rem 0.5rem;
   /* 자간 letter-spacing */
   letter-spacing: -1px;
 }
 /* 캐릭터 설명 */
-.cat-box aside p{
-  font-family: 'Noto Sans KR';
+.cat-box aside p {
+  font-family: "Noto Sans KR";
   /* 글자 최대크기를 min으로 설정 */
-  font-size: min(1.3rem,1vw);
+  font-size: min(1.3rem, 1vw);
   padding: 1.5rem;
   line-height: 1.6;
   /* 양쪽정렬 justify */

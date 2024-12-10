@@ -19,8 +19,10 @@
     />
     <!-- 메인 CSS 불러오기 -->
     <link rel="stylesheet" href="./css/main.css" />
+    <!-- 메인 JS 불러오기 -->
+    <script type="module" src="./js/main.js"></script>
   </head>
-  <body>
+  <body class="scbar">
     <!-- 1. 상단영역 -->
     <div id="top-area">
       <header class="top-area inbox">
@@ -263,8 +265,8 @@
       <div id="ban-area">
         <!-- 배너기능박스는 바깥에 있음! -->
         <!-- 슬라이드박스 -->
-        <section class="ban-box">
-          <ul>
+        <section class="ban-box slide-box">
+          <ul class="slide">
             <li>
               <img
                 src="./images/banner/ban01.jpg"
@@ -284,15 +286,62 @@
               />
             </li>
           </ul>
+
+          <!--이동버튼-->
+          <a href="#" class="abtn ab1">
+            <img
+              src="images/banner/etc/left_btn.png"
+              alt="왼쪽이동버튼"
+            />
+          </a>
+          <a href="#" class="abtn ab2">
+            <img
+              src="images/banner/etc/right_btn.png"
+              alt="오른쪽이동버튼"
+            />
+          </a>
+
+          <!--블릿버튼-->
+          <ol class="indic">
+            <li class="on">
+              <img
+                src="images/banner/etc/dot1.png"
+                alt="흰색"
+              />
+              <img
+                src="images/banner/etc/dot2.png"
+                alt="회색"
+              />
+            </li>
+            <li>
+              <img
+                src="images/banner/etc/dot1.png"
+                alt="흰색"
+              />
+              <img
+                src="images/banner/etc/dot2.png"
+                alt="회색"
+              />
+            </li>
+            <li>
+              <img
+                src="images/banner/etc/dot1.png"
+                alt="흰색"
+              />
+              <img
+                src="images/banner/etc/dot2.png"
+                alt="회색"
+              />
+            </li>
+          </ol>
         </section>
         <!-- 배너박스(인박스:인디케이터 등) -->
-        <section class="ban-area inbox">
+        <!-- <section class="ban-area inbox">
           <h2 class="blind">2.배너박스</h2>
-          <!-- 파티션박스 -->
           <div class="cont-box">
             <div class="col-12"></div>
           </div>
-        </section>
+        </section> -->
         <!-- 캐릭터소개박스 -->
         <section class="cat-area inbox">
           <h2 class="blind">캐릭터소개박스</h2>
@@ -321,7 +370,7 @@
                     </figcaption>
                   </figure>
                   <!-- 글박스 -->
-                  <aside>
+                  <aside class="scbar">
                     <!-- 타이틀 -->
                     <h3>도깨비(김신), 939세</h3>
                     <!-- 내용 -->
@@ -379,7 +428,7 @@
                     </figcaption>
                   </figure>
                   <!-- 글박스 -->
-                  <aside>
+                  <aside class="scbar">
                     <!-- 타이틀 -->
                     <h3>지은탁, 19세</h3>
                     <!-- 내용 -->
@@ -432,7 +481,7 @@
                     </figcaption>
                   </figure>
                   <!-- 글박스 -->
-                  <aside>
+                  <aside class="scbar">
                     <!-- 타이틀 -->
                     <h3>저승사자, 30대 후반 추정</h3>
                     <!-- 내용 -->
@@ -484,7 +533,7 @@
                     </figcaption>
                   </figure>
                   <!-- 글박스 -->
-                  <aside>
+                  <aside class="scbar">
                     <!-- 타이틀 -->
                     <h3>써니, 20대 중후반</h3>
                     <!-- 내용 -->

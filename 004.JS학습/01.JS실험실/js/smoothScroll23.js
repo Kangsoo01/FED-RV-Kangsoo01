@@ -5,7 +5,7 @@
 // arranged by Tom Brace Parker
 
 // startSS()함수를 호출하여 사용
-function startSS() {
+export default function startSS() {
   // 전체 스크롤 대상일때 document를 보냄
   new SmoothScroll(document, 30, 30);
   // 특정박스일 경우 document.querySelector(선택요소)를 씀!
@@ -28,7 +28,8 @@ function SmoothScroll(scrollTarget, speed, smooth) {
   let moving = false;
   scrollPos = scrollTarget.scrollTop;
   let frame =
-    scrollTarget === document.body && document.documentElement
+    scrollTarget === document.body &&
+    document.documentElement
       ? document.documentElement
       : scrollTarget; // safari is the new IE
 
@@ -43,9 +44,13 @@ function SmoothScroll(scrollTarget, speed, smooth) {
     passive: false,
   });
   // 파이어폭스 이벤트
-  scrollTarget.addEventListener("DOMMouseScroll", scrolled, {
-    passive: false,
-  });
+  scrollTarget.addEventListener(
+    "DOMMouseScroll",
+    scrolled,
+    {
+      passive: false,
+    }
+  );
 
   function scrolled(e) {
     e.preventDefault(); // disable default scrolling
@@ -55,7 +60,10 @@ function SmoothScroll(scrollTarget, speed, smooth) {
     scrollPos += -delta * speed;
     scrollPos = Math.max(
       0,
-      Math.min(scrollPos, scrollTarget.scrollHeight - frame.clientHeight)
+      Math.min(
+        scrollPos,
+        scrollTarget.scrollHeight - frame.clientHeight
+      )
     ); // limit scrolling
 
     if (!moving) update();
@@ -65,8 +73,10 @@ function SmoothScroll(scrollTarget, speed, smooth) {
     if (e.detail) {
       if (e.wheelDelta)
         return (
-          (e.wheelDelta / e.detail / 40) * (e.detail > 0 ? 1 : -1)
-        ); // Opera
+          (e.wheelDelta / e.detail / 40) *
+          (e.detail > 0 ? 1 : -1)
+        );
+      // Opera
       else return -e.detail / 3; // Firefox
     } else return e.wheelDelta / 120; // IE,Safari,Chrome
   }
@@ -74,7 +84,8 @@ function SmoothScroll(scrollTarget, speed, smooth) {
   function update() {
     moving = true;
 
-    let delta = (scrollPos - scrollTarget.scrollTop) / smooth;
+    let delta =
+      (scrollPos - scrollTarget.scrollTop) / smooth;
 
     scrollTarget.scrollTop += delta;
 

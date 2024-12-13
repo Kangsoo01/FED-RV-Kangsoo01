@@ -92,7 +92,7 @@ aside.smenu {
 }
 /* 서브 속박스 */
 .smenu > div {
-  padding: 20px;
+  padding: 40px;
   /* 패딩,보더 포함박스 */
   box-sizing: border-box;
 }
@@ -107,7 +107,7 @@ aside.smenu {
   /* 플렉스 랩핑박스 */
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem 7rem;
+  gap: 4rem 7rem;
   font-size: 2rem;
 }
 

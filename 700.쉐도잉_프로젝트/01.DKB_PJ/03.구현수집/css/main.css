@@ -29,6 +29,73 @@ h2.temp {
   outline: none;
 }
 
+/************ 1.5.드라마 파트메뉴영역 ************/
+#spart-menu {
+  /* 스티키 포지션 - 상단스크롤 걸림! */
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 999;
+}
+/* 인박스 높이값 초기화 */
+.spart-menu.inbox {
+  height: auto;
+}
+.spart-menu ul {
+  /* 플렉스박스 */
+  display: flex;
+  padding: 12px 0;
+  transition: 0.4s ease-out;
+}
+/* 도깨비메뉴 상위메뉴a */
+.spart-menu ul > li > a {
+  color: #999;
+  font-size: 1.8rem;
+  display: block;
+  padding: 9px 24px;
+  /* 줄바꿈방지 */
+  white-space: nowrap;
+}
+/* 도깨비메뉴 상위li 오버시 a */
+.spart-menu ul > li:hover > a {
+  color: #222;
+}
+/* 하위메뉴가 있는 li만 하위 표시하기 */
+.spart-menu ul > li.be-sub > a::after {
+  content: "∨";
+  display: inline-block;
+  transform: scale(0.5, 0.3);
+  margin-left: 3px;
+}
+/* 현재 선택된 메뉴 li.on 클래스 */
+.spart-menu ul > li.on > a {
+  background-color: red;
+  color: #fff;
+  border-radius: 30px;
+}
+
+/* 도깨비 서브메뉴 */
+.spart-sub-menu {
+  position: absolute;
+  border: 1px solid red;
+  border-radius: 20px;
+  width: 180px;
+  background-color: #fff;
+
+  /* 처음에 숨김 */
+  display: none;
+}
+/* 상위li에 마우스 오버시 서브 보이기 */
+.spart-menu ul > li:hover .spart-sub-menu {
+  display: block;
+}
+/* 도깨비 서브메뉴 a */
+.spart-sub-menu a {
+  display: block;
+  padding: 10px 15px;
+  font-size: 1.8rem;
+}
+
 /*************** 메인영역 ***************/
 /*************** 2. 배너파트 ***************/
 /* 배너 영역 : 중앙영역(인디케이터)
@@ -54,7 +121,8 @@ h2.temp {
 .ban-box {
   position: relative;
   /* 부모자격 - 이동버튼, 인디케이터 */
-  height: 530px;
+  /* height: 530px; */
+  aspect-ratio: 3;
   /* 넘치는 자식요소 숨기기 */
   overflow: hidden;
 }
@@ -92,6 +160,10 @@ h2.temp {
   transform: translateY(-50%);
   /*Y축 중앙이동*/
 }
+/* 이미지크기 조정 */
+.abtn img {
+  width: min(50px, 3.7vw);
+}
 
 /*왼쪽버튼*/
 .ab1 {
@@ -104,42 +176,43 @@ h2.temp {
 }
 
 /*블릿버튼*/
+.indic-box {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  width: min(450px, 32.8vw);
+  height: 5px;
+  z-index: 1;
+}
 .indic {
   display: flex;
-  /* 플렉스박스 */
-  position: absolute;
-  bottom: 50px;
-  left: 80px;
+  gap: 0 15px;
 }
-
 .indic li {
-  width: 16px;
-  height: 16px;
-  cursor: pointer;
+  width: 150px;
+  height: 5px;
+  background-color: #ffffff66;
 }
-
-.indic li img {
-  position: absolute;
-  /*이미지 겹치게*/
+/* 가상요소바 */
+.indic li::before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 5px;
+  background-color: #fff;
 }
-
-.indic li img:last-child {
-  /*회색이미지만 투명하게*/
-  opacity: 0;
-}
-
-/*회색블릿이미지가 보이게하는 class*/
-.indic li.on img:last-child {
-  /*회색이미지만 투명하게*/
-  opacity: 1;
-  /*우선적용!*/
+/* li.on일 경우 가상요소 width변경 */
+.indic li.on::before {
+  width: 100%;
+  transition: width 3s linear;
 }
 
 /********** 3. 캐릭터소개영역 **********/
 .main-area .cat-area {
   position: relative;
-  /* 형제 배너박스 보다 밑에 깔리므로 포지션을 줘서 나중에
-  오는 박스가 위로 오게만든다 */
+  /* 형제 배너박스보다 밑에 깔리므로
+  포지션을 줘서 나중에 오는 박스가 위로 오게함! */
+
   /* 비율적용을 위해 높이값을 없앤다! */
   height: auto;
   aspect-ratio: 1320/190;
@@ -201,6 +274,7 @@ h2.temp {
 .cat-box aside {
   height: 0;
   overflow: auto;
+  /* 배경 */
   background-color: #ccc;
   /* 트랜지션 */
   transition: 0.4s ease-out;
@@ -216,11 +290,11 @@ h2.temp {
 }
 /* 캐릭터 타이틀 */
 .cat-box aside h3 {
-  /* 글자 최대크기를 min으로 설정 */
   font-family: "Noto Sans KR";
-  font-size: min(2rem, 1.5vw);
+  /* 글자 최대크기를 min으로 설정 */
+  font-size: min(2.2rem, 2vw);
   font-weight: bold;
-  padding: 1.5rem 1.5rem 0.5rem;
+  padding: 1.5rem 1.5rem 0rem;
   /* 자간 letter-spacing */
   letter-spacing: -1px;
 }
@@ -228,9 +302,9 @@ h2.temp {
 .cat-box aside p {
   font-family: "Noto Sans KR";
   /* 글자 최대크기를 min으로 설정 */
-  font-size: min(1.3rem, 1vw);
-  padding: 1.5rem;
-  line-height: 1.6;
+  font-size: min(1.5rem, 1vw);
+  padding: 1.8rem;
+  line-height: 1.7;
   /* 양쪽정렬 justify */
   text-align: justify;
 }

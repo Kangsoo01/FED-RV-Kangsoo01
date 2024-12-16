@@ -4,22 +4,22 @@
     [ 슬라이드 이동 기능정의 ]
     1. 이벤트 종류: click
     2. 이벤트 대상: 이동버튼(.abtn)
-    3. 변경 대상: 슬라이드 박스(#slide)
+    3. 변경 대상: 슬라이드 박스(.slide)
     4. 기능 설계:
 
         (1) 아랫쪽 버튼 클릭시 다음 슬라이드가
-            나타나도록 슬라이드 박스의 top값을
+            나타나도록 슬라이드 박스의 translate Y축 방향 값을
             -100%로 변경시킨다.
             -> 슬라이드 이동후!!! 
             바깥에 나가있는 첫번째 슬라이드
             li를 잘라서 맨뒤로 보낸다!
-            동시에 top값을 0으로 변경한다!
+            동시에 translate Y축 방향 값을 0으로 변경한다!
 
         (2) 윗쪽 버튼 클릭시 이전 슬라이드가
             나타나도록 하기위해 우선 맨뒤 li를
-            맨앞으로 이동하고 동시에 top값을
+            맨앞으로 이동하고 동시에 translate Y축 방향 값을
             -100%로 변경한다.
-            그 후 top값을 0으로 애니메이션하여
+            그 후 translate Y축 방향 값을 0으로 애니메이션하여
             슬라이드가 왼쪽에서 들어온다.
 
         (3) 공통기능: 슬라이드 위치표시 블릿
@@ -28,3 +28,76 @@
             li에 클래스 "on"주기(나머진 빼기->초기화!)
 
 *****************************************************/
+
+// 이벤트 대상: 이동버튼(.abtn)
+const $btnMove = $(".abtn");
+
+// 변경 대상: 슬라이드 박스(.slide)
+const $slide = $(".slide");
+
+// [ 2. 이벤트 설정 및 함수구현 ]
+$btnMove.click(function () {
+  // 광클금지 상태변수
+  let stsClick = false;
+  // 슬라이드 애니시간상수
+  const TIME_ANI = 600;
+  // 광클금지 설정 ///////
+  if (stsClick) return; // 함수를 나가!
+  stsClick = true; // 문잠금!
+  setTimeout(() => {
+    stsClick = false; // 잠금해제!
+  }, TIME_ANI);
+
+  // (1) 방향 구분하기
+  // 아랫쪽 버튼(.ab2)이면 true
+  let isBtn = $(this).is(".ab2");
+  console.log("테스트:", this, isBtn);
+
+  // (2) 방향별 분기하기
+  // (2-1) 윗쪽방향으로 이동
+  if (isBtn) {
+    // 슬라이드의 translate Y값을 -100%
+    // 제이퀘리 animate로 translate은 적용안된다
+    // CSS로만 적용된다
+    // (2-1.1) 윗쪽방향으로 이동
+    $slide.css({
+      translate: "0 -100%",
+      transition: TIME_ANI + "ms",
+    });
+    // (2-1.2) 이동 후 맨앞요소 맨뒤로 이동하기
+    setTimeout(() => {
+      // 맨앞것 맨뒤로 이동
+      $slide
+        .append($slide.find("li").first())
+        // 이때 translation값 초기화
+        .css({
+          translate: "0 0",
+          transition: TIME_ANI + "ms",
+        });
+    }, 500);
+  } // if end
+
+  // (2-2) 아랫쪽 방향으로 이동
+  else {
+    // (2-2.1) 맨위 요소 맨앞으로 이동
+    $slide
+      .prepend($slide.find("li").last())
+      // (이때 translate 값 Y축 -100으로 변경)
+      .css({ translate: "0 -100%", transition: "none" });
+    // (2-2.2) translate Y축 값을 0으로 위쪽에서 들어오기
+    // 실행구역을 setTimeout으로 분리한다
+    setTimeout(() => {
+      $slide.css({ translate: "0 0", transition: ".5s" });
+    });
+  } // else end
+}); // click end
+
+// [ 3. 처음 슬라이드에 고유번호 속성넣기 ]
+// 제이쿼리 순회 메서드: each((순번, 요소)=>{})
+$slide.find("li").each((idx, el) => {
+  console.log("테스트:", idx, el);
+  // 각 요소의 속성 추가하기
+  // 속성명: data-seq
+  // 제이쿼리 속성셋팅 메서드: attr(속성명, 값)
+  $(el).attr("data-seq", idx);
+});

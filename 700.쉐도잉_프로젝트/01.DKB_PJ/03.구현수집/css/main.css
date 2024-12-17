@@ -292,9 +292,9 @@ h2.temp {
 .cat-box aside h3 {
   font-family: "Noto Sans KR";
   /* 글자 최대크기를 min으로 설정 */
-  font-size: min(2.2rem, 2vw);
-  font-weight: bold;
-  padding: 1.5rem 1.5rem 0rem;
+  font-size: min(2.4rem, 1.8vw);
+  font-weight: normal;
+  padding: 1.5rem 1rem 0.5rem;
   /* 자간 letter-spacing */
   letter-spacing: -1px;
 }
@@ -302,9 +302,9 @@ h2.temp {
 .cat-box aside p {
   font-family: "Noto Sans KR";
   /* 글자 최대크기를 min으로 설정 */
-  font-size: min(1.5rem, 1vw);
-  padding: 1.8rem;
-  line-height: 1.7;
+  font-size: min(1.8rem, 1.3vw);
+  padding: 1.5rem;
+  line-height: 1.6;
   /* 양쪽정렬 justify */
   text-align: justify;
 }
@@ -382,3 +382,177 @@ h2.temp {
   font-size: 2rem;
   padding-top: 10px;
 }
+
+/************** 4. 미리보기영역 **************/
+.main-area .preview-area {
+  height: auto;
+  /* height: 803px; 
+    -> 높이값을 지정하면 내용만큼 자동으로
+    높이값이 잡히지 않아서 매번 크기에 따라
+    값을 셋팅해야하므로 auto로 두자!
+    */
+}
+.preview-box ul {
+  gap: 20px;
+}
+/* 리스트박스 */
+.preview-box li {
+  /* 한줄에 4개 플렉스 배치 - gap값 고려해서뺌 */
+  flex-basis: calc(100% / 4 - 15px);
+  padding: 24px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #22222240;
+  box-sizing: border-box;
+}
+/* 리스트 타이틀 */
+.preview-box li h3 {
+  font-size: 2rem;
+  color: #000;
+  font-weight: normal;
+}
+/* 리스트 내용 */
+.preview-box li p {
+  font-size: 1.5rem;
+  margin-top: 1.4rem;
+  color: #00000099;
+  line-height: 1.7;
+
+  /* 여러줄 말줄임표시 셋팅하기 */
+  display: -webkit-box;
+  overflow: hidden;
+  /* 말줄임표시 */
+  text-overflow: ellipsis;
+  /* 보여줄 라인수 셋팅속성 */
+  -webkit-line-clamp: 7;
+  /* 라인진행방향 셋팅 */
+  -webkit-box-orient: vertical;
+}
+/* 리스트박스 오버시 내용글자색 */
+.preview-box li:hover p {
+  color: #000;
+}
+
+/************** 7. 최신동영상영역 **************/
+.banbx {
+  position: relative;
+  /* 앱솔루트 양쪽이동버튼의 부모자격 */
+}
+.main-area .clip-video-area {
+  height: auto;
+}
+.clip-video-area {
+  position: relative;
+  /* 부모자격 - 이동버튼의 부모 */
+}
+.clip-box ul {
+  position: relative;
+  left: 0; /* 이동초기값 */
+  display: flex;
+  /* gap: 0 2%; */
+  /* 트랜지션 
+  -> 스와이퍼 랩퍼일 경우 트랜지션 주지말것! */
+  /* transition: left 0.3s ease-out; */
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.clip-box li {
+  flex-basis: 25%;
+  flex-shrink: 0;
+  /* 플렉스 gap 속성대신 패딩으로 처리!
+    이유는? 드래그시 영역아웃현상때문! */
+  padding: 0 1.1%;
+  box-sizing: border-box;
+}
+
+/* 동영상 이미지박스 */
+.clip-mv-box {
+  position: relative;
+  /* 부모자격 */
+}
+/* 동영상 이미지박스 이미지 */
+.clip-mv-box img {
+  width: 100%;
+  border-radius: 6px;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+/* 동영상 이미지박스 가상요소로 플레이버튼 */
+.clip-mv-box::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 62px;
+  height: 62px;
+  background: url(../images/icon_play.png) no-repeat 0/100%;
+  cursor: pointer;
+}
+
+.clip-box h4 {
+  font-size: 18px;
+  font-weight: normal;
+
+  /* 2줄 말줄임 셋팅 */
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.clip-box h3 {
+  font-size: 15px;
+  font-weight: normal;
+  color: #555;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.clip-box {
+  overflow: hidden;
+}
+
+/* 양쪽버튼만들기 */
+.btn-box button {
+  position: absolute;
+  z-index: 999;
+  top: 50%;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  line-height: 65px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #fff;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+/* 왼쪽버튼 */
+.btn-box button:first-child {
+  left: 0;
+}
+/* 오른쪽버튼 */
+.btn-box button:last-child {
+  right: 0;
+}
+/* 클래스를 추가하여 한쪽버튼만 안보이게 처리 */
+/* 왼쪽버튼만 보이기 */
+.btn-box.left button:first-child {
+  display: inline-block;
+}
+.btn-box.left button:last-child {
+  display: none;
+}
+/* 오른쪽버튼만 보이기 */
+.btn-box.right button:last-child {
+  display: inline-block;
+}
+/* .btn-box.right button:first-child {
+  display: none;
+} */

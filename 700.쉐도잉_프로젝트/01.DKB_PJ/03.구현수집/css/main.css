@@ -10,7 +10,7 @@
 
 /* 공사중 표시 */
 body * {
-  outline: 2px dashed #ccc;
+  /* outline: 2px dashed #ccc; */
 }
 
 /* 임시 높이 */
@@ -122,7 +122,7 @@ h2.temp {
   position: relative;
   /* 부모자격 - 이동버튼, 인디케이터 */
   /* height: 530px; */
-  aspect-ratio: 2.3;
+  aspect-ratio: 3.5;
   /* 넘치는 자식요소 숨기기 */
   overflow: hidden;
 }

@@ -200,7 +200,7 @@ const previewData = [
     은탁에게 검을 뽑지 않으면 죽게되는
     신부의 운명에 대해 털어놓기로 결심 하는데...!`,
     date: "2017-01-06",
-  },  
+  },
   {
     idx: "13",
     title: "13화 미리보기",
@@ -256,7 +256,6 @@ const previewData = [
     것일까?`,
     date: "2017-01-20",
   },
-  
 ];
 
 // 2. 현장포토 리스트 데이터
@@ -271,54 +270,54 @@ const liveData = [
   {
     idx: "1",
     title: "다 드립니다 ♡",
-    imgName: ["live_photo7",4],
+    imgName: ["live_photo7", 4],
     date: "2023-09-08",
   },
   {
     idx: "2",
     title: "비하인드 짤털이~",
-    imgName: ["live_photo6",12],
+    imgName: ["live_photo6", 12],
     date: "2023-09-08",
   },
   {
     idx: "3",
     title: "꿀 떨어지는 도깨비 내외",
-    imgName: ["live_photo5",3],
+    imgName: ["live_photo5", 3],
     date: "2023-09-08",
   },
   {
     idx: "4",
     title: "사랑이 넘치네요",
-    imgName: ["live_photo8",7],
+    imgName: ["live_photo8", 7],
     date: "2023-09-08",
   },
   {
     idx: "5",
     title: "덕화에게서 낯선 향기가 난다",
-    imgName: ["live_photo4",3],
+    imgName: ["live_photo4", 3],
     date: "2023-09-08",
   },
   {
     idx: "6",
     title: "안녕하세요",
-    imgName: ["live_photo3",2],
+    imgName: ["live_photo3", 2],
     date: "2023-09-08",
   },
   {
     idx: "7",
     title: "시청자여러분",
-    imgName: ["live_photo2",2],
+    imgName: ["live_photo2", 2],
     date: "2023-09-08",
   },
   {
     idx: "8",
     title: "도깨비를마니마니",
-    imgName: ["live_photo1",1],
+    imgName: ["live_photo1", 1],
     date: "2023-09-08",
   },
 ]; /////////// liveData 배열 /////////
 
-// 3. 대표이미지 데이터
+// 3. 대표포스터 데이터
 /************************************* 
     [ 데이터항목 : ]
     1.순번(기본키) : idx
@@ -372,7 +371,8 @@ const clipData = [
   {
     idx: "1",
     title: "도깨비1화",
-    subtit: "김고은. 능력있으神 공유에게 뜬금포 사랑고백 ′사랑해요′",
+    subtit:
+      "김고은. 능력있으神 공유에게 뜬금포 사랑고백 ′사랑해요′",
     mvid: "UucULf34v4g",
     date: "2023-09-26",
   },
@@ -407,7 +407,8 @@ const clipData = [
   {
     idx: "6",
     title: "도깨비6화",
-    subtit: "도깨비 공유♥ 신부 김고은, 저주를 풀(?!) 메밀밭 키스 (feat.헛스윙)",
+    subtit:
+      "도깨비 공유♥ 신부 김고은, 저주를 풀(?!) 메밀밭 키스 (feat.헛스윙)",
     mvid: "wcDOSmyrfHQ",
     date: "2023-09-26",
   },
@@ -422,7 +423,8 @@ const clipData = [
   {
     idx: "8",
     title: "도깨비8화",
-    subtit: "[도깨비] 공유x김고은, 둘 중 하나는 죽어야 하는 비극적 운명",
+    subtit:
+      "[도깨비] 공유x김고은, 둘 중 하나는 죽어야 하는 비극적 운명",
     mvid: "Pi706qFevQk",
     date: "2023-09-26",
   },
@@ -451,14 +453,16 @@ const clipData = [
   {
     idx: "12",
     title: "도깨비12화",
-    subtit: "천년의 분노 앞에 선 공유와 스스로 왕여임을 깨달은 이동욱",
+    subtit:
+      "천년의 분노 앞에 선 공유와 스스로 왕여임을 깨달은 이동욱",
     mvid: "E9i-RwxVc84",
     date: "2023-09-26",
   },
   {
     idx: "13",
     title: "도깨비13화",
-    subtit: "[스페셜] 잔망 美 폭발! NG 퍼레이드 + 조우진 시청률 공약 TT",
+    subtit:
+      "[스페셜] 잔망 美 폭발! NG 퍼레이드 + 조우진 시청률 공약 TT",
     mvid: "2MbWxc2B3Ek",
     date: "2023-09-26",
   },

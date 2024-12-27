@@ -122,7 +122,7 @@ h2.temp {
   position: relative;
   /* 부모자격 - 이동버튼, 인디케이터 */
   /* height: 530px; */
-  aspect-ratio: 2.3;
+  aspect-ratio: 3.3;
   /* 넘치는 자식요소 숨기기 */
   overflow: hidden;
 }
@@ -275,8 +275,7 @@ h2.temp {
   height: 0;
   overflow: auto;
   /* 배경 */
-  background: url(../images/eachBG.jpg) no-repeat
-    bottom/cover;
+  background-color: #ccc;
   /* 트랜지션 */
   transition: 0.4s ease-out;
   /* 둥근모서리 설정 */
@@ -291,7 +290,7 @@ h2.temp {
 }
 /* 캐릭터 타이틀 */
 .cat-box aside h3 {
-  font-family: "Gugi";
+  font-family: "Noto Sans KR";
   /* 글자 최대크기를 min으로 설정 */
   font-size: min(2.4rem, 1.8vw);
   font-weight: normal;
@@ -301,7 +300,7 @@ h2.temp {
 }
 /* 캐릭터 설명 */
 .cat-box aside p {
-  font-family: "Single Day";
+  font-family: "Noto Sans KR";
   /* 글자 최대크기를 min으로 설정 */
   font-size: min(1.8rem, 1.3vw);
   padding: 1.5rem;

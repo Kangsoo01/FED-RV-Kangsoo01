@@ -81,8 +81,29 @@ slideFn();
 // -> 제이쿼리 html() 메서드에서는 join()없이
 // 콤마없애고 출력해줌!!!
 
+// 데이터 변경하기 : 15화부터 나오게 idx 내림차순
+// -> 데이터는 8개만씀 -> slice(시작순번,끝순번)
+const newArrayData = dkbData.previewData // 원본배열
+  .slice() // 깊은복사
+  .sort(
+    // 배열정렬 (idx를 숫자형변환!)
+    (a, b) =>
+      Number(a.idx) == Number(b.idx)
+        ? 0
+        : Number(a.idx) > Number(b.idx)
+        ? -1
+        : 1
+  )
+  .slice(0, 8);
+// 다시한번 정렬한 배열중 0부터 7번까지의 배열값만 딥카피!
+
+console.log("미리보기변경:", newArrayData);
+
+console.log("원본:", dkbData.previewData);
+
+// 화면에 배열 데이터 바인딩하기 /////
 $(".preview-box ul").html(
-  dkbData.previewData.map(
+  newArrayData.map(
     (v) => `
         <li>
             <h3>${v.title}</h3>

@@ -294,15 +294,17 @@ const arrString = [
 
 ///////////////////////////////////////////////////////////////////////
 
-// [1] 숫자로만된 배열의 정렬
+// [1] 숫자로만된 배열의 정렬 //////////////////
 
 // [1-1] 출력 대상: .showNum
 const showNum = myFn.qs(".showNum");
 
 // [1-2] 현재 숫자배열 출력하기
 // 배열대상: arrNumber
-const showNumFn = () => {
-  showNum.innerHTML = arrNumber
+const showNumFn = (newArray) => {
+  // newArray는 변경할 배열전달
+  // map은 원본배열을 변경하지 않는다!
+  showNum.innerHTML = newArray
     .map(
       (v) => `
         <img src="./images/num/num_0${v}.png" alt="숫자이미지">
@@ -310,20 +312,169 @@ const showNumFn = () => {
     )
     .join("");
 }; //////// showNumFn함수 //////
+
 // 최초호출
-showNumFn();
+showNumFn(arrNumber);
+console.log("숫자배열원본:", arrNumber);
 
 // [1-3] 정렬 선택박스 이벤트 설정하기
 myFn.qs("#sel").addEventListener("change", function () {
   console.log(this.value);
 
+  // 원본 배열을 보존하고자 깊은복사를 해줌!
+  const newArray = [...arrNumber];
+  // 스프레드 연산자로 처리함!
+
   if (this.value == 1)
     // 오름차순
-    arrNumber.sort((a, b) => (a == b ? 0 : a < b ? -1 : 1));
+    newArray.sort((a, b) => (a == b ? 0 : a < b ? -1 : 1));
   else if (this.value == 2)
     // 내림차순
-    arrNumber.sort((a, b) => (a == b ? 0 : a > b ? -1 : 1));
+    newArray.sort((a, b) => (a == b ? 0 : a > b ? -1 : 1));
 
   // 정렬후 화면출력
-  showNumFn();
+  showNumFn(newArray);
+
+  console.log("숫자배열원본:", arrNumber);
 }); /////// addEventListener /////////////
+
+// [2] 문자로만된 배열의 정렬 //////////////////
+
+// [2-1] 배열 태그변형후 출력하기 ////
+const showNum2 = myFn.qs(".showNum2");
+
+const showNum2Fn = (newArray) => {
+  // newArray는 처리할 배열전달
+  showNum2.innerHTML = newArray
+    .map((v) => `<span>${v}</span>`)
+    .join("");
+}; ////// showNum2Fn 함수 ////////////
+
+// 최초호출
+showNum2Fn(arrString);
+
+// [2-2] 선택박스 변경 이벤트 발생시 정렬변경하기
+myFn.addEvt(myFn.qs("#sel2"), "change", function () {
+  // 원본보존을 위해 깊은복사로 처리
+  const newArray = [...arrString];
+
+  // 1) 오름차순/내림차순 변경처리 ///
+  if (this.value == 1)
+    // 오름차순
+    newArray.sort();
+  else if (this.value == 2)
+    // 내림차순
+    newArray.reverse();
+
+  // 2) 화면출력
+  showNum2Fn(newArray);
+
+  console.log("문자값 배열 원본:", arrString);
+}); ////// change 이벤트 함수 ///////
+
+// [3] 객체데이터 배열의 정렬 //////////////
+// [3-1] 객체데이터 배열
+// - 객체구조 :
+// (1) idx - 순번 / (2) tit - 제목 / (3) cont - 내용
+const list1 = [
+  {
+    idx: 8,
+    tit: "나는 구누?",
+    cont: "공동구매) 슬로건 공구 (계좌와 네이버폼)",
+  },
+  {
+    idx: 4,
+    tit: "여기는 어디?",
+    cont: "총공 공지] 오늘부터 일 2회, 총공 진행합니다",
+  },
+  {
+    idx: 1,
+    tit: "나야나",
+    cont: "연합 갈라 서포트 계좌오픈",
+  },
+  {
+    idx: 15,
+    tit: "이제 얼마나 남은거니?",
+    cont: "음악프로그램에 출연 요청글도 써볼까요?",
+  },
+]; /////////////// list1 /////////////
+
+console.log(list1);
+
+// [3-2] 데이터 바인딩하기 : 함수화하여 재사용!
+// 바인딩 출력대상
+const showList3 = myFn.qs(".showList3");
+
+const showList3Fn = (newArray) => {
+  // newArray 데이터 바인딩할 배열
+  showList3.innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>번호</th>
+              <th>제목</th>
+              <th>내용</th>
+            </tr>
+          </thead>
+          <tbody>
+          ${newArray
+            .map(
+              (v) => `            
+                <tr>
+                    <td>${v.idx}</td>
+                    <td>${v.tit}</td>
+                    <td>${v.cont}</td>
+                </tr>
+                `
+            )
+            .join("")}
+            
+            </tbody>
+                </table>
+    
+    `;
+}; //////// showList3Fn 함수 //////////
+
+// 바인딩함수 최초호출!
+showList3Fn(list1);
+console.log("객체배열원본:", list1);
+
+// [3-3] 정렬하기 ////////////////
+// 대상: 기준선택박스 / 정렬선택박스
+const cta3 = myFn.qs("#cta3");
+const sel3 = myFn.qs("#sel3");
+
+// 이벤트 설정하기 : 대상 - sel3
+myFn.addEvt(sel3, "change", function () {
+  // (1) 깊은복사 : 배열 순서를 바꾸는 경우엔 효과있음!
+  const newArray = list1.slice(); // -> slice() 방식!
+  // -> slice(시작순번,끝순번) -> 끝순번 앞에서 잘라서 새배열생성
+  // 예)list1.slice(1,3) -> 1,2번째 배열값만 가져옴
+  // -> slice() 아무것도 안쓰면 전체배열을 새로생성함!(부가기능)
+  // const newArray = [...list1]; -> 스프레드 연산자방식!
+  // const newArray = list1;
+
+  // -> 객체데이터를 변경하는 경우엔
+  // 위의 깊은 복사가 아닌 JASON.parse()방식 써야함
+  // newArray[0].idx = 999;
+
+  // (2) 정렬 기준값 읽어오기 ///////
+  let cta = cta3.value;
+  console.log("정렬기준:", cta);
+
+  // (3) 정렬변경하기 /////////////
+  // (3-1) 오름차순 //////
+  if (this.value == "1")
+    newArray.sort((a, b) =>
+      a[cta] == b[cta] ? 0 : a[cta] < b[cta] ? -1 : 1
+    );
+  // (3-2) 내림차순 ///////
+  else if (this.value == "2")
+    newArray.sort((a, b) =>
+      a[cta] == b[cta] ? 0 : a[cta] > b[cta] ? -1 : 1
+    );
+
+  // (4) 화면출력 ////////////
+  showList3Fn(newArray);
+  console.log("객체배열원본:", list1);
+}); //////// change 이벤트함수 /////////

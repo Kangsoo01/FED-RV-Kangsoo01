@@ -42,7 +42,7 @@
         <!-- v-html 디렉티브 : html출력속성 -->
 
         <!-- <div class="logo"> {{logo}} </div> -->
-        <!-- 콧수염은 html태그 받아주지 않는다 -->
+        <!-- 콧수염은 html태그 안받아줘 ㅠ.ㅠ -->
       </section>
 
       <!-- 2. 배너파트 -->
@@ -51,10 +51,16 @@
       </section>
 
       <!-- 3. 상품리스트파트 -->
-      <section class="part gwrap"></section>
+      <section class="part gwrap">
+        <ol class="glist" v-for="(val,idx) in items">
+          <li v-html="makeImg(val.img)"></li>
+          <li>아이템명 : {{val.name}}</li>
+          <li>가격 : ￦{{addCommas(val.price)}}</li>
+        </ol>
+      </section>
     </div>
     <!-- 
-        기본구성 : 3단구성
+        [ 기본구성 : 3단구성 ]
         1. 타이틀 로고 파트
         2. 배너파트
         3. 상품리스트파트

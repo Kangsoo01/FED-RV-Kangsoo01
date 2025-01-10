@@ -137,7 +137,7 @@ img {
 }
 
 .top-area {
-  color: #2ab600;
+  color: #a31212;
 }
 .top-area h1 {
   color: aqua;
@@ -148,7 +148,7 @@ img {
   text-underline-offset: 10px;
   text-shadow: 5px 5px 4px rgba(0, 0, 0, 0.4901960784);
   margin-bottom: 40px;
-  background-color: #b9ffaf;
+  background-color: #e46d0b;
   background-image: url(../images/flower.png);
   background-position: center;
   background-repeat: repeat-x;
@@ -190,15 +190,15 @@ img {
 }
 
 .color2-circle {
-  background-color: green;
+  background-color: red;
 }
 
 .color3-circle {
-  background-color: yellow;
+  background-color: green;
 }
 
 .color4-circle {
-  background-color: red;
+  background-color: purple;
 }
 
 .main-area section {
@@ -232,8 +232,9 @@ img {
   text-decoration: underline;
   text-underline-offset: 10px;
   text-decoration-thickness: 5px;
-  text-decoration-color: #005cc5;
+  text-decoration-color: #204ffc;
   text-align: center;
+  background-color: #ff0;
 }
 .main-area section ul li:first-child,
 .main-area section ol li:first-child,

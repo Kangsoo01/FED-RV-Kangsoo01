@@ -47,10 +47,12 @@ export default function slideFn() {
     // click이벤트를 addEventListener로 설정!
     myFn.addEvt(el, "click", goSlide);
     // 이동버튼 클릭시 인터발지우기함수 호출
-    myFn.addEvt(el, "click", (e) => {
-      e.preventDefault();
-      clearAuto();
-    });
+    myFn.addEvt(el, "click", 
+      (e)=>{
+        // a요소 기본이동기능 막기
+        e.preventDefault();
+        clearAuto();
+      });
   }); //////////// forEach ////////////////
 
   // 광클금지 상태변수
@@ -75,7 +77,7 @@ export default function slideFn() {
     let isRight = true;
     // 만약 this.classList가 undefined가 아니면
     // 클래스 오른쪽 여부를 판단한다!
-    if (this.classList)
+    if (this.classList) 
       isRight = this.classList.contains("ab2");
     // 일반적으로 버튼을 클릭하지 않고 호출하면
     // window객체가 this로 잡히므로 classList객체가 없어서
@@ -133,8 +135,7 @@ export default function slideFn() {
         slide.style.translate = "0";
 
         // [4] 이때 트랜지션 애니메이션 설정
-        slide.style.transition =
-          TIME_ANI + "ms ease-in-out";
+        slide.style.transition = TIME_ANI + "ms ease-in-out";
       }, 0);
     } ///////// else ///////
 
@@ -154,8 +155,7 @@ export default function slideFn() {
     // 일치하는 순번li에 클래스 "on"넣기
     // 이때 오른쪽버튼은 1번, 왼쪽버튼은 0번째 li의
     // data-seq값을 읽어온다!
-    let num =
-      list[isRight ? 1 : 0].getAttribute("data-seq");
+    let num = list[isRight ? 1 : 0].getAttribute("data-seq");
     console.log("num:", num, typeof num);
 
     // 4. 인디케이터 변경하기 : 대상 .indic li

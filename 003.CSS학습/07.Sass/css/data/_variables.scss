@@ -1,10 +1,10 @@
 // 변수 셋팅하기 ///////
 
 // (1) 색상 셋팅
-$mainColor1: #2ab600;
-$mainColor1-2: #b9ffaf;
-$mainColor2: #005cc5;
-$mainColor2-2: #6babff;
+$mainColor1: #a31212;
+$mainColor1-2: #e46d0b;
+$mainColor2: #204ffc;
+$mainColor2-2: #b0ddf2;
 
 // (2) 색상명 셋팅
 $orgRed: red;
@@ -15,12 +15,12 @@ $fontSize1: 40px;
 $fontSize2: 35px;
 $fontSize3: 30px;
 
-// (4) 객체 변수 셋팅하기
+// (4) 객체변수 셋팅하기
 $colors: (
   color1: blue,
-  color2: green,
-  color3: yellow,
-  color4: red
+  color2: red,
+  color3: green,
+  color4: purple,
 );
-// 객체 사용법
-// 변수: (속성:값, 속성:값, 속성:값)
+// 객체변수 사용법
+// 변수 : (속성:값, 속성:값, 속성:값)

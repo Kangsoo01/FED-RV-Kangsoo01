@@ -2,17 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
-    <title>04. 뷰엑스 스토아 - 저장공간 활용하기</title>
-    <link rel="stylesheet" href="./css/vuex_store.css" />
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>05.Vue Router</title>
+    <link rel="stylesheet" href="./css/vue_router.css" />
     <!-- 뷰JS 스탠드얼론 버전 가져오기! -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 
-    <!-- 뷰JS vuex CDN : 뷰JS보다 한단계위 버전 불러와야함! -->
+    <!-- 뷰JS vuex CDN -->
     <script src="https://unpkg.com/vuex@3.0.0"></script>
 
     <!-- 뷰JS 라우터 CDN -->
@@ -23,46 +20,32 @@
 
     <!-- 제이쿼리 UI CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
-
-    <!-- 메인 JS 불러오기 -->
-    <script src="./js/vuex_store.js" type="module"></script>
+    <script src="./js/vue_router.js" type="module"></script>
   </head>
   <body>
-    <!-- 뷰 인스턴스 대상 요소 -->
     <div id="app">
-      <!-- 1. 상단영역 컴포넌트 -->
-      <top-area></top-area>
-      <!-- 2. 메인영역 컴포넌트 -->
-      <main-area></main-area>
-      <!-- 3. 하단영역 컴포넌트 -->
-      <info-area></info-area>
-      <!-- 4. 하단 라우터 파트 -->
-      <p class="router-part asso">
-        <router-link to="/trip" tag="button">
-          세계여행사
-        </router-link>
-        <router-link to="/foods"> 세계먹거리 </router-link>
-        <!-- 
-          [ 라우터 링크 셋팅 ]
-          router-link 라우터 컴포넌트요소의
-          속성 to의 값으로 URL을 지정한다!
-          - 값을 지정할때 '/'슬래쉬로 시작하면
-          현재페이지(Root)를 의미함!
-
-          이렇게 생성된 실제 요소는 기본적으로 a요소임!
-          만약 a요소가 아닌 다른 요소를 쓰고 싶으면
-          tag속성으로 변경함!
-          위에서 첫번째 라우터링크에 tag="button"을
-          사용하여 버튼태그로 출력된다!
-        -->
+      <!-- 1.상단영역 -->
+      <header class="top">
+        <!-- GNB 컴포넌트넣기 -->
+         <gnb-comp v-bind:link-data="linkData"></gnb-comp>
+         <!-- 
+          v-bind:link-data="linkData"
+          부모영역의 data변수인 linkData를
+          자식 컴포넌트 영역으로 프롭스 다운시키기위해
+          새로운 속성인 link-data로 바인딩한다!
+          -> 왜 이름이 이것인가? linkData라는 이름으로
+          소스 그대로 사용키 위해서다! 알겠는가?
+         -->
+      </header>
+      <!-- 2.메인영역 -->
+      <main class="cont">
+        <!-- 라우터 컨텐츠영역 -->
         <router-view></router-view>
-        <!-- 
-            [ 라우터에서 연결한 컴포넌트(템플릿) 보일곳 ]
-            router-view 를 쓴 자리에 컴포넌트 소스코드가
-            나타난다! 컴포넌트를 생성하고 기존 컴포넌트는
-            소멸시킨다!
-          -->
-      </p>
+      </main>
+      <!-- 3.하단영역 -->
+      <footer class="info">
+        주소 : 서울 강남구 테헤란로5길 24, 장연빌딩/ 3~7층
+      </footer>
     </div>
   </body>
 </html>

@@ -3,13 +3,13 @@
 
 /*********** 1. 웹폰트 ***********/
 /* Roboto체 + Noto Sans Kr체 - CDN */
-@import "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap";
+@import 'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap';
 /* 
 font-family: 'Roboto', "Noto Sans KR";
 */
 // 전체 글씨체 적용 ///
-body {
-  font-family: "Roboto", "Noto Sans KR";
+body{
+  font-family: 'Roboto', "Noto Sans KR";
 }
 
 /* 공사중 표시 */
@@ -42,11 +42,7 @@ body {
       translate: 0 -100%;
       padding: $spacing-50;
       color: #fff;
-      background: linear-gradient(
-        to top,
-        #000,
-        transparent
-      );
+      background: linear-gradient(to top, #000, transparent);
 
       // 타이틀
       h3.s-tit {
@@ -124,6 +120,7 @@ body {
     }
   }
 }
+
 
 // 3-2. 미디어쿼리 믹스인 ///////////////
 // 큰것부터 작은것 순으로!!!

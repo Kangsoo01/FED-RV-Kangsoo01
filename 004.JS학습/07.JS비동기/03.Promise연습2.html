@@ -3,17 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <title>JS비동기 : 3. Promise 연습2</title>
     <script>
-        
       function 화면뿌려(이거) {
-        document.querySelector("#show").innerHTML += 이거 + "<br>";
+        document.querySelector("#show").innerHTML +=
+          이거 + "<br>";
       }
 
       ////////// 로드구역 //////////////
       window.addEventListener("load", () => {
-
         // 이미지 정보 데이터 사이트
         // https://picsum.photos/v2/list/
 
@@ -21,16 +23,13 @@
 
         // 약속받기
         myPromise.then(); /////////////// Promise /////////////
-
-
-
-        
       }); /////////////// load //////////////
     </script>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+      @import url("https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap");
 
-      html,body{
+      html,
+      body {
         margin: 0;
         padding: 0;
       }
@@ -39,7 +38,7 @@
         font-family: "Poetsen One", sans-serif;
       }
 
-      .page{
+      .page {
         height: 100vh;
         text-align: center;
         line-height: 100vh;
@@ -51,9 +50,7 @@
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
-
       }
-      
     </style>
   </head>
   <body>

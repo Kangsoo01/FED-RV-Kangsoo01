@@ -36,10 +36,7 @@ export default function valid_member() {
     ******************************************/
       // 이름입력창(id=='mnm')이면 trim()
       // 나머지는 groSpace() 로 처리하여 공백을 제거한다!
-      let cv =
-        cid == "mnm"
-          ? $(this).val().trim()
-          : groSpace($(this).val());
+      let cv = cid == "mnm" ? $(this).val().trim() : groSpace($(this).val());
       // 비?집:놀이동산
 
       // 입력창 공백처리후 재입력하기!
@@ -52,10 +49,7 @@ export default function valid_member() {
     *************************************/
       if (cv == "") {
         //메시지 출력하기
-        $(this)
-          .siblings(".msg")
-          .text("필수입력!")
-          .removeClass("on");
+        $(this).siblings(".msg").text("필수입력!").removeClass("on");
 
         // [ 불통과시 pass값 변경1 ]
         pass = false;
@@ -75,38 +69,58 @@ export default function valid_member() {
             .text("영문자로 시작하는 6~20글자 영문자/숫자")
             .removeClass("on");
 
-          // [ 불통과시 pass값 변경2 ]
+          // [ 불통과시 pass값 변경2-1 ]
           pass = false;
         } //////// if ///////
         else {
-          // 통과시
-          // 1. DB에 조회하여 같은 아이디가 있다면
+          // 통과시 /////////////////////////
+          // 1. 로컬스에 조회하여 같은 아이디가 있다면
           // '이미 사용중인 아이디입니다' 와 같은 메시지출력
-          if(localStorage.getItem('mem-data')){
-            // (1) 로컬쓰 'mem-data'가 있는 경우 파싱한다
-            let temp = JSON.parse(localStorage.getItem('mem-data'));
-            // (2) 파싱된 로컬쓰는 배열이므로 find로 현재 입력한
-            // 아이디가 있는지 찾아본다
+          if (localStorage.getItem("mem-data")) {
+            // (1) 로컬스 'mem-data'가 있는 경우 파싱함
+            let temp = JSON.parse(localStorage.getItem("mem-data"));
+            // (2) 파싱된 로컬스는 배열이므로 find로
+            // 현재 입력한 아이디가 있는지 찾아본다!
             // 배열.find(v=>{if(조건){return true}})
-            // -> true가 리턴되면 해당배열값이 저장된다
-            // 그러나 없으면 값이 그냥 undefined로 남는다
-            let result = temp.find(v=>{
+            // -> true가 리턴되면 해당배열값이 저장됨
+            // 그.러.나... 없으면 값이 그냥 undefined로 남음
+            let result = temp.find((v) => {
+              console.log(v.userid);
               // cv는 입력된 아이디값
-              // 완전히 일치하는 아이디 존재여부를 검사한다
-              if(v.userid == cv) return true;
-            }); // find end
+              // 완전히 일치하는 아이디 존재여부를 검사!
+              if (v.userid == cv) return true;
+            }); /////// find ///////
 
-            console.log('아이디존재결과:', result);
-          }
-          // 2. 만약 DB조회하여 같은 아이다가 없다면
+            console.log("아이디존재결과:", result);
+
+            // (3) 결과처리하기 ////////
+            // 1) result가 undefined가 아닐경우(아이디있음!)
+            if (result) {
+              /// 아이디 입력 불가!!!
+              $(this)
+                .siblings(".msg")
+                .text("이미 사용중인 아이디입니다!")
+                .removeClass("on");
+
+              // [ 불통과시 pass값 변경2-2 ]
+              pass = false;
+            } /// if ///
+            // 2) result가 undefined일 경우(아이디 없음!)
+            else {
+              // 아이디 입력가능!!!
+              // 메시지 띄우기
+              $(this).siblings(".msg").text("멋진 아이디네요~!").addClass("on");
+            } /// else ///
+          } /////////// if ///////////
+
+          // 2. 만약 DB조회하여 같은 아이디가 없다면
           // '멋진 아이디네요~!'와 같은 메시지출력
           // 여기서 우선은 DB조회 못하므로 통과시 메시지로 출력
-          // 메시지 띄우기
-          $(this)
-            .siblings(".msg")
-            .text("멋진 아이디네요~!")
-            .addClass("on");
-          // -> 비동기 통신 Ajax로 서버쪽에 아이디 중복검사필요!
+          else{
+            // 메시지 띄우기
+            $(this).siblings(".msg").text("멋진 아이디네요~!").addClass("on");
+            // -> 비동기 통신 Ajax로 서버쪽에 아이디 중복검사필요!
+          } /////////// else ///////////
         } ////// else //////
       } /////////////// else if : 아이디검사 ///////
 
@@ -139,9 +153,7 @@ export default function valid_member() {
     ****************************************/
       else if (cid == "mpw2") {
         if (cv != $("#mpw").val()) {
-          $(this)
-            .siblings(".msg")
-            .text("비밀번호가 일치하지 않습니다!");
+          $(this).siblings(".msg").text("비밀번호가 일치하지 않습니다!");
 
           // [ 불통과시 pass값 변경4 ]
           pass = false;
@@ -162,9 +174,7 @@ export default function valid_member() {
         let comp =
           eml1.val() +
           "@" +
-          (seleml.val() == "free"
-            ? eml2.val()
-            : seleml.val());
+          (seleml.val() == "free" ? eml2.val() : seleml.val());
         // (비?집:놀이동산)
         // 선택박스값이 'free'인가?
         // 숨긴이메일입력창값:선택값
@@ -208,10 +218,7 @@ export default function valid_member() {
     // 2-1."선택해주세요"일 경우
     if (cv == "init") {
       // 1. 메시지 출력
-      eml1
-        .siblings(".msg")
-        .text("이메일 옵션선택 필수!")
-        .removeClass("on");
+      eml1.siblings(".msg").text("이메일 옵션선택 필수!").removeClass("on");
       // 2. 직접입력창 숨기기
       eml2.fadeOut(300);
     } /////// if : 선택해주세요 ///////
@@ -265,8 +272,7 @@ export default function valid_member() {
     console.log("입력아이디:", cid, "\n입력값:", cv);
 
     // 3. 이메일 뒷주소 셋팅하기
-    let backEml =
-      cid == "email1" ? seleml.val() : eml2.val();
+    let backEml = cid == "email1" ? seleml.val() : eml2.val();
     // 현재 입력아이디가 'email1'이면 선택박스값
     // 아니면 두번째 이메일창에 입력하는 것이므로
     // 두번째 이메일입력값을 뒷주소로 설정함!
@@ -293,10 +299,7 @@ export default function valid_member() {
 
     // 이메일 정규식 검사에 따른 메시지 보이기
     if (vReg(comp, "eml")) {
-      eml1
-        .siblings(".msg")
-        .text("적합한 이메일 형식입니다!")
-        .addClass("on");
+      eml1.siblings(".msg").text("적합한 이메일 형식입니다!").addClass("on");
     } //////// if : 통과시 //////////
     else {
       eml1
@@ -423,10 +426,7 @@ export default function valid_member() {
       temp.push(memData);
 
       // 로컬쓰에 넣기
-      localStorage.setItem(
-        "mem-data",
-        JSON.stringify(temp)
-      );
+      localStorage.setItem("mem-data", JSON.stringify(temp));
 
       alert("회원가입을 축하드립니다! 짝짝짝!");
       // 원래는 POST방식으로 DB에 회원가입정보를
@@ -471,8 +471,7 @@ function vReg(val, cid) {
       // 첫글자 한글자를 더하면 최소 6글자에서 최대 20글자체크!
       break;
     case "mpw": // 비밀번호
-      reg =
-        /^.*(?=^.{5,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+      reg = /^.*(?=^.{5,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
       // 특수문자,문자,숫자포함 형태의 5~15자리
       // (?=^.{5,15}$) 시작부터 끝까지 전체 5~15자릿수 체크!
       // (?=.*\d) 숫자 사용체크!

@@ -140,7 +140,9 @@ export const JoinComp = Vue.component("join-comp", {
   `,
   // 1-2. 데이터 셋업 리턴 메서드 /////
   data() {
-    return {};
+    return {
+      
+    };
   },
   // 컴포넌트 라이프 사이클 메서드 구역 ///
   // mounted 메서드 : DOM로딩후 실행구역!

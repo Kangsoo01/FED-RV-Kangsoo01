@@ -20,4 +20,8 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+img{
+  border: 10px dotted green;
+}
 </style>

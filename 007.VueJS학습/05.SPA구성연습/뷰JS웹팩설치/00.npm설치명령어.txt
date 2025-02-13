@@ -1,5 +1,5 @@
 [ npm 설치명령어 ]
-참고) https://docs.npmjs.com/cli/v9/commanpmnds/npm-install
+참고) https://docs.npmjs.com/cli/v9/commands/npm-install
 
 npm install이란?
 ./node_modules폴더에 패키지를 다운받아 설치하기 위한 명령어

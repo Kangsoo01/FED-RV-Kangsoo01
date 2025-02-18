@@ -6,32 +6,25 @@
     - 리액트에서 HTML을 쉽게 작성할 수 있다.
     - appendChild() 메서드 없이 DOM에 요소넣기가 가능함!
 *****************************************************/
-
-// 출력할 요소 선택하기
+// 출력할 요소 선택하기 ////
 const target = document.querySelectorAll("#root>div");
 
-// 1. jsx를 사용한 것과 jsx를 사용하지 않은 것을 비교
-// (1) jsx를 사용한 예
+// 1. JSX를 사용한 것과 JSX를 사용하지 않을 것을 비교
+// (1) JSX 를 사용한 예
 // (1-1) 넣을 요소 만들기
-const myEle1 = <h1>나는 jsx를 사용하고 있다</h1>;
-
-// (1-2) 리액트 루트 사용하기: createRoot() 메서드 사용
+const myEle1 = <h1>나는 JSX를 사용하고 있어!</h1>;
+// (1-2) 리액트 루트 선택하기 : createRoot() 메서드 사용!
 const root1 = ReactDOM.createRoot(target[0]);
-
-// (1-3) 요소 출력하기
-// 생성된 루트에 render() 메서드를 붙여서 사용하기
+// (1-3) 요소 출력하기 //////
+// 생성된 루트에 render() 메서드를 붙여서 사용!
 root1.render(myEle1);
 
-// (2) jsx를 사용하지 않는 방법
-// -> 넣을 요소를 createElement() 메서드로 생성한다
-const myEle2 = React.createElement(
-  "h1",
-  {},
-  "나는 jsx를 사용하지 않았다"
-);
-// createElement(요소명, {js코드작성});
+// (2) JSX를 사용하지 않는 방법 //////////////
+// -> 넣을 요소를 createElement() 메서드로 생성해야함!
+const myEle2 = React.createElement("h1", {}, "나는 JSX를 쓰지 않아!");
+// createElement(요소명,{JS코드작성},요소내용)
 
-// 두번째 div에 출력하기
+// 두번째 div에 출력하기 /////
 ReactDOM.render(myEle2, target[1]);
 
 /***************************************************** 
@@ -80,19 +73,16 @@ let num1 = 1000,
   num2 = 7;
 
 // 표현식에 사용할 리턴이 있는 함수
-const retFn = () => "만만세다";
+const retFn = () => `만만세다~!!!`;
 
-// 3. jsx 표현식 사용하기
+// 3. JSX 표현식 사용하기 /////////////
 const myEle3 = (
   <div>
-    <h1>리액트는 {num1 * num2}번 사용해도 좋다</h1>
-    <h1>
-      리액트는 {num1 == 1000 ? "계속" : "한번만"}번 사용해도
-      좋다
-    </h1>
+    <h1>리액트는 {num1 * num2}번 사용해도 좋다!</h1>
+    <h1>리액트는 {num1 == 1000 ? "계속" : "한번만"} 사용해도 좋다!</h1>
+    <h1>리액트는 {retFn()}</h1>
   </div>
 );
-
 // 세번째 div에 출력하기 ////
 ReactDOM.render(myEle3, target[2]);
 
@@ -150,8 +140,7 @@ const myEle5 = (
     <ul>
       {mydata.map((v) => (
         <li>
-          {v.name} : {v.movie} :
-          {v.idx == 3 ? "예뻐!♥" : "멋쪄!★"}
+          {v.name} : {v.movie} :{v.idx == 3 ? "예뻐!♥" : "멋쪄!★"}
         </li>
       ))}
     </ul>
@@ -167,12 +156,10 @@ ReactDOM.render(myEle5, target[4]);
         <input type="text"> -> <input type="text" />
 *****************************************************/
 
-// 6. 홀로 태그 출력해 보기
-const myEle6 = (
-  <input type="text" value="홀로태그는 스스로 닫아라" />
-);
+// 6. 홀로 태그 출력해보기 ///////////
+const myEle6 = <input type="text" value="홀로태그는 스스로 닫아라!" />;
 
-// 여섯번째 div에 출력하기러나이
+// 여섯번째 div에 출력하기 ////
 ReactDOM.render(myEle6, target[5]);
 
 /***************************************************** 
@@ -183,18 +170,21 @@ ReactDOM.render(myEle6, target[5]);
 
     -> 리액트 버전 16부터 class라고 써도 자동 변환하여
     클래스를 표시해 주지만 경고메시지가 뜬다!
+
+    참고) label 태그의 for속성도 for를 못씀!
+        대신 htmlFor라는 변형속성을 사용한다!
 *****************************************************/
 
-// 7. 속성으로 클래스 셋팅하여 사용하기
+// 7. 속성으로 클래스 셋팅하여 사용하기 //////
 const myEle7 = (
-  <h1 className="myclass">
-    className 속성으로 클래스를 셋팅한다
-    <br />
-    <label htmlFor="mytxt">htmlfor 속성으로 라벨 요소의 for 속성을 셋팅한다</label>
-    <br />
-    <input type="text" name="mytxt" id="mytxt" />
-  </h1>
+    <h1 className="myclass">
+        className 속성으로 클래스를 셋팅한다!
+        <br />
+        <label htmlFor="mytxt">htmlFor 속성으로 라벨요소의 for속성을 셋팅한다!</label>
+        <input type="text" name="mytxt" id="mytxt" />
+    </h1>
 );
+
 
 // 일곱번째 div에 출력하기 ////
 ReactDOM.render(myEle7, target[6]);
@@ -209,47 +199,49 @@ ReactDOM.render(myEle7, target[6]);
     아니면 내부에서 삼항연산자를 사용할 수 있다!
 *****************************************************/
 
-// 8. jsx에서 if문 사용하여 출력하기
-const x = 20000;
+// 8. JSX에서 if문 사용하여 출력하기 //////
+const x = 9000;
 
-// if문 분기하여 결과 리턴하는 함수
+// if문 분기하여 결과 리턴하는 함수 ///
 const showResult = money => {
     let txt = "";
 
-    if (money < 10000){
-        txt = '잔액이 부족해서 구매할 수 없습니다';
+    if(money < 10000){
+        txt = "돈이 부족해서 살 수 없어!";
     }
-    else {
-        txt = '잔액이 충분하여 구매할 수 있습니다';
+    else{
+        txt = "이 돈으로 충분히 살 수 있어!";
     }
-
     // 결과값 리턴
     return txt;
-}
+}; ///// showResult 함수 ////
 
-// 출력변수
+// 출력변수 ////
 const myEle8 = (
     <div>
-        <h1>현재 내가 가진 돈은 {x}원 입니다</h1>
-        <h1>제가 만원짜리 립밤을 구매 할 수 있을까요?</h1>
+        <h1>현재 내가 가진 돈은 {x}원!</h1>
+        <h1>만원짜리 립밤을 살 수 있을까?</h1>
         <h1>{showResult(x)}</h1>
-    </div>  
+    </div>
 );
+
 
 // 여덟번째 div에 출력하기 ////
 ReactDOM.render(myEle8, target[7]);
 
-// 9. jsx의 표현식에 
-let time = 9;
+
+// 9. JSX의 표현식에 삼항연산자 사용하여 출력하기 ///
+let time = 8;
 
 const myEle9 = (
     <React.Fragment>
-        <h1>지금 몇시지? {time}시 입니다</h1>
+        <h1>지금 몇시지? {time}시야!</h1>
         <h1>
-            {time>9?"지금 집에 들어오세요":"더 놀다 오세요"}
+            {time>9?"지금 집에 들어와!":"더 놀다와!"}
         </h1>
     </React.Fragment>
-)
+);
+ 
 
 // 아홉번째 div에 출력하기 ////
 ReactDOM.render(myEle9, target[8]);

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>02.HTML출력</title>
+    <title>05.리액트 Props</title>
 
     <!-- 1.리액트 기본 라이브러리 -->
     <script
@@ -15,31 +15,34 @@
       src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"
       crossorigin
     ></script>
+    
     <!-- 3.리액트 바벨 라이브러리 -->
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
-    <!-- 나의 JSX -->
-    <script src="./js/02.HTML출력.jsx" type="text/babel"></script>
-    <!-- 확장자가 .js여도 잘됨! (파일이 있다면) 
-        <script src="./js/02.HTML출력.js" type="text/babel"></script> -->
+    <!-- 4. 모듈화 JS 호출 -->
+    <!-- 나의 함수 -->
+    <script
+      src="./js/my_function.js"
+      data-plugins="transform-es2015-modules-umd"
+      type="text/babel"
+    ></script>
 
-    <style>
-      h1 {
-        text-align: center;
-      }
-      table {
-        font-size: 24px;
-        margin: 0 auto;
-        border: 4px double blue;
-        padding: 15px;
-      }
-      table td{ 
-        padding: 5px 15px;
-      }
-    </style>
+    <!-- 자동차정보 JSX  -->
+    <script
+      src="./js/car_data.jsx"
+      data-plugins="transform-es2015-modules-umd"
+      type="text/babel"
+    ></script>
+
+    <!-- 리액트 Props JSX 호출 -->
+    <script
+      src="./js/05.Props.jsx"
+      data-plugins="transform-es2015-modules-umd"
+      type="text/babel"
+    ></script>
   </head>
   <body>
-    <div id="root"></div>
-
+    <!-- 리액트 출력요소 -->
+    <div id="root1"></div>
   </body>
 </html>

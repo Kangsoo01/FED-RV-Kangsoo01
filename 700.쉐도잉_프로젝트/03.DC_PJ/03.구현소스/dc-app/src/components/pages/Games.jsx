@@ -1,11 +1,13 @@
-import React from 'react';
+import React from "react";
+import Banner from "../modules/Banner";
 
 function Games(props) {
-    return (
-        <div>
-            <h1>게임 페이지</h1>
-        </div>
-    );
+  return (
+    <>
+      {/* 1. 배너 컴포넌트 */}
+      <Banner catName="GAMES" />
+    </>
+  );
 }
 
 export default Games;

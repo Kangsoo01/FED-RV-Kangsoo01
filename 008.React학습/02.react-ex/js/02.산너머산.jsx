@@ -89,43 +89,67 @@ function 큰집() {
 } ////////////// 큰집 ///////////////////
 
 ///// 서브컴포넌트 ////////
-function 할아버지({ mtName, mtBoxCss, mtInfoBoxCss, setMtName }) {
+function 할아버지({
+  mtName,
+  mtBoxCss,
+  mtInfoBoxCss,
+  setMtName,
+}) {
   // 코드 리턴구역 ///////
   return (
     <아버지
       mtName={mtName}
       mtBoxCss={mtBoxCss}
       mtInfoBoxCss={mtInfoBoxCss}
+      setMtName={setMtName}
     />
   );
 } ////////////// 할아버지 ///////////////////
-function 아버지({ mtName, mtBoxCss, mtInfoBoxCss }) {
+function 아버지({
+  mtName,
+  mtBoxCss,
+  mtInfoBoxCss,
+  setMtName,
+}) {
   // 코드 리턴구역 ///////
   return (
     <아들
       mtName={mtName}
       mtBoxCss={mtBoxCss}
       mtInfoBoxCss={mtInfoBoxCss}
+      setMtName={setMtName}
     />
   );
 } ////////////// 아버지 ///////////////////
-function 아들({ mtName, mtBoxCss, mtInfoBoxCss }) {
+function 아들({
+  mtName,
+  mtBoxCss,
+  mtInfoBoxCss,
+  setMtName,
+}) {
   // 코드 리턴구역 ///////
   return (
     <손녀
       mtName={mtName}
       mtBoxCss={mtBoxCss}
       mtInfoBoxCss={mtInfoBoxCss}
+      setMtName={setMtName}
     />
   );
 } ////////////// 아들 ///////////////////
-function 손녀({ mtName, mtBoxCss, mtInfoBoxCss }) {
+function 손녀({
+  mtName,
+  mtBoxCss,
+  mtInfoBoxCss,
+  setMtName,
+}) {
   // 코드 리턴구역 ///////
   return (
     <이야기
       mtName={mtName}
       mtBoxCss={mtBoxCss}
       mtInfoBoxCss={mtInfoBoxCss}
+      setMtName={setMtName}
     />
   );
 } ////////////// 손녀 ///////////////////

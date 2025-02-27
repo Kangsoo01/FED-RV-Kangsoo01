@@ -2,13 +2,13 @@
 import React from "react";
 
 // 배너 데이터 불러오기 ///
-import { banData } from "../../js/data/banner.js";
+import { banData } from "../../js/data/banner";
 
 // 배너용 CSS 불러오기 ///
 import "../../css/modules/banner.scss";
 
 // 배너 슬라이드 기능 함수 불러오기 ///
-import SlideFn from "../../js/function/go_slide.js";
+import SlideFn from "../../js/func/go_slide";
 
 function Banner({ catName }) {
   // catName - 배너 데이터 카테고리 이름
@@ -33,7 +33,7 @@ function Banner({ catName }) {
                   <h2>{v.tit1}</h2>
                   <p>{v.tit2}</p>
                   {
-                    // 버튼 데이터가 없으면 출력 X
+                    // 버튼 데이터가 없으면 버튼출력안함
                     v.btn !== "" && <button>{v.btn}</button>
                   }
                 </section>
@@ -47,16 +47,10 @@ function Banner({ catName }) {
           selData.length > 1 && (
             <>
               {/* 양쪽이동버튼 */}
-              <button
-                className="abtn lb"
-                onClick={slideFn.goSlide}
-              >
+              <button className="abtn lb" onClick={slideFn.goSlide}>
                 ＜
               </button>
-              <button
-                className="abtn rb"
-                onClick={slideFn.goSlide}
-              >
+              <button className="abtn rb" onClick={slideFn.goSlide}>
                 ＞
               </button>
               {/* 블릿 표시자 */}
@@ -65,10 +59,7 @@ function Banner({ catName }) {
                   // 슬라이드 개수만큼 li블릿 만들기
                   // 단, 첫번째 li에만 클래스'on'넣기
                   selData.map((v, i) => (
-                    <li
-                      key={i}
-                      className={i === 0 ? "on" : ""}
-                    ></li>
+                    <li key={i} className={i === 0 ? "on" : ""}></li>
                   ))
                 }
               </ol>

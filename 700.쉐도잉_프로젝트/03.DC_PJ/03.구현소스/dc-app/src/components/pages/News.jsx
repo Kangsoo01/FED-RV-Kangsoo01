@@ -1,10 +1,12 @@
 import React from 'react';
+import Banner from '../modules/Banner';
 
 function News(props) {
     return (
-        <div>
-            <h1>뉴스 페이지</h1>
-        </div>
+        <>
+          {/* 1. 배너 컴포넌트 */}
+          <Banner catName="NEWS" />
+        </>
     );
 }
 

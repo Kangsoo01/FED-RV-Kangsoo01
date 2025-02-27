@@ -4,7 +4,7 @@
 import { bmData } from "../../js/data/bmenu";
 
 // 하단영역 CSS 불러오기 ////
-import "../../css/common/footer_area.scss";
+import '../../css/common/footer_area.scss';
 import Logo from "../modules/Logo";
 
 export default function FooterArea() {
@@ -19,17 +19,18 @@ export default function FooterArea() {
         <li>
           {/* 하단링크박스 */}
           <ol className="bmenu">
-            {bmData.map((v, i) => (
-              <li key={i}>
-                <a
-                  href={v.link}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {v.txt.toUpperCase()}
-                </a>
-              </li>
-            ))}
+            {
+                bmData.map((v,i)=>
+                <li key={i}>
+                    <a 
+                        href={v.link} 
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        {v.txt.toUpperCase()}
+                    </a>
+                </li>)
+            }
           </ol>
         </li>
         <li>© & ™ DC. ALL RIGHTS RESERVED</li>

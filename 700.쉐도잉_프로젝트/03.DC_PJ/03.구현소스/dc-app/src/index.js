@@ -18,6 +18,7 @@ import News from "./components/pages/News";
 import Video from "./components/pages/Video";
 import Board from "./components/pages/Board";
 import CatDetail from "./components/pages/CatDetail";
+import SearchPage from "./components/pages/SearchPage";
 // import SwiperApp from './components/plugin/SwiperApp';
 
 /********************************************* 
@@ -78,6 +79,7 @@ export default function MainComponent() {
           <Route path="video" element={<Video catName="VIDEO" />} />
           <Route path="board" element={<Board />} />
           <Route path="detail" element={<CatDetail />} />
+          <Route path="search" element={<SearchPage />} />
           {/* <Route index element={<SwiperApp />}  /> */}
         </Route>
       </Routes>
@@ -99,7 +101,7 @@ const ScrollTop = () => {
     // 스크롤 상단이동코드 넣기
     window.scrollTo(0, 0);
     // 변경된 라우터 경로 확인
-    console.log("라우터경로:", pathname);
+    // console.log("라우터경로:", pathname);
 
     // 의존성을 라우터 경로로 등록함!
   }, [pathname]);

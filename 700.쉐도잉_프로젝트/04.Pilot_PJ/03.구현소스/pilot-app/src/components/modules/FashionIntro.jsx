@@ -59,10 +59,10 @@ export function FashionIntro({ cat, subcat }) {
           <li className="txtc">
             {cat != "style" && (
               <h2>
-                <a href="#">
+                <Link to="/fashion" state={{catName:cat}}>
                   {selData.tit[0]} <br />
                   {selData.tit[1]}
-                </a>
+                  </Link>
               </h2>
             )}
             {cat == "style" && (

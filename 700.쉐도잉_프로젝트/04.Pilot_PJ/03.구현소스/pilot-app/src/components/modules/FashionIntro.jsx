@@ -9,6 +9,7 @@ import { fsData } from "../../js/data/fashion_intro";
 
 // 패션 인트로 CSS 불러오기
 import "../../css/fashion_intro.scss";
+import { Link } from "react-router-dom";
 
 export function FashionIntro({ cat, subcat }) {
   // cat - 카테고리 분류명
@@ -59,25 +60,25 @@ export function FashionIntro({ cat, subcat }) {
           <li className="txtc">
             {cat != "style" && (
               <h2>
-                <Link to="/fashion" state={{catName:cat}}>
+                <Link to="/fashion" state={{ catName: cat }}>
                   {selData.tit[0]} <br />
                   {selData.tit[1]}
-                  </Link>
+                </Link>
               </h2>
             )}
             {cat == "style" && (
               <>
                 <h2 className="tm">
-                  <a href="#">
+                  <Link to="/fashion" state={{ catName: cat }}>
                     {selData.tit[0][0]} <br />
                     {selData.tit[0][1]}
-                  </a>
+                  </Link>
                 </h2>
                 <h2 className="tw">
-                  <a href="#">
+                  <Link to="/fashion" state={{ catName: cat }}>
                     {selData.tit[1][0]} <br />
                     {selData.tit[1][1]}
-                  </a>
+                  </Link>
                 </h2>
               </>
             )}

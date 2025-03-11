@@ -2,10 +2,13 @@
 
 // GNB 데이터 가져오기 ////
 import { gnbData } from "../../js/data/gnb";
+import { memo } from 'react';
+import { TotalMenu } from "../modules/TotalMenu";
 
 // 전체메뉴 컴포넌트 불러오기
 
-export default function TopArea({catName}) {
+export const TopArea = memo(({catName}) => {
+  console.log("상단영역 랜더링")
 
    /// GNB메뉴 리스트 만들기 함수
    const makeList = (dataName) => {
@@ -43,8 +46,9 @@ export default function TopArea({catName}) {
             <span></span> <span></span> <span></span>
           </div>
           {/* 전체메뉴 컴포넌트 */}
+          <TotalMenu />
         </header>
       </div>
     </>
   );
-} //////////// TopArea 컴포넌트 ///////////
+}) //////////// TopArea 컴포넌트 ///////////

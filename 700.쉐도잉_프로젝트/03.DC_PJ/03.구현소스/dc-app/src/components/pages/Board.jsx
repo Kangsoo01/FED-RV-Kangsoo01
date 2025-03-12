@@ -10,6 +10,7 @@ import "../../css/pages/board.scss";
 import { initBoardData } from "../../js/func/board_fn";
 import List from "../modules/board/List";
 import Read from "../modules/board/Read";
+import Write from "../modules/board/Write";
 
 function Board() {
   // [ 후크 상태관리 변수구역 ] ///////////////
@@ -32,8 +33,12 @@ function Board() {
   // 로컬스 데이터 변수할당하기!
   const baseData = JSON.parse(localStorage.getItem("board-data"));
 
-  // 데이터 정렬 : 기준-> 최신날짜로 내림차순
-  baseData.sort((a, b) => (a.date > b.date ? -1 : a.date < b.date ? 1 : 0));
+  // [ 데이터 정렬 ] /////////////
+  baseData
+  // ((기준1))-> 최신날짜로 내림차순
+  .sort((a, b) => (a.date > b.date ? -1 : a.date < b.date ? 1 : 0))
+  // ((기준2))-> idx로 내림차순
+  .sort((a, b) => (a.idx > b.idx ? -1 : a.idx < b.idx ? 1 : 0));
 
   // 일부 데이터만 선택하기
   // -> 정렬후 상위 10개만 선택
@@ -63,6 +68,15 @@ function Board() {
           <Read
             setMode={setMode} // 모드 상태변수 setter
             selRecord={selRecord} // 선택데이터 참조변수
+          />
+        )
+      }
+
+      {
+        // [3] 쓰기모드 출력하기 : mode -> "W" ///
+        mode === "W" && (
+          <Write
+            setMode={setMode} // 모드 상태변수 setter
           />
         )
       }

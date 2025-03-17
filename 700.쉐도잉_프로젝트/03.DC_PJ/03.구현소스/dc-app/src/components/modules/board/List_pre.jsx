@@ -13,6 +13,12 @@ function List({
   totalCount, // 전체 개수 참조변수
   pgPgSize, // 페이징의 페이징 개수
   pgPgNum, // 페이징의 페이징 번호
+  searchFn, // 검색함수,
+  keyword,
+  order,
+  setOrder,
+  sortCta,
+  setSortCta,
 }) {
   // 전역 컨텍스트 API 사용하기!!
   const myCon = useContext(dCon);
@@ -198,18 +204,55 @@ function List({
     <main className="cont">
       <h1 className="tit">OPINION</h1>
       <div className="selbx">
-        <select name="cta" id="cta" className="cta">
+        <select name="cta" id="cta" className="cta" defaultValue={keyword.cta}>
           <option value="tit">Title</option>
           <option value="cont">Contents</option>
           <option value="unm">Writer</option>
         </select>
-        <select name="sel" id="sel" className="sel">
-          <option value="0">Descending</option>
-          <option value="1">Ascending</option>
+        <select
+          name="sel"
+          id="sel"
+          className="sel"
+          value={order}
+          onChange={(e) => {
+            setOrder(order * -1);
+            e.target.value = order;
+            setPageNum(1);
+            pgPgNum.currnt = 1;
+          }}
+        >
+          <option value="1">Descending</option>
+          <option value="-1">Ascending</option>
         </select>
-        <input id="stxt" type="text" maxLength="50" />
-        <button className="sbtn">Search</button>
-        <select name="sort_cta" id="sort_cta" className="sort_cta">
+        <input
+          id="stxt"
+          type="text"
+          maxLength="50"
+          defaultValue={keyword.kw}
+          onKeyUp={(e) => {
+            if (e.key === "Enter") e.target.nextElementSibling.click();
+
+            setPageNum(1);
+            pgPgNum.currnt = 1;
+          }}
+        />
+        <button className="sbtn" onClick={searchFn}>
+          Search
+        </button>
+        <select
+          name="sort_cta"
+          id="sort_cta"
+          className="sort_cta"
+          style={{ float: "right", translate: "0 5px" }}
+          value={sortCta}
+          onChange={(e) => {
+            setSortCta(e.target.value);
+            e.target.value = sortCta;
+
+            setPageNum(1);
+            pgPgNum.currnt = 1;
+          }}
+        >
           <option value="idx">Recent</option>
           <option value="tit">Title</option>
         </select>

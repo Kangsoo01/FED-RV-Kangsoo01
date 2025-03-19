@@ -36,7 +36,7 @@ function Board() {
     cta: "tit",
     kw: "",
   });
-  console.log("{cta:기준값,kw:검색어}", keyword);
+// console.log("{cta:기준값,kw:검색어}", keyword);
   // cta - creteria / kw -  keyword
 
   // [4] 정렬 기준값 상태변수 : 값(asc(-1) / desc(1))
@@ -57,7 +57,7 @@ function Board() {
   // [2] 전체 레코드 개수(배열데이터 개수)
   // -> 매번 계산하지 않도록 참조변수로 생성한다!
   const totalCount = useRef(baseData.length);
-  console.log("전체개수:", totalCount);
+// console.log("전체개수:", totalCount);
 
   // [3] 페이징의 페이징 번호
   const pgPgNum = useRef(1);
@@ -65,6 +65,18 @@ function Board() {
   // 페이징의 페이징번호가 변경될때 어차피
   // 상태변수인 페이징번호가 업데이트되어서
   // 전체 리랜더링된다! 따라서 이것은 값만 유지하면 됨!
+
+  // [ 변수 초기화 처리함수 ] //////
+  const initVariables = () => {
+    setMode("L");
+    setPageNum(1);
+    setKeyword({ cta: "tit", kw: "" });
+    setOrder(1);
+    setSortCta("date");
+    // selRecord.current = null;
+    // totalCount.current = baseData.length;
+    pgPgNum.current = 1;
+  }; ////////// initVariables 함수 //////
 
   // [ ★★ 일반변수 셋팅구역 ★★ ] ///////////
   // ->>> 매번 같은 값을 유지해야하는 변수들
@@ -112,6 +124,7 @@ function Board() {
             (a, b) =>
               a.idx > b.idx ? -1 * order : a.idx < b.idx ? 1 * order : 0
       )
+      .sort()
       // 여기부터 검색어로 리스트 만들기
       .filter((v) => {
         if (
@@ -140,7 +153,7 @@ function Board() {
   // 전체 데이터 개수 업데이트 하기 /////
   totalCount.current = finalData.length;
 
-  console.log("slice를 위한 시작값/끝값", initNum, "/", limitNum);
+// console.log("slice를 위한 시작값/끝값", initNum, "/", limitNum);
 
   // [ slice() 배열 메서드를 이용한 부분값 가져오기 ]
   const selData = finalData.slice(initNum, limitNum);
@@ -165,15 +178,18 @@ function Board() {
   //   selData.push(baseData[i]);
   // } //////////// for : 선택데이터 담기 ///////////
 
-  /************************************** 
+  /********************************************* 
     함수명 : searchFn
     기능 : 검색어 넣고 검색을 실행하도록
       검색어 상태변수값을 업데이트 한다!
-  **************************************/
+    작동조건 : 검색버튼 클릭시(검색어입력후 엔터)
+  *********************************************/
   const searchFn = () => {
+    // 검색어 조건과 검색문자열을 담은 상태변수를 업데이트함!
+    // -> 이것을 변경하면 전체가 변경되어 리랜더링된다!
     setKeyword({
-      cta: document.querySelector("#cta").value,
-      kw: document.querySelector("#stxt").value,
+      cta: $("#cta").val(),
+      kw: $("#stxt").val(),
     });
   }; /////// searchFn 함수 ////////////////////
 
@@ -208,6 +224,7 @@ function Board() {
             setOrder={setOrder} // 정렬 상태변수 setter
             sortCta={sortCta} // 정렬기준 상태변수 getter
             setSortCta={setSortCta} // 정렬기준 상태변수 setter
+            initVariables={initVariables} // 변수초기화함수
           />
         )
       }
@@ -230,6 +247,7 @@ function Board() {
             totalCount={totalCount} // 전체 개수 참조변수
             setPageNum={setPageNum} // 리스트 페이지번호 setter
             pgPgNum={pgPgNum} // 페이징의 페이징 번호
+            initVariables={initVariables} // 변수초기화함수
           />
         )
       }

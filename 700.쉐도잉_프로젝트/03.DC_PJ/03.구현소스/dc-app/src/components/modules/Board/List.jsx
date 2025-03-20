@@ -36,9 +36,7 @@ function List({
 
   // 1. 페이징 개수 : 전체 레코드수 / 페이지당 개수
   // -> 나머지가 있으면 페이지를 하나더해준다!
-  let pagingCount = Math.floor(
-    totalCount.current / unitSize
-  );
+  let pagingCount = Math.floor(totalCount.current / unitSize);
   // console.log("전체 레코드수 / 페이지당 개수:", pagingCount);
   // console.log("나머지연산:", totalCount.current % unitSize);
 
@@ -92,7 +90,8 @@ function List({
           <a
             href="#"
             title="First Paging Section"
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               // (1) 페이징의 페이징번호 첫페이징번호로 변경!
               pgPgNum.current = 1;
               // (2) 페이지 번호도 첫 페이지번호로 변경!
@@ -105,7 +104,8 @@ function List({
           <a
             href="#"
             title="Previous Paging Section"
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               // (1) 페이징의 페이징번호 감소
               pgPgNum.current--;
               // (2) 이전 페이징의 페이징 첫 페이지번호로
@@ -139,7 +139,8 @@ function List({
             ) : (
               <a
                 href="#"
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault();
                   // 페이지번호 업데이트하기
                   setPageNum(i + 1);
                 }}
@@ -151,9 +152,7 @@ function List({
           {
             // 마지막 번호 뒤에 바(|)는 출력안되게함!
             // 동시에 페이징 마지막 번호가 아닐때만 출력!
-            i < limitNum - 1 &&
-              i + 1 !== pagingCount &&
-              " | "
+            i < limitNum - 1 && i + 1 !== pagingCount && " | "
           }
         </Fragment>
       );
@@ -168,7 +167,8 @@ function List({
           <a
             href="#"
             title="Next Paging Section"
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               // (1) 페이징의 페이징번호 증가
               pgPgNum.current++;
               // (2) 다음 페이징의 페이징 첫 페이지번호로
@@ -184,7 +184,8 @@ function List({
           <a
             href="#"
             title="Last Paging Section"
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               // (1) 페이징의 페이징번호 맨끝번호로 변경!
               pgPgNum.current = pgPgLimit;
               // (2) 다음 페이징의 페이징 첫 페이지번호로
@@ -256,8 +257,7 @@ function List({
           defaultValue={keyword.kw}
           onKeyUp={(e) => {
             // 엔터를 친 경우 ///
-            if (e.key === "Enter")
-              e.target.nextElementSibling.click();
+            if (e.key === "Enter") e.target.nextElementSibling.click();
             // 다음 형제요소인 버튼 클릭이벤트 발생!
 
             // 페이지, 페이징 모두 초기화

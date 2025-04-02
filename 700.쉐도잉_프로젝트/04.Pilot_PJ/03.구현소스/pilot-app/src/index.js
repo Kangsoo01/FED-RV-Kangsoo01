@@ -8,6 +8,7 @@ import "./css/index.scss";
 import Layout from './components/layout/Layout';
 import Main from './components/pages/Main';
 import Fashion from './components/pages/Fashion';
+import GList from './components/pages/GList';
 
 
 /// 전체 PJ 공통 CSS 최상위 JS에서 불러오기 ///
@@ -20,14 +21,18 @@ export default function MainComponent(){
 
     // 리턴 코드구역 ////////////
     return (
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
             <Routes>
                 {/* 최상위 Route는 쌍으로 태그를 만든다!
                 슬래쉬는 루트를 말하고 레이아웃 컴포넌트 불러옴 */}
                 <Route path="/" element={<Layout />}>
                 {/* 하위중 첫페이지는 index라고 속성씀! */}
+                    {/* 1. 메인페이지 */}
                     <Route index element={<Main  />}  />
+                    {/* 2. 패션페이지(남성/여성/스타일) */}
                     <Route path='fashion' element={<Fashion  />}  />
+                    {/* 3. 상품리스트페이지 */}
+                    <Route path='glist' element={<GList  />}  />
                 </Route>
             </Routes>
         </BrowserRouter>

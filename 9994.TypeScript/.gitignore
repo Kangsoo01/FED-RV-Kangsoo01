@@ -1,13 +1,10 @@
 # See https://help.github.com/en/articles/ignoring-files#create-a-gitignore-file
-# for more information
 
 # dependencies
 /node_modules
-/public/lib
 
 # testing
 /coverage
-__snapshots__
 
 # production
 /build
@@ -23,41 +20,3 @@ __snapshots__
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# cache
-npm-cache/
-yarn-cache/
-
-# editor
-*.sublime-project
-*.sublime-workspace
-
-# IDEs
-.idea
-.vscode
-
-# misc
-/.cache
-/temp
-/vercel
-.env.local
-.env.development.local
-.env.production.local
-.env.test.local
-
-# cache
-npm-cache/
-yarn-cache/
-
-# editor
-*.sublime-project
-*.sublime-workspace
-
-# IDEs
-.idea
-.vscode
-
-# misc
-/.cache
-/temp
-/vercel

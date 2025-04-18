@@ -1,51 +1,41 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-// 웹팩 설정을 exporting 함.
+// 1. 웹팩 설정파일
 module.exports = {
-  // 웹팩의 시작점(Entry point) 설정. (src/index.ts)
+  // 2. 웹팩이 읽어올 파일(엔트리 포인트)
   entry: "./src/index.ts",
-
-  // 웹팩이 파일을 처리하는 방법 정의.
+  // 3. 웹팩이 읽어올 파일에 적용할 로더
   module: {
     rules: [
       {
-        // .ts 파일을 ts-loader를 사용하여 처리.
+        // 4. 타입스크립트 파일을 ts-loader를 사용하여 컴파일
         test: /\.ts$/,
         use: "ts-loader",
         exclude: /node_modules/,
       },
     ],
   },
-
-  // 웹팩이 모듈을 찾는 방법 정의.
+  // 5. 웹팩이 읽어올 파일의 확장자
   resolve: {
-    // 웹팩이 모듈을 찾을 때, .ts, .js 확장자를 사용.
     extensions: [".ts", ".js"],
   },
-
-  // 웹팩이 출력하는 방법 정의.
+  // 6. 웹팩이 컴파일한 파일을 저장할 경로
   output: {
-    // 출력할 파일 이름.
     filename: "bundle.js",
-    // 출력할 파일 경로.
     path: path.resolve(__dirname, "dist"),
-    // 웹팩이 출력할 때, 이전 번들 결과를 삭제.
     clean: true,
   },
-
-  // 웹팩 플러그인 설정.
+  // 7. 웹팩의 플러그인
   plugins: [
-    // HTML 파일을 생성하는 플러그인.
     new HtmlWebpackPlugin({
-      // HTML 템플릿 파일 경로.
+      // 8. 웹팩이 생성할 HTML 파일의 템플릿
       template: "./public/index.html",
     }),
   ],
-
-  // 웹팩의 모드 설정. (development, production, none)
+  // 9. 웹팩의 모드(production, development)
   mode: "development",
-
-  // 웹팩이 소스맵을 생성하는 방법 정의.
+  // 10. 웹팩의 디버깅 도구
   devtool: "source-map",
 };
+

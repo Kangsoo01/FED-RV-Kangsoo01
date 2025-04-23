@@ -79,7 +79,8 @@ const UserFormList = () => {
   useEffect(() => {
     // 사용자 정보를 DB에서 가져오는 함수 호출
     getUserList();
-  }, [userList]);
+  }, []);
+  // }, [userList]); -> 성능상 하자가 있음
 
   // 리턴 코드구역 //////////////
   return (

@@ -2,6 +2,7 @@
 
 import React, { useContext, useEffect, useState } from "react";
 
+
 // 모듈 CSS 불러오기 : member.scss와 동일
 import "../../css/pages/member.scss";
 
@@ -12,7 +13,7 @@ import { dCon } from "../modules/dCon";
 function Login() {
   // 컨텍스트 API 사용하기 /////
   const myCon = useContext(dCon);
-  console.log("로그인페이지 dCon:", myCon);
+  console.log('로그인페이지 dCon:',myCon);
 
   // [ 상태관리변수 ] /////////////
   // [1] 입력요소 상태변수
@@ -47,7 +48,7 @@ function Login() {
 
   // [ 유효성 검사 함수 ] ///////
   // 1. 아이디 유효성 검사 ////////////
-  const changeUserId = (e: any) => {
+  const changeUserId = (e:any) => {
     // 입력된 값읽기
     let val = e.target.value;
 
@@ -68,7 +69,7 @@ function Login() {
   }; ////////// changeUserId 함수 ////////////
 
   // 2. 비밀번호 유효성 검사 ///////////
-  const changePwd = (e: any) => {
+  const changePwd = (e:any) => {
     // 입력된 값읽기
     let val = e.target.value;
 
@@ -101,7 +102,7 @@ function Login() {
   }; /////////// totalValid 함수 ///////////
 
   // [ 서브밋 기능함수 ] ////////////////
-  const onSubmit = (e: any) => {
+  const onSubmit = (e:any) => {
     // 1. 기본서브밋 막기
     e.preventDefault();
 
@@ -117,14 +118,20 @@ function Login() {
       initData();
 
       // 2. 로컬스 변수할당
-      let memData: string = localStorage.getItem("mem-data") || "[]";
+      let memData: string = 
+      localStorage.getItem("mem-data")??"[]";
+      // ??는 널병합 연산자임! 기본값을 제공함
+      // localStorage.getItem("mem-data")||"[]";
 
-      // 3. 로컬스 객체변환
-      memData = JSON.parse(memData);
-      console.log(memData);
+      // 3. 로컬스 객체변환 -> find함수 처리시 아래서 변환
+      // memData = JSON.parse(memData); -> 여기서 처리안함
+      // console.log(memData);
 
       // 4. 아이디 존재 여부 검사하기
-      let result = (JSON.parse(memData) as Array<any>).find((v: any) => {
+      // let result = memData.find((v) => {
+      let result = 
+      (JSON.parse(memData) as Array<any>)      
+      .find((v:any) => {
         if (v.uid === userId) return true;
       }); /////// find ///////
       console.log("결과:", result);
@@ -151,7 +158,8 @@ function Login() {
           // -> 서버 세션을 대신하여 사용함!
           // -> 결과가 result에 배열로 담김
           // -> 넣을때는 JSON.stringify()
-          sessionStorage.setItem("minfo", JSON.stringify(result));
+          sessionStorage.setItem("minfo", 
+            JSON.stringify(result));
 
           // 2. 컨텍스트 API의 로그인상태 업데이트
           myCon.setLoginSts(result);
@@ -161,8 +169,10 @@ function Login() {
           myCon.makeMsg(result.unm);
 
           // 4. 로그인 성공 메시지 버튼에 출력하기
-          const sBtn = document.querySelector(".sbtn") as HTMLElement;
-          sBtn.innerText = "넌 로그인 된거야~!";
+          const sBtn = 
+          document.querySelector(".sbtn") as HTMLElement;
+          sBtn.innerText = 
+          "넌 로그인 된거야~!";
 
           // 5. 라우팅 페이지 이동
           // 1초후 메인 페이지로 이동
@@ -196,11 +206,14 @@ function Login() {
   // 화면랜더링 구역 /////////
   useEffect(() => {
     // 아이디입력창 포커스
-    const userId = document.querySelector("#user-id") as HTMLInputElement;
+    const userId = 
+    document
+    .querySelector("#user-id") as HTMLInputElement;
     userId.focus();
-
-    // 위와 동일한 코드. 변수에 담지 않고 처리하는 방법
-    // (document.querySelector("#user-id") as HTMLInputElement).focus();
+    
+    // 위와 동일한 코드임. 변수에 담지 않고 처리하는 방법
+    // (document.querySelector("#user-id") as HTMLInputElement)
+    // .focus();
   }, []);
 
   // 코드 리턴구역 //////////////////////
@@ -223,18 +236,17 @@ function Login() {
               {
                 // 에러일 경우 메시지 출력
                 // 조건문 && 출력요소
-                userIdError && (
-                  <div className="msg">
-                    <small
-                      style={{
-                        color: "red",
-                        fontSize: "10px",
-                      }}
-                    >
-                      {idMsg}
-                    </small>
-                  </div>
-                )
+                userIdError && 
+                <div className="msg">
+                  <small
+                    style={{
+                      color: "red",
+                      fontSize: "10px",
+                    }}
+                  >
+                    {idMsg}
+                  </small>
+                </div>
               }
             </li>
             <li>
@@ -249,24 +261,23 @@ function Login() {
               {
                 // 에러일 경우 메시지 출력
                 // 조건문 && 출력요소
-                pwdError && (
-                  <div className="msg">
-                    <small
-                      style={{
-                        color: "red",
-                        fontSize: "10px",
-                      }}
-                    >
-                      {pwdMsg}
-                    </small>
-                  </div>
-                )
+                pwdError && 
+                <div className="msg">
+                  <small
+                    style={{
+                      color: "red",
+                      fontSize: "10px",
+                    }}
+                  >
+                    {pwdMsg}
+                  </small>
+                </div>
               }
             </li>
             <li style={{ overflow: "hidden" }}>
               <button className="sbtn" onClick={onSubmit}>
                 Submit
-              </button>
+                </button>
             </li>
           </ul>
         </form>

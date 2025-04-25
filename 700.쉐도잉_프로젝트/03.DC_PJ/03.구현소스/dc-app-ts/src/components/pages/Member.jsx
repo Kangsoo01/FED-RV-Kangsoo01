@@ -482,12 +482,10 @@ function Member() {
             </li>
             <li>
               <label>Address</label>
-              {
-                /* 다음 우편번호 모듈
+              {/* 다음 우편번호 모듈
                   - 보내줄 값은 내가 정해야함!
                   - 변경체크함수를 프롭스다운시킴!
-                */
-              }
+                */}
               <AddressInput changeAddr={changeAddr} />
               {
                 // 에러일 경우 메시지 출력
